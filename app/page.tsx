@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
+import { SignOutButton, useClerk } from '@clerk/nextjs'
 
 // Components
 import { Button } from '@/components/ui/button'
@@ -50,11 +51,11 @@ export default function Home() {
       </div>
 
       <div>
-        {/* <Button>This is Button</Button> */}
-
-        <Button variant='ghost'>This is Button</Button>
-
-        <Button variant='secondary'>This is Button</Button>
+        <div>
+          <SignOutButton>
+            <Button>Sign out</Button>
+          </SignOutButton>
+        </div>
       </div>
 
       <div className='mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left'>

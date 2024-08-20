@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Poppins, Roboto } from 'next/font/google'
+import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 
 // Components
@@ -19,12 +20,14 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' className={`${poppins.variable} ${roboto.variable}`}>
-      <body>
-        <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang='en' className={`${poppins.variable} ${roboto.variable}`}>
+        <body>
+          <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
