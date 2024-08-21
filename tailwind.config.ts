@@ -36,9 +36,21 @@ const config = {
           90: 'hsl(var(--pink-90))',
         },
         body: 'hsl(var(--body))',
+        input: {
+          DEFAULT: 'hsl(var(--input))',
+          foreground: 'hsl(var(--input-foreground))',
+        },
+        label: 'hsl(var(--label))',
+        text: {
+          DEFAULT: 'hsl(var(--text))',
+          foreground: 'hsl(var(--text))',
+        },
+        icon: {
+          DEFAULT: 'hsl(var(--icon-primary))',
+          primary: 'hsl(var(--icon-primary))',
+        },
 
         border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -99,6 +111,7 @@ const config = {
         xs: '12px',
         sm: '13px',
         base: '14px',
+        lg: '16px',
       },
     },
   },

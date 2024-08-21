@@ -2,13 +2,12 @@
 
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
-import { SignOutButton, useClerk } from '@clerk/nextjs'
+import { SignOutButton } from '@clerk/nextjs'
 
 // Components
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
-
 export default function Home() {
   const { setTheme } = useTheme()
 

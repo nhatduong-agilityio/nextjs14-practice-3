@@ -3,6 +3,7 @@
 import * as React from 'react'
 import { useSignIn } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
+import { Input } from '@/components/ui/input'
 
 const SignInPage = () => {
   const { isLoaded, signIn, setActive } = useSignIn()
@@ -46,6 +47,9 @@ const SignInPage = () => {
   return (
     <>
       <h1>Sign in</h1>
+      <Input label='title' errorMessage='errorMessage' />
+      <Input label='title' />
+
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
           <label htmlFor='email'>Enter email address</label>
