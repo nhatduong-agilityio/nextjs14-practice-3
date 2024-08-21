@@ -5,10 +5,9 @@ import { cn } from '@/lib/utils'
 import { Separator } from './separator'
 import { Label } from './label'
 import { Text } from './text'
-import EmailIcon from '@/icons/EmailIcon'
 
 const inputVariants = cva(
-  'flex h-[38px] w-full bg-transparent py-2.5 text-lg font-[400] transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+  'flex h-[38px] w-full bg-transparent py-2.5 text-md font-[400] transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {

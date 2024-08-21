@@ -34,7 +34,8 @@
     --label: 240 9% 85%;
     --separator: 240 16% 90%;
     --text-foreground: 240 7% 29%;
-    --icon-primary: 240 5% 59%;
+    --icon: 240 5% 59%;
+    --heading: 240 23% 12%;
 
     /** orange */
     --orange-20: 42 100% 63%;
@@ -90,7 +91,8 @@
     --label: 240 5% 59%;
     --separator: 240 7% 29%;
     --text-foreground: 240 5% 59%;
-    --icon-primary: 240 5% 59%;
+    --icon: 240 5% 59%;
+    --heading: 240 11% 98%;
 
     /** orange */
     --orange-20: 42 100% 63%;

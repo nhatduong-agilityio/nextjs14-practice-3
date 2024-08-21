@@ -4,6 +4,8 @@ import * as React from 'react'
 import { useSignIn } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
+import { Heading } from '@/components/ui/heading'
+import EmailIcon from '@/icons/EmailIcon'
 
 const SignInPage = () => {
   const { isLoaded, signIn, setActive } = useSignIn()
@@ -46,8 +48,10 @@ const SignInPage = () => {
   // Display a form to capture the user's email and password
   return (
     <>
-      <h1>Sign in</h1>
-      <Input label='title' errorMessage='errorMessage' />
+      <Heading headingLevel='h1' size='lg'>
+        Sign in
+      </Heading>
+      <Input label='title' errorMessage='errorMessage' icon={<EmailIcon />} />
       <Input label='title' />
 
       <form onSubmit={(e) => handleSubmit(e)}>
