@@ -46,8 +46,12 @@ const config = {
           foreground: 'hsl(var(--text))',
         },
         icon: {
-          DEFAULT: 'hsl(var(--icon-primary))',
-          primary: 'hsl(var(--icon-primary))',
+          DEFAULT: 'hsl(var(--icon))',
+          primary: 'hsl(var(--icon))',
+        },
+        heading: {
+          DEFAULT: 'hsl(var(--heading))',
+          primary: 'hsl(var(--heading))',
         },
 
         border: 'hsl(var(--border))',
@@ -111,7 +115,9 @@ const config = {
         xs: '12px',
         sm: '13px',
         base: '14px',
-        lg: '16px',
+        md: '16px',
+        lg: '24px',
+        xl: '28px',
       },
     },
   },
