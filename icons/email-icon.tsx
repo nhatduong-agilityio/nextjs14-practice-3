@@ -1,7 +1,7 @@
-import { cn } from '@/lib/utils'
 import * as React from 'react'
+import { cn } from '@/lib/utils'
 
-const EmailIcon = ({ className, ...props }: React.SVGAttributes<SVGSVGElement>) => (
+export const EmailIcon = ({ className, ...props }: React.SVGAttributes<SVGSVGElement>) => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width='24'
@@ -18,5 +18,3 @@ const EmailIcon = ({ className, ...props }: React.SVGAttributes<SVGSVGElement>) 
     />
   </svg>
 )
-
-export default EmailIcon
