@@ -21,11 +21,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <main className='h-dvh w-dvw flex justify-center items-center bg-background'>
-      <section className='flex rounded-xl shadow'>
+      <section className='2xl:flex px-2.5 md:px-5 xl:px-0 rounded-xl shadow'>
         <div
           className={cn(
-            'flex flex-col justify-center items-center px-50 pt-60 pb-90 bg-body rounded-xl gap-50',
-            isOpen && 'rounded-none rounded-s-xl animate-fade-in-right border border-border-secondary',
+            'flex flex-col justify-center items-center p-5 md:p-30 xl:px-50 xl:pt-60 xl:pb-90 bg-body rounded-lg md:rounded-xl gap-6 md:gap-50',
+            isOpen &&
+              'hidden 2xl:flex rounded-lg md:rounded-xl 2xl:rounded-e-none animate-fade-in-right border border-border-secondary',
           )}
         >
           <div className='w-full flex justify-between items-center'>
@@ -42,14 +43,26 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </Button>
             )}
           </div>
-          <Image alt='Team Work' src={TeamWorkImage} priority width={414} height={252} />
-          <Heading headingLevel='h2' className='max-w-[465px] px-10 text-center'>
+          <Image
+            alt='Team Work'
+            src={TeamWorkImage}
+            priority
+            sizes='100%'
+            // Make the image display full width
+            style={{
+              width: '100%',
+              height: 'auto',
+              maxWidth: 414,
+              maxHeight: 252,
+            }}
+          />
+          <Heading headingLevel='h2' className='sm:px-3 md:max-w-[465px] md:px-10 text-center'>
             Monitoring your Sales Anytime. Easier & Effective than Before
           </Heading>
         </div>
         <div
           className={cn(
-            'hidden flex-col justify-start items-center p-50 bg-card rounded-e-xl animate-fade-in-left relative',
+            'hidden flex-col justify-start items-center p-5 md:p-30 xl:p-50 bg-card rounded-lg md:rounded-xl 2xl:rounded-s-none animate-fade-in-left relative',
             isOpen && 'flex',
           )}
         >

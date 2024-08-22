@@ -19,7 +19,16 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        xs: '480px', // iPhone 6, 7, 8, X, 11, 12 / Galaxy S8 / HTC One, Blackberry Passport / Amazon Kindle Fire HD 7 …
+        sm: '600px', // LG G Pad 8.3 / Amazon Kindle Fire …
+        md: '768px', // Microsoft Surface / iPad Pro 9.7 / iPad Mini …
+        lg: '1024px', // iPad Pro 12.9 / Microsoft Surface Pro 3 …
+        xl: '1280px', // Google Chromebook Pixel / Samsung Chromebook …
+        '2xl': '1400px', // Macbook Air 2020 M1 / MacBook Pro 15
+      },
       spacing: {
+        30: '1.875rem',
         50: '3.125rem',
         60: '3.75rem',
         90: '5.625rem',
