@@ -48,31 +48,7 @@ const SignInPage = () => {
 
   // Display a form to capture the user's email and password
   return (
-    <div className='min-w-[506px] pt-2.5 px-2.5'>
-      {/* <Heading headingLevel='h1' size='lg'>
-        Sign in
-      </Heading>
-
-      <Input label='title' errorMessage='errorMessage' icon={<EmailIcon />} />
-      <Input label='title' />
-
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label htmlFor='email'>Enter email address</label>
-          <input onChange={(e) => setEmail(e.target.value)} id='email' name='email' type='email' value={email} />
-        </div>
-        <div>
-          <label htmlFor='password'>Enter password</label>
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            id='password'
-            name='password'
-            type='password'
-            value={password}
-          />
-        </div>
-        <button type='submit'>Sign in</button>
-      </form> */}
+    <div className='flex flex-col sm:min-w-[506px] pt-2.5 px-2.5'>
       <SignInForm />
     </div>
   )
