@@ -22,9 +22,9 @@ const textVariants = cva('text-base font-[400]', {
 
 export interface TextProps extends React.HTMLAttributes<HTMLParagraphElement>, VariantProps<typeof textVariants> {}
 
-const Text = ({ variant, size, className, ...props }: TextProps) => {
-  return <p className={cn(textVariants({ variant, size, className }))} {...props} />
-}
+const Text = React.forwardRef<HTMLParagraphElement, TextProps>(({ variant, size, className, ...props }, ref) => {
+  return <p ref={ref} className={cn(textVariants({ variant, size, className }))} {...props} />
+})
 Text.displayName = 'Text'
 
 export { Text, textVariants }
