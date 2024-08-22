@@ -2,7 +2,13 @@ import type { Config } from 'tailwindcss'
 
 const config = {
   darkMode: ['class'],
-  content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+    './icons/**/*.{ts,tsx}',
+  ],
   prefix: '',
   theme: {
     container: {
@@ -13,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      spacing: {
+        50: '3.125rem',
+      },
       colors: {
         orange: {
           20: 'hsl(var(--orange-20))',
@@ -36,6 +45,7 @@ const config = {
           90: 'hsl(var(--pink-90))',
         },
         body: 'hsl(var(--body))',
+        brand: 'hsl(var(--brand))',
         input: {
           DEFAULT: 'hsl(var(--input))',
           foreground: 'hsl(var(--input-foreground))',
@@ -88,6 +98,7 @@ const config = {
         },
       },
       borderRadius: {
+        xl: 'calc(var(--radius) + 20px)',
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 10px)',
         sm: 'calc(var(--radius) - 20px)',
@@ -101,10 +112,32 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'fade-in-left': {
+          '0%': {
+            opacity: '0',
+            transform: 'translate3d(-100%, 0, 0)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translate3d(0, 0, 0)',
+          },
+        },
+        'fade-in-right': {
+          '0%': {
+            opacity: '0',
+            transform: 'translate3d(100%, 0, 0)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translate3d(0, 0, 0)',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in-left': 'fade-in-left 0.2s ease-out',
+        'fade-in-right': 'fade-in-right 0.2s ease-out',
       },
       fontFamily: {
         poppins: ['var(--font-poppins)'],

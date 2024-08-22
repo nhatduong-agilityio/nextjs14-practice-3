@@ -5,7 +5,7 @@ import { useSignIn } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Heading } from '@/components/ui/heading'
-import EmailIcon from '@/icons/EmailIcon'
+import { EmailIcon } from '@/icons/email-icon'
 
 const SignInPage = () => {
   const { isLoaded, signIn, setActive } = useSignIn()
@@ -51,6 +51,7 @@ const SignInPage = () => {
       <Heading headingLevel='h1' size='lg'>
         Sign in
       </Heading>
+
       <Input label='title' errorMessage='errorMessage' icon={<EmailIcon />} />
       <Input label='title' />
 
