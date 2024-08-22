@@ -21,6 +21,8 @@ const config = {
     extend: {
       spacing: {
         50: '3.125rem',
+        60: '3.75rem',
+        90: '5.625rem',
       },
       colors: {
         orange: {
@@ -40,6 +42,7 @@ const config = {
         blue: {
           20: 'hsl(var(--blue-20))',
           80: 'hsl(var(--blue-80))',
+          90: 'hsl(var(--blue-90))',
         },
         pink: {
           90: 'hsl(var(--pink-90))',
@@ -50,7 +53,12 @@ const config = {
           DEFAULT: 'hsl(var(--input))',
           foreground: 'hsl(var(--input-foreground))',
         },
-        label: 'hsl(var(--label))',
+        label: {
+          DEFAULT: 'hsl(var(--label))',
+          secondary: 'hsl(var(--label-secondary))',
+          field: 'hsl(var(--label-field))',
+        },
+        link: 'hsl(var(--link))',
         text: {
           DEFAULT: 'hsl(var(--text))',
           foreground: 'hsl(var(--text))',
@@ -63,8 +71,13 @@ const config = {
           DEFAULT: 'hsl(var(--heading))',
           primary: 'hsl(var(--heading))',
         },
+        separator: 'hsl(var(--separator))',
 
-        border: 'hsl(var(--border))',
+        border: {
+          DEFAULT: 'hsl(var(--border))',
+          primary: 'hsl(var(--border))',
+          secondary: 'hsl(var(--border-secondary))',
+        },
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

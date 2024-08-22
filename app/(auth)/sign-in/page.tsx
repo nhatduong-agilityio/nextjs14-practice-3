@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Heading } from '@/components/ui/heading'
 import { EmailIcon } from '@/icons/email-icon'
+import { SignInForm } from '@/components/sections/sign-in-form'
 
 const SignInPage = () => {
   const { isLoaded, signIn, setActive } = useSignIn()
@@ -47,8 +48,8 @@ const SignInPage = () => {
 
   // Display a form to capture the user's email and password
   return (
-    <>
-      <Heading headingLevel='h1' size='lg'>
+    <div className='min-w-[506px] pt-2.5 px-2.5'>
+      {/* <Heading headingLevel='h1' size='lg'>
         Sign in
       </Heading>
 
@@ -71,8 +72,9 @@ const SignInPage = () => {
           />
         </div>
         <button type='submit'>Sign in</button>
-      </form>
-    </>
+      </form> */}
+      <SignInForm />
+    </div>
   )
 }
 
