@@ -70,7 +70,7 @@ const config = {
         link: 'hsl(var(--link))',
         text: {
           DEFAULT: 'hsl(var(--text))',
-          foreground: 'hsl(var(--text))',
+          foreground: 'hsl(var(--text-foreground))',
         },
         icon: {
           DEFAULT: 'hsl(var(--icon))',

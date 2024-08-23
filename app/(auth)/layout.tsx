@@ -20,8 +20,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const linkHref = pathname === '/sign-in' ? '/sign-up' : '/sign-in'
 
   return (
-    <main className='h-dvh w-dvw flex justify-center items-center bg-background'>
-      <section className='2xl:flex px-2.5 md:px-5 xl:px-0 rounded-xl shadow'>
+    <main className='h-dvh w-dvw flex justify-center items-center bg-background px-4 md:px-5 xl:px-0'>
+      <section
+        className={cn(
+          '2xl:flex rounded-lg md:rounded-xl shadow',
+          !isOpen && 'max-h-[90dvh] overflow-y-scroll no-scrollbar',
+        )}
+      >
         <div
           className={cn(
             'flex flex-col justify-center items-center p-5 md:p-30 xl:px-50 xl:pt-60 xl:pb-90 bg-body rounded-lg md:rounded-xl gap-6 md:gap-50',
@@ -62,7 +67,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
         <div
           className={cn(
-            'hidden flex-col justify-start items-center p-5 md:p-30 xl:p-50 bg-card rounded-lg md:rounded-xl 2xl:rounded-s-none animate-fade-in-left relative',
+            'hidden flex-col justify-start items-center p-5 md:p-30 xl:p-50 bg-card rounded-lg md:rounded-xl 2xl:rounded-s-none animate-fade-in-left relative max-h-[90dvh]',
             isOpen && 'flex',
           )}
         >
@@ -70,7 +75,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Button
             size='icon'
             variant='rounded'
-            className='bg-input-foreground w-12 h-12 absolute top-[-2px] right-[-10px]'
+            className='bg-input-foreground md:w-12 md:h-12 absolute top-[-2px] right-[-10px]'
             onClick={onClose}
           >
             <CloseIcon className='text-secondary' />

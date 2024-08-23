@@ -22,24 +22,31 @@ const inputVariants = cva(
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
   icon?: React.ReactNode
+  prefixLabel?: React.ReactNode
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(({ className, type, variant, icon, ...props }, ref) => {
-  return (
-    <>
-      <div className='flex flex-row justify-between items-center'>
-        <input
-          type={type}
-          className={cn(inputVariants({ variant, className }), icon && 'w-5/6')}
-          ref={ref}
-          {...props}
-        />
-        {icon && icon}
-      </div>
-      <Separator />
-    </>
-  )
-})
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, variant, icon, prefixLabel, ...props }, ref) => {
+    return (
+      <>
+        <div className='flex flex-row justify-start items-center relative'>
+          {prefixLabel && prefixLabel}
+          <input
+            type={type}
+            className={cn(
+              inputVariants({ variant, className }),
+              (icon && prefixLabel) || prefixLabel ? 'w-2/4' : icon ? 'w-5/6' : 'w-full',
+            )}
+            ref={ref}
+            {...props}
+          />
+          <div className='absolute right-0'>{icon && icon}</div>
+        </div>
+        <Separator />
+      </>
+    )
+  },
+)
 Input.displayName = 'Input'
 
 export { Input, inputVariants }
