@@ -16,31 +16,37 @@ import { Checkbox } from '../ui/checkbox'
 import Link from 'next/link'
 import { GoogleLightIcon } from '@/icons/google-light-icon'
 import { FacebookLightIcon } from '@/icons/facebook-light-icon'
+import { Text } from '../ui/text'
+import { WorldIcon } from '@/icons/world-icon'
+import { UserIcon } from '@/icons/user-icon'
 
 // Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
 const passwordValidation = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
 
 const FormSchema = z.object({
-  emailOrUsername: z.union([
-    z.string().email({ message: 'Invalid email address' }),
-    z
-      .string()
-      .min(2, { message: 'Username must be at least 2 characters.' })
-      .max(30, { message: 'Username must not exceed 30 characters.' }),
-  ]),
+  fullName: z
+    .string()
+    .min(2, { message: 'Full name must be at least 2 characters.' })
+    .max(30, { message: 'Full name must not exceed 30 characters.' }),
+  emailAddress: z.string().email({ message: 'Invalid email address' }),
+  businessUrl: z
+    .string()
+    .toLowerCase()
+    .min(2, { message: 'Business URL must be at least 2 characters and lower case.' })
+    .optional(),
   password: z.string().min(8, { message: 'Password must be at least 8 characters long' }).regex(passwordValidation, {
     message: 'Password must include uppercase, lowercase, number, and special character',
   }),
-  rememberMe: z.boolean().default(false).optional(),
 })
 
-export function SignInForm() {
+export function SignUpForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      emailOrUsername: '',
+      fullName: '',
+      emailAddress: '',
+      businessUrl: '',
       password: '',
-      rememberMe: false,
     },
   })
 
@@ -51,17 +57,52 @@ export function SignInForm() {
   return (
     <Form {...form}>
       <Heading headingLevel='h1' size='lg'>
-        Log In to Your Account
+        Create your Free Account
       </Heading>
       <form onSubmit={form.handleSubmit(onSubmit)} className='flex flex-col mt-[34px] gap-2.5'>
         <FormField
           control={form.control}
-          name='emailOrUsername'
+          name='fullName'
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email or Username</FormLabel>
+              <FormLabel>Full Name</FormLabel>
               <FormControl>
-                <Input placeholder='Enter your email/username' icon={<EmailIcon />} {...field} />
+                <Input placeholder='Enter your full name' icon={<UserIcon />} {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='emailAddress'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email Address</FormLabel>
+              <FormControl>
+                <Input placeholder='Enter your email address' type='email' icon={<EmailIcon />} {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name='businessUrl'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Business URL</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder='business name'
+                  prefixLabel={
+                    <Text size='md'>
+                      circle.com<span className='text-input-foreground'>/</span>
+                    </Text>
+                  }
+                  icon={<WorldIcon />}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -80,41 +121,8 @@ export function SignInForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name='rememberMe'
-          render={({ field }) => (
-            <FormItem className='flex justify-between items-center'>
-              <div className='flex items-center gap-3'>
-                <FormControl>
-                  <Checkbox checked={field.value} onCheckedChange={field.onChange} variant='sun' />
-                </FormControl>
-                <FormLabel variant='field' size='md' className='leading-4'>
-                  Remember Me
-                </FormLabel>
-              </div>
-
-              <Link href='/forgot-password' className='leading-4 font-medium text-link text-base hover:underline'>
-                Forgot Password
-              </Link>
-            </FormItem>
-          )}
-        />
-        <Button size='lg' type='submit' className='bg-blue-20 h-50'>
-          Login
-        </Button>
-        <div className='flex gap-[15px] items-center mt-5'>
-          <Separator variant='dashed' className='flex-1' />
-          <Label variant='secondary' size='md'>
-            Instant Login
-          </Label>
-          <Separator variant='dashed' className='flex-1' />
-        </div>
-        <Button size='lg' className='bg-red-20 my-2.5 hover:bg-red-20/90'>
-          <GoogleLightIcon className='mr-[11px]' /> Continue with Google
-        </Button>
-        <Button size='lg' className='bg-blue-90'>
-          <FacebookLightIcon className='mr-[11px]' /> Continue with Facebook
+        <Button size='lg' type='submit' className='bg-blue-20 h-50 mt-2.5'>
+          Create an account
         </Button>
       </form>
     </Form>

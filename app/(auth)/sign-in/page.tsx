@@ -48,7 +48,7 @@ const SignInPage = () => {
 
   // Display a form to capture the user's email and password
   return (
-    <div className='flex flex-col sm:min-w-[506px] pt-2.5 px-2.5'>
+    <div className='flex flex-col sm:min-w-[506px] pt-2.5 px-2.5 overflow-y-scroll no-scrollbar'>
       <SignInForm />
     </div>
   )

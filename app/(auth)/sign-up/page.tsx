@@ -3,6 +3,7 @@
 import * as React from 'react'
 import { useSignUp } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
+import { SignUpForm } from '@/components/sections/sign-up-form'
 
 const SignUpPage = () => {
   const { isLoaded, signUp, setActive } = useSignUp()
@@ -42,34 +43,9 @@ const SignUpPage = () => {
 
   // Display the initial sign-up form to capture the email and password
   return (
-    <>
-      <h1>Sign up</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='email'>Enter email address</label>
-          <input
-            id='email'
-            type='email'
-            name='email'
-            value={emailAddress}
-            onChange={(e) => setEmailAddress(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Enter password</label>
-          <input
-            id='password'
-            type='password'
-            name='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <button type='submit'>Next</button>
-        </div>
-      </form>
-    </>
+    <div className='flex flex-col sm:min-w-[506px] pt-2.5 px-2.5 overflow-y-scroll no-scrollbar'>
+      <SignUpForm />
+    </div>
   )
 }
 

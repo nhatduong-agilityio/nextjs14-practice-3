@@ -12,6 +12,7 @@ const textVariants = cva('text-base font-[400]', {
     size: {
       default: 'leading-6',
       xs: 'text-xs',
+      md: 'text-md',
     },
   },
   defaultVariants: {
