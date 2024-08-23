@@ -34,7 +34,7 @@ const FormSchema = z.object({
   rememberMe: z.boolean().default(false).optional(),
 })
 
-export function SignInForm() {
+export const SignInForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -44,7 +44,7 @@ export function SignInForm() {
     },
   })
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
+  const onSubmit = (data: z.infer<typeof FormSchema>) => {
     console.log(data)
   }
 
