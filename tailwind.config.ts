@@ -62,6 +62,10 @@ const config = {
           DEFAULT: 'hsl(var(--input))',
           foreground: 'hsl(var(--input-foreground))',
         },
+        'search-input': {
+          DEFAULT: 'hsl(var(--search-input))',
+          foreground: 'hsl(var(--search-input-foreground))',
+        },
         label: {
           DEFAULT: 'hsl(var(--label))',
           secondary: 'hsl(var(--label-secondary))',
