@@ -5,7 +5,7 @@ const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)'])
 export default clerkMiddleware((auth, request) => {
   // if (isPublicRoute(request)) {
   //   if (auth().userId) {
-  //     return Response.redirect(new URL('/dashboard', request.url))
+  //     return Response.redirect(new URL('/', request.url))
   //   }
   // } else {
   //   auth().protect()

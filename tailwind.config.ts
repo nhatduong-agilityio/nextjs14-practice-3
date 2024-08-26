@@ -75,6 +75,8 @@ const config = {
         text: {
           DEFAULT: 'hsl(var(--text))',
           foreground: 'hsl(var(--text-foreground))',
+          link: 'hsl(var(--text-link))',
+          'link-selected': 'hsl(var(--text-link-selected))',
         },
         icon: {
           DEFAULT: 'hsl(var(--icon))',

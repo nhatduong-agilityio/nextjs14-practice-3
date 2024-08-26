@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils'
 import { CloseIcon } from '@/icons/close-icon'
 import Link from 'next/link'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -85,3 +85,5 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     </main>
   )
 }
+
+export default Layout

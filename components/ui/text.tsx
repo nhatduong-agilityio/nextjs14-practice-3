@@ -8,6 +8,7 @@ const textVariants = cva('text-base font-[400]', {
     variant: {
       default: 'text-text-foreground',
       error: 'text-destructive',
+      link: 'font-poppins font-medium',
     },
     size: {
       default: 'leading-6',

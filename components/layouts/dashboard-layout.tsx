@@ -1,5 +1,6 @@
 import React from 'react'
 import { Header } from '../sections/header'
+import { SideNav } from '../sections/side-nav'
 
 export interface DashboardLayoutProps {
   children: React.ReactNode
@@ -11,7 +12,9 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       <Header />
 
       <div className='flex-1'>
-        <aside className='hidden lg:block w-[250px] h-[calc(100dvh-50px)] lg:h-[calc(100dvh-70px)] bg-card fixed border-r border-separator'></aside>
+        <aside className='hidden lg:block w-[250px] h-[calc(100dvh-50px)] lg:h-[calc(100dvh-70px)] bg-card fixed border-r border-separator'>
+          <SideNav />
+        </aside>
 
         <div className='flex-1 lg:ml-[250px]'>{children}</div>
       </div>
