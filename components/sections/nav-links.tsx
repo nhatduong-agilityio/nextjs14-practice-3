@@ -176,7 +176,7 @@ export const NavLinks = () => {
     }
 
     return combinedNavigationLinks.map((item) => renderNavItem(item))
-  }, [pathname])
+  }, [pathname, combinedNavigationLinks])
 
-  return <div className='flex flex-col'>{renderNavLinks}</div>
+  return <div className='flex flex-col gap-2.5'>{renderNavLinks}</div>
 }
