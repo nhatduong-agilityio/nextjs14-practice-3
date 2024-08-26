@@ -8,7 +8,8 @@ import { SignOutButton } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
-export default function Home() {
+
+const Dashboard = () => {
   const { setTheme } = useTheme()
 
   const renderToggleTheme = () => (
@@ -123,3 +124,5 @@ export default function Home() {
     </main>
   )
 }
+
+export default Dashboard

@@ -18,6 +18,7 @@ import { NotificationIcon } from '@/icons/notification-icon'
 import { PlusIcon } from '@/icons/plus-icon'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { SearchInput } from '../ui/search-input'
+import { NavLinks } from './nav-links'
 
 export const Header = () => {
   return (
@@ -31,28 +32,7 @@ export const Header = () => {
           </Button>
         </SheetTrigger>
         <SheetContent side='left'>
-          <SheetHeader>
-            <SheetTitle>Edit profile</SheetTitle>
-          </SheetHeader>
-          <div className='grid gap-4 py-4'>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='name' className='text-right'>
-                Name
-              </Label>
-              <Input id='name' value='Pedro Duarte' className='col-span-3' />
-            </div>
-            <div className='grid grid-cols-4 items-center gap-4'>
-              <Label htmlFor='username' className='text-right'>
-                Username
-              </Label>
-              <Input id='username' value='@peduarte' className='col-span-3' />
-            </div>
-          </div>
-          <SheetFooter>
-            <SheetClose asChild>
-              <Button type='submit'>Save changes</Button>
-            </SheetClose>
-          </SheetFooter>
+          <NavLinks />
         </SheetContent>
       </Sheet>
 

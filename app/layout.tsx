@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   description: 'Square Dashboard App',
 }
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode
-}>) {
+}>) => {
   return (
     <ClerkProvider>
       <html lang='en' className={`${poppins.variable} ${roboto.variable}`}>
@@ -34,3 +34,5 @@ export default function RootLayout({
     </ClerkProvider>
   )
 }
+
+export default RootLayout
