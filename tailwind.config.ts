@@ -121,6 +121,7 @@ const config = {
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
+          secondary: 'hsl(var(--popover-secondary))',
         },
         card: {
           DEFAULT: 'hsl(var(--card))',
