@@ -33,6 +33,25 @@ const Dashboard = () => {
     </DropdownMenu>
   )
 
+  const ListTeamActions = [
+    {
+      name: 'Add New Teams…',
+      action: () => null,
+    },
+    {
+      name: 'Edit Current Teams…',
+      action: () => null,
+    },
+    {
+      name: 'Add New Member…',
+      action: () => null,
+    },
+    {
+      name: 'Remove Current Member…',
+      action: () => null,
+    },
+  ]
+
   return (
     <div className='flex h-full flex-col p-5 lg:p-10'>
       <PageHeader className='gap-2.5'>
@@ -42,8 +61,8 @@ const Dashboard = () => {
       </PageHeader>
 
       <div className='w-full flex flex-col gap-5'>
-        <CardContainer title='Team'></CardContainer>
-        <CardContainer title='Projects'></CardContainer>
+        <CardContainer title='Team' menuOptions={ListTeamActions}></CardContainer>
+        <CardContainer title='Projects' menuOptions={[]}></CardContainer>
       </div>
     </div>
   )
