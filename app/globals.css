@@ -39,8 +39,10 @@
     --text-foreground: 240 7% 29%;
     --text-link: 240 23% 12%;
     --text-link-selected: 217 100% 50%;
+    --text-secondary: 240 5% 59%;
     --icon: 240 5% 59%;
     --heading: 240 23% 12%;
+    --heading-secondary: 240 5% 43%;
     --link: 205 100% 66%;
     --search-input: 240 17% 95%;
     --search-input-foreground: 240 5% 43%;
@@ -104,8 +106,10 @@
     --label-field: 240 11% 98%;
     --separator: 240 7% 29%;
     --text-foreground: 240 5% 59%;
+    --text-secondary: 240 5% 59%;
     --icon: 240 5% 59%;
     --heading: 240 11% 98%;
+    --heading-secondary: 240 5% 59%;
     --link: 240 5% 59%;
     --text-link: 240 6% 73%;
     --text-link-selected: 240, 11%, 98%;

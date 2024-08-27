@@ -77,6 +77,7 @@ const config = {
           foreground: 'hsl(var(--text-foreground))',
           link: 'hsl(var(--text-link))',
           'link-selected': 'hsl(var(--text-link-selected))',
+          secondary: 'hsl(var(--text-secondary))',
         },
         icon: {
           DEFAULT: 'hsl(var(--icon))',
@@ -85,6 +86,7 @@ const config = {
         heading: {
           DEFAULT: 'hsl(var(--heading))',
           primary: 'hsl(var(--heading))',
+          secondary: 'hsl(var(--heading-secondary))',
         },
         separator: 'hsl(var(--separator))',
 

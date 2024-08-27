@@ -9,11 +9,13 @@ const textVariants = cva('text-base font-[400]', {
       default: 'text-text-foreground',
       error: 'text-destructive',
       link: 'font-poppins font-medium',
+      secondary: 'text-text-secondary',
     },
     size: {
       default: 'leading-6',
       xs: 'text-xs',
       md: 'text-md',
+      lg: 'text-[18px]',
     },
   },
   defaultVariants: {
