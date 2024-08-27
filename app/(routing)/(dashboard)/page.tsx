@@ -12,6 +12,8 @@ import { Heading } from '@/components/ui/heading'
 import { PageHeader } from '@/components/sections/page-header'
 import { Text } from '@/components/ui/text'
 import { CardContainer } from '@/components/sections/card-container'
+import { CardTeam } from '@/components/sections/card-team'
+import { TEAM_DETAIL, TEAM_DETAILS } from '@/constants/data'
 
 const Dashboard = () => {
   const { setTheme } = useTheme()
@@ -33,7 +35,7 @@ const Dashboard = () => {
     </DropdownMenu>
   )
 
-  const ListTeamActions = [
+  const listActionsTeam = [
     {
       name: 'Add New Teams…',
       action: () => null,
@@ -61,7 +63,11 @@ const Dashboard = () => {
       </PageHeader>
 
       <div className='w-full flex flex-col gap-5'>
-        <CardContainer title='Team' menuOptions={ListTeamActions}></CardContainer>
+        <CardContainer title='Team' menuOptions={listActionsTeam}>
+          {TEAM_DETAILS.map((team) => (
+            <CardTeam key={team.id} team={team} />
+          ))}
+        </CardContainer>
         <CardContainer title='Projects' menuOptions={[]}></CardContainer>
       </div>
     </div>
