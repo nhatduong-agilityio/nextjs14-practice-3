@@ -88,8 +88,11 @@ const config = {
           primary: 'hsl(var(--heading))',
           secondary: 'hsl(var(--heading-secondary))',
         },
-        separator: 'hsl(var(--separator))',
-
+        separator: {
+          DEFAULT: 'hsl(var(--separator))',
+          primary: 'hsl(var(--separator))',
+          secondary: 'hsl(var(--separator-secondary))',
+        },
         border: {
           DEFAULT: 'hsl(var(--border))',
           primary: 'hsl(var(--border))',
