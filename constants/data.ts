@@ -378,4 +378,142 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
       },
     ],
   },
+  {
+    id: '66cda2df7577a8f99825683c',
+    name: 'Project Delta',
+    owner: {
+      id: '66cda2dffa0768af4efb5ce7',
+      userName: 'Alicia Rodgers',
+      avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
+    },
+    team: 'Team Visionaries',
+    assigned: [
+      {
+        id: '66cda2df2b2fdcb03f8b9184',
+        userName: 'Barton Mccullough',
+        avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
+      },
+      {
+        id: '66cda2df5b8d5f8ef7d5838b',
+        userName: 'Lorie Baxter',
+        avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
+      },
+    ],
+    attachment: [
+      {
+        id: '66cda2dffa0768af4efb5ce6',
+        fileName: 'project_gamma_timeline.xlsx',
+        fileType: 'xlsx',
+        fileSize: 512144,
+        uploadDate: '2023-05-25T09:15:00Z',
+        url: 'https://example.com/files/project_gamma_timeline.xlsx',
+      },
+      {
+        id: '66cda2dffa0768af4etw12nm',
+        fileName: 'project_gamma_timeline.xlsx',
+        fileType: 'xlsx',
+        fileSize: 512144,
+        uploadDate: '2023-05-25T09:15:00Z',
+        url: 'https://example.com/files/project_gamma_timeline.xlsx',
+      },
+    ],
+    taskList: [
+      {
+        id: '66cda2df2b2fdcb03f8b9185',
+        status: 'Completed',
+        assigned: [
+          {
+            id: '66cda2df2b2fdcb03f8b9184',
+            userName: 'Barton Mccullough',
+            avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
+          },
+        ],
+        dueDate: '2023-06-15T23:59:59Z',
+      },
+    ],
+    description: 'Revolutionary project pushing boundaries in AI integration.',
+    createdDate: '2023-06-01T08:00:00Z',
+    dueDate: '2024-05-31T23:59:59Z',
+    comments: [
+      {
+        id: '66cda2df2b2fdcb03f8b9186',
+        owner: {
+          id: '66cda2df5b8d5f8ef7d5838b',
+          userName: 'Lorie Baxter',
+          avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
+        },
+        content: 'Exciting project! Looking forward to our first milestone.',
+        createdDate: '2023-05-22T10:45:00Z',
+      },
+    ],
+  },
+  {
+    id: '66cda2df7577a8f99825683d',
+    name: 'Project Epsilon',
+    owner: {
+      id: '66cda2dffa0768af4efb5ce8',
+      userName: 'Marcus Holloway',
+      avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
+    },
+    team: 'Team Pioneers',
+    assigned: [
+      {
+        id: '66cda2df2b2fdcb03f8b9184',
+        userName: 'Barton Mccullough',
+        avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
+      },
+      {
+        id: '66cda2df5b8d5f8ef7d5838b',
+        userName: 'Lorie Baxter',
+        avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
+      },
+    ],
+    attachment: [
+      {
+        id: '66cda2dffa0768af4efb5ce6',
+        fileName: 'project_gamma_timeline.xlsx',
+        fileType: 'xlsx',
+        fileSize: 512144,
+        uploadDate: '2023-05-25T09:15:00Z',
+        url: 'https://example.com/files/project_gamma_timeline.xlsx',
+      },
+      {
+        id: '66cda2dffa0768af4etw12nm',
+        fileName: 'project_gamma_timeline.xlsx',
+        fileType: 'xlsx',
+        fileSize: 512144,
+        uploadDate: '2023-05-25T09:15:00Z',
+        url: 'https://example.com/files/project_gamma_timeline.xlsx',
+      },
+    ],
+    taskList: [
+      {
+        id: '66cda2df2b2fdcb03f8b9185',
+        status: 'Completed',
+        assigned: [
+          {
+            id: '66cda2df2b2fdcb03f8b9184',
+            userName: 'Barton Mccullough',
+            avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
+          },
+        ],
+        dueDate: '2023-06-15T23:59:59Z',
+      },
+    ],
+    description: 'Groundbreaking project focused on sustainable technology solutions.',
+    createdDate: '2023-06-15T09:30:00Z',
+    dueDate: '2024-07-31T23:59:59Z',
+    comments: [
+      {
+        id: '66cda2df2b2fdcb03f8b9186',
+        owner: {
+          id: '66cda2df5b8d5f8ef7d5838b',
+          userName: 'Lorie Baxter',
+          avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
+        },
+        content: 'Exciting project! Looking forward to our first milestone.',
+        createdDate: '2023-05-22T10:45:00Z',
+      },
+    ],
+  },
 ]

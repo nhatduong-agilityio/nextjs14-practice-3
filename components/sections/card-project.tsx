@@ -11,7 +11,7 @@ import { Text } from '../ui/text'
 import { Badge } from '../ui/badge'
 import { AttachmentIcon } from '@/icons/attachment-icon'
 import { Tag } from '../ui/tag'
-import { ClockIcon } from '@/icons/clock-icon'
+import { ActivityIcon } from '@/icons/activity-icon'
 import { Progress } from '../ui/progress'
 
 // Hocs
@@ -57,7 +57,7 @@ export const CardProject = memo(({ project, className, ...props }: CardProjectPr
   const progress = useMemo(() => calculateProgress(taskList), [taskList])
 
   return (
-    <Card className={cn('w-full', className)} {...props}>
+    <Card className={cn('w-full cursor-pointer hover:bg-card/80', className)} {...props}>
       <CardHeader className='flex flex-col justify-between items-start'>
         <div className='w-full flex justify-between items-center'>
           <CardTitle className='truncate'>{name}</CardTitle>
@@ -70,7 +70,7 @@ export const CardProject = memo(({ project, className, ...props }: CardProjectPr
           <Badge variant='ghost' className='text-label-secondary'>
             <AttachmentIcon width={16} height={16} className='mr-[3px]' /> {attachment.length}
           </Badge>
-          <Tag variant={variantTag(dueDate)} icon={<ClockIcon width={16} height={16} />}>
+          <Tag variant={variantTag(dueDate)} icon={<ActivityIcon width={16} height={16} />}>
             {calculateDaysLeft(dueDate)} days left
           </Tag>
         </div>

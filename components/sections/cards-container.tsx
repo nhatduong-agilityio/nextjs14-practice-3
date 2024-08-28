@@ -19,7 +19,7 @@ export interface CardContainerProps {
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const CardContainer = memo(({ title = 'Cards', moreMenuTitle, menuOptions, children }: CardContainerProps) => {
+export const CardsContainer = memo(({ title = 'Cards', moreMenuTitle, menuOptions, children }: CardContainerProps) => {
   return (
     <section className='w-full flex flex-col shadow-sm border border-separator rounded-3xl p-[5px]'>
       <div className='flex justify-between items-center p-[15px] pt-2.5'>
@@ -28,8 +28,8 @@ export const CardContainer = memo(({ title = 'Cards', moreMenuTitle, menuOptions
         </Heading>
         {menuOptions && <MoreMenu title={moreMenuTitle} menuOptions={menuOptions} />}
       </div>
-      <div className='w-full grid grid-cols-3 gap-30'>{children}</div>
+      <div className='w-full grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 lg:gap-30'>{children}</div>
     </section>
   )
 })
-CardContainer.displayName = 'CardContainer'
+CardsContainer.displayName = 'CardsContainer'

@@ -44,7 +44,7 @@ export const CardTeam = memo(({ team, className, ...props }: CardTeamProps) => {
   const moreUsers = users.length - 7
 
   return (
-    <Card className={cn('w-full', className)} {...props}>
+    <Card className={cn('w-full cursor-pointer hover:bg-card/80', className)} {...props}>
       <CardHeader className='flex flex-row justify-between items-start'>
         <div className='flex justify-between items-center gap-5'>
           <Image
@@ -61,7 +61,7 @@ export const CardTeam = memo(({ team, className, ...props }: CardTeamProps) => {
         </div>
         <MoreMenu title='Team Actions' menuOptions={listCardActions} />
       </CardHeader>
-      <CardContent className='w-full flex gap-2.5'>
+      <CardContent className='w-full flex gap-2.5 flex-wrap'>
         {users.slice(0, 7).map(({ avatar, userName }, index) => (
           <div
             key={userName}
