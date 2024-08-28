@@ -14,7 +14,7 @@ const buttonVariants = cva(
         outline:
           'border border-primary/50 text-primary bg-background shadow-sm hover:bg-accent hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80',
-        ghost: 'text-primary hover:text-accent-foreground',
+        ghost: 'text-primary hover:text-primary/80',
         link: 'text-primary underline-offset-4 hover:underline',
         rounded: 'rounded-xl',
       },
