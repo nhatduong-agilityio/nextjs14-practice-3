@@ -18,11 +18,12 @@ import { cn, getInitials } from '@/lib/utils'
 
 export interface CardTeamProps extends ComponentProps<typeof Card> {
   team: TeamDetail
+  isOutline?: boolean
 }
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const CardTeam = memo(({ team, className, ...props }: CardTeamProps) => {
+export const CardTeam = memo(({ team, className, isOutline = false, ...props }: CardTeamProps) => {
   const { users, name } = team
 
   const listCardActions = [
@@ -44,24 +45,24 @@ export const CardTeam = memo(({ team, className, ...props }: CardTeamProps) => {
   const moreUsers = users.length - 7
 
   return (
-    <Card className={cn('w-full cursor-pointer hover:bg-card/80', className)} {...props}>
-      <CardHeader className='flex flex-row justify-between items-start'>
-        <div className='flex justify-between items-center gap-5'>
+    <Card className={cn('w-full cursor-pointer hover:bg-card/80', isOutline && 'shadow-none', className)} {...props}>
+      <CardHeader className={cn('flex flex-row justify-between items-start', isOutline && 'p-0 pb-[15px]')}>
+        <div className={cn('flex justify-between items-center gap-5', isOutline && 'gap-2.5')}>
           <Image
             src='https://github.com/shadcn.png'
             alt='Logo of the team'
-            width={52}
-            height={52}
+            width={isOutline ? 32 : 52}
+            height={isOutline ? 32 : 52}
             style={{
               objectFit: 'cover',
               borderRadius: '10px',
             }}
           />
-          <CardTitle>{name}</CardTitle>
+          <CardTitle className={cn(isOutline && 'text-base')}>{name}</CardTitle>
         </div>
-        <MoreMenu title='Team Actions' menuOptions={listCardActions} />
+        {!isOutline && <MoreMenu title='Team Actions' menuOptions={listCardActions} />}
       </CardHeader>
-      <CardContent className='w-full flex gap-2.5 flex-wrap'>
+      <CardContent className={cn('w-full flex gap-2.5 flex-wrap', isOutline && 'p-0 pb-[15px]')}>
         {users.slice(0, 7).map(({ avatar, userName }, index) => (
           <div
             key={userName}

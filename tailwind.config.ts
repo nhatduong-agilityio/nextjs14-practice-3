@@ -138,6 +138,10 @@ const config = {
           DEFAULT: 'hsl(var(--progress))',
           foreground: 'hsl(var(--progress-foreground))',
         },
+        select: {
+          DEFAULT: 'hsl(var(--select))',
+          foreground: 'hsl(var(--select-foreground))',
+        },
       },
       borderRadius: {
         xl: 'calc(var(--radius) + 20px)',
