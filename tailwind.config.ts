@@ -130,6 +130,13 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        tag: {
+          label: 'hsl(var(--tag-label))',
+        },
+        progress: {
+          DEFAULT: 'hsl(var(--progress))',
+          foreground: 'hsl(var(--progress-foreground))',
+        },
       },
       borderRadius: {
         xl: 'calc(var(--radius) + 20px)',
