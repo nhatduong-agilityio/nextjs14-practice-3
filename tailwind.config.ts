@@ -56,6 +56,7 @@ const config = {
         pink: {
           90: 'hsl(var(--pink-90))',
         },
+        white: 'hsl(var(--white))',
         body: 'hsl(var(--body))',
         brand: 'hsl(var(--brand))',
         input: {
