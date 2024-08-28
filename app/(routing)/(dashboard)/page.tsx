@@ -13,7 +13,8 @@ import { PageHeader } from '@/components/sections/page-header'
 import { Text } from '@/components/ui/text'
 import { CardContainer } from '@/components/sections/card-container'
 import { CardTeam } from '@/components/sections/card-team'
-import { TEAM_DETAIL, TEAM_DETAILS } from '@/constants/data'
+import { PROJECT_DETAILS, TEAM_DETAIL, TEAM_DETAILS } from '@/constants/data'
+import { CardProject } from '@/components/sections/card-project'
 
 const Dashboard = () => {
   const { setTheme } = useTheme()
@@ -54,6 +55,25 @@ const Dashboard = () => {
     },
   ]
 
+  const listActionsProject = [
+    {
+      name: 'Add New Project…',
+      action: () => null,
+    },
+    {
+      name: 'Edit Current Project…',
+      action: () => null,
+    },
+    {
+      name: 'Add New Member…',
+      action: () => null,
+    },
+    {
+      name: 'Remove Current Member…',
+      action: () => null,
+    },
+  ]
+
   return (
     <div className='flex h-full flex-col p-5 lg:p-10'>
       <PageHeader className='gap-2.5'>
@@ -68,7 +88,11 @@ const Dashboard = () => {
             <CardTeam key={team.id} team={team} />
           ))}
         </CardContainer>
-        <CardContainer title='Projects' menuOptions={[]}></CardContainer>
+        <CardContainer title='Projects' menuOptions={listActionsProject}>
+          {PROJECT_DETAILS.map((project) => (
+            <CardProject key={project.id} project={project} />
+          ))}
+        </CardContainer>
       </div>
     </div>
   )

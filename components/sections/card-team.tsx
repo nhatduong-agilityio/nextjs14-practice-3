@@ -1,20 +1,20 @@
 import { ComponentProps, memo } from 'react'
+import Image from 'next/image'
+
+// Models
+import { TeamDetail } from '@/lib/models'
 
 // Components
-import { Heading } from '../ui/heading'
+import { Text } from '../ui/text'
 import { MoreIcon } from '@/icons/more-icon'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 
 // Hocs
 import { withMoreMenu } from '../hocs/withMoreMenu'
 
-// Types
-import { OptionItem } from '@/lib/types'
-import Image from 'next/image'
-import { TeamDetail } from '@/lib/models'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+// Utils
 import { cn, getInitials } from '@/lib/utils'
-import { Text } from '../ui/text'
 
 export interface CardTeamProps extends ComponentProps<typeof Card> {
   team: TeamDetail
@@ -73,7 +73,6 @@ export const CardTeam = memo(({ team, className, ...props }: CardTeamProps) => {
             </Avatar>
           </div>
         ))}
-
         {hasMoreUsers && (
           <div className='flex justify-center items-center border border-separator-secondary rounded-full w-8 h-8 p-[1px]'>
             <Text size='xs' className='font-poppins text-label-field'>

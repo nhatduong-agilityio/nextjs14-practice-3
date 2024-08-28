@@ -49,6 +49,9 @@
     --link: 205 100% 66%;
     --search-input: 240 17% 95%;
     --search-input-foreground: 240 5% 43%;
+    --tag-label: 240 7% 29%;
+    --progress: 240 16% 90%;
+    --progress-foreground: 156 64% 54%;
 
     /** orange */
     --orange-20: 42 100% 63%;
@@ -121,6 +124,9 @@
     --text-link-selected: 240, 11%, 98%;
     --search-input: 240 7% 33%;
     --search-input-foreground: 240 11% 98%;
+    --tag-label: 240 7% 29%;
+    --progress: 240 16% 90%;
+    --progress-foreground: 156 64% 54%;
 
     /** orange */
     --orange-20: 42 100% 63%;
