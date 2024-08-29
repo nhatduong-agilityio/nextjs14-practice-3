@@ -40,10 +40,17 @@ export type ProjectDetail = {
   owner: User
   team: string
   assigned: User[]
+  column: string
   attachment: Attachment[]
   taskList: Task[]
   description: string
   createdDate: string
   dueDate: string
   comments: Comment[]
+}
+
+export type ProjectColumn = {
+  id: string
+  title: string
+  projectIds: string[]
 }

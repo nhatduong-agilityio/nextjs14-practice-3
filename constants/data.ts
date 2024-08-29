@@ -1,62 +1,65 @@
-import { ProjectDetail, TeamDetail } from '@/lib/models'
+'use client'
+
+import { v4 as uuidv4 } from 'uuid'
+import { ProjectColumn, ProjectDetail, TeamDetail } from '@/lib/models'
 
 export const TEAM_DETAIL = {
-  id: '66cda28b4b291b8506cf28b4',
+  id: uuidv4(),
   name: 'Burks Dillon',
   logo: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
   users: [
     {
-      id: '66cda28be77c81146c39948e',
+      id: uuidv4(),
       userName: 'Kerri Landry',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     {
-      id: '66cda28bec3dc0c3d6783609',
+      id: uuidv4(),
       userName: 'Susanne Chavez',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     {
-      id: '66cda28b85a9586e021e811d',
+      id: uuidv4(),
       userName: 'Kent Jordan',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     {
-      id: '66cda28b5f05bc7b7a63901d',
+      id: uuidv4(),
       userName: 'Roseann Finch',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     {
-      id: '66cda28b2345555306871abb',
+      id: uuidv4(),
       userName: 'Gibson Shaw',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     {
-      id: '66cda28b34154f5e63535fd0',
+      id: uuidv4(),
       userName: 'Vargas Bowen',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     {
-      id: '66cda28ba356d52296027d87',
+      id: uuidv4(),
       userName: 'Lorie Baxter',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     {
-      id: '66cda28bff5e5d74dc7b7d39',
+      id: uuidv4(),
       userName: 'Lolita Parker',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     {
-      id: '66cda28b20172669bfecd81d',
+      id: uuidv4(),
       userName: 'Melva Adkins',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     {
-      id: '66cda28bac78641b7580fcbe',
+      id: uuidv4(),
       userName: 'Esperanza Lyons',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     {
-      id: '66cda28b89f0e2d4e34a695b',
+      id: uuidv4(),
       userName: 'Everett Oneill',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
@@ -65,89 +68,89 @@ export const TEAM_DETAIL = {
 
 export const TEAM_DETAILS: TeamDetail[] = [
   {
-    id: '66cda28b4b291b8506cf28b4',
+    id: uuidv4(),
     name: 'Burks Dillon',
     logo: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     users: [
       {
-        id: '66cda28be77c81146c39948e',
+        id: uuidv4(),
         userName: 'Kerri Landry',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28bec3dc0c3d6783609',
+        id: uuidv4(),
         userName: 'Susanne Chavez',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28b85a9586e021e811d',
+        id: uuidv4(),
         userName: 'Kent Jordan',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28b5f05bc7b7a63901d',
+        id: uuidv4(),
         userName: 'Roseann Finch',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28b2345555306871abb',
+        id: uuidv4(),
         userName: 'Gibson Shaw',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28b34154f5e63535fd0',
+        id: uuidv4(),
         userName: 'Vargas Bowen',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28ba356d52296027d87',
+        id: uuidv4(),
         userName: 'Lorie Baxter',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28bff5e5d74dc7b7d39',
+        id: uuidv4(),
         userName: 'Lolita Parker',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28b20172669bfecd81d',
+        id: uuidv4(),
         userName: 'Melva Adkins',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28bac78641b7580fcbe',
+        id: uuidv4(),
         userName: 'Esperanza Lyons',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28b89f0e2d4e34a695b',
+        id: uuidv4(),
         userName: 'Everett Oneill',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
     ],
   },
   {
-    id: '66cda2df7577a8f99825683a',
+    id: uuidv4(),
     name: 'Sampson Woodard',
     logo: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     users: [
       {
-        id: '66cda2df5b8d5f8ef7d5838a',
+        id: uuidv4(),
         userName: 'Brooke Sweet',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda2dfdbed58c8d9434200',
+        id: uuidv4(),
         userName: 'Martin Gray',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda2dffa0768af4efb5ce4',
+        id: uuidv4(),
         userName: 'Barton Mccullough',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda2df2b2fdcb03f8b9182',
+        id: uuidv4(),
         userName: 'Phelps George',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
@@ -157,29 +160,30 @@ export const TEAM_DETAILS: TeamDetail[] = [
 
 export const PROJECT_DETAILS: ProjectDetail[] = [
   {
-    id: '66cda28b4b291b8506cf28b4',
+    id: uuidv4(),
     name: 'Project Alpha',
     owner: {
-      id: '66cda28be77c81146c39948e',
+      id: uuidv4(),
       userName: 'Kerri Landry',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     team: 'Team Innovators',
     assigned: [
       {
-        id: '66cda28bec3dc0c3d6783609',
+        id: uuidv4(),
         userName: 'Susanne Chavez',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda28b85a9586e021e811d',
+        id: uuidv4(),
         userName: 'Kent Jordan',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
     ],
+    column: 'Pending',
     attachment: [
       {
-        id: '66cda28b5f05bc7b7a63901d',
+        id: uuidv4(),
         fileName: 'project_alpha_plan.pdf',
         fileType: 'pdf',
         fileSize: 2048576,
@@ -189,11 +193,11 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     ],
     taskList: [
       {
-        id: '66cda28b2345555306871abb',
+        id: uuidv4(),
         status: 'In Progress',
         assigned: [
           {
-            id: '66cda28b34154f5e63535fd0',
+            id: uuidv4(),
             userName: 'Vargas Bowen',
             avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
           },
@@ -201,11 +205,11 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         dueDate: '2023-06-30T23:59:59Z',
       },
       {
-        id: '66cda28b2345555306851abb',
+        id: uuidv4(),
         status: 'Completed',
         assigned: [
           {
-            id: '66cda28b34154f5e63535fd0',
+            id: uuidv4(),
             userName: 'Vargas Bowen',
             avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
           },
@@ -213,11 +217,11 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         dueDate: '2023-06-30T23:59:59Z',
       },
       {
-        id: '66cda28b2345555306811abb',
+        id: uuidv4(),
         status: 'Completed',
         assigned: [
           {
-            id: '66cda28b34154f5e63535fd0',
+            id: uuidv4(),
             userName: 'Vargas Bowen',
             avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
           },
@@ -225,11 +229,11 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         dueDate: '2023-06-30T23:59:59Z',
       },
       {
-        id: '66cda28b2345555306171abb',
+        id: uuidv4(),
         status: 'Completed',
         assigned: [
           {
-            id: '66cda28b34154f5e63535fd0',
+            id: uuidv4(),
             userName: 'Vargas Bowen',
             avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
           },
@@ -242,9 +246,9 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     dueDate: '2024-09-31T23:59:59Z',
     comments: [
       {
-        id: '66cda28b20172669bfecd81d',
+        id: uuidv4(),
         owner: {
-          id: '66cda28bac78641b7580fcbe',
+          id: uuidv4(),
           userName: 'Esperanza Lyons',
           avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
         },
@@ -254,24 +258,25 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     ],
   },
   {
-    id: '66cda2df7577a8f99825683a',
+    id: uuidv4(),
     name: 'Project Beta',
     owner: {
-      id: '66cda2df5b8d5f8ef7d5838a',
+      id: uuidv4(),
       userName: 'Brooke Sweet',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     team: 'Team Achievers',
     assigned: [
       {
-        id: '66cda2dfdbed58c8d9434200',
+        id: uuidv4(),
         userName: 'Martin Gray',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
     ],
+    column: 'Pending',
     attachment: [
       {
-        id: '66cda2dffa0768af4efb5ce4',
+        id: uuidv4(),
         fileName: 'project_beta_specs.docx',
         fileType: 'docx',
         fileSize: 1024288,
@@ -281,11 +286,11 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     ],
     taskList: [
       {
-        id: '66cda2df2b2fdcb03f8b9182',
+        id: uuidv4(),
         status: 'Pending',
         assigned: [
           {
-            id: '66cda2df5b8d5f8ef7d5838a',
+            id: uuidv4(),
             userName: 'Brooke Sweet',
             avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
           },
@@ -298,9 +303,9 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     dueDate: '2024-09-02T23:59:59Z',
     comments: [
       {
-        id: '66cda2df2b2fdcb03f8b9183',
+        id: uuidv4(),
         owner: {
-          id: '66cda2dfdbed58c8d9434200',
+          id: uuidv4(),
           userName: 'Martin Gray',
           avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
         },
@@ -310,29 +315,30 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     ],
   },
   {
-    id: '66cda2df7577a8f99825683b',
+    id: uuidv4(),
     name: 'Project Gamma',
     owner: {
-      id: '66cda2dffa0768af4efb5ce5',
+      id: uuidv4(),
       userName: 'Phelps George',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     team: 'Team Visionaries',
     assigned: [
       {
-        id: '66cda2df2b2fdcb03f8b9184',
+        id: uuidv4(),
         userName: 'Barton Mccullough',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda2df5b8d5f8ef7d5838b',
+        id: uuidv4(),
         userName: 'Lorie Baxter',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
     ],
+    column: 'Run',
     attachment: [
       {
-        id: '66cda2dffa0768af4efb5ce6',
+        id: uuidv4(),
         fileName: 'project_gamma_timeline.xlsx',
         fileType: 'xlsx',
         fileSize: 512144,
@@ -340,7 +346,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: 'https://example.com/files/project_gamma_timeline.xlsx',
       },
       {
-        id: '66cda2dffa0768af4etw12nm',
+        id: uuidv4(),
         fileName: 'project_gamma_timeline.xlsx',
         fileType: 'xlsx',
         fileSize: 512144,
@@ -350,11 +356,11 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     ],
     taskList: [
       {
-        id: '66cda2df2b2fdcb03f8b9185',
+        id: uuidv4(),
         status: 'Completed',
         assigned: [
           {
-            id: '66cda2df2b2fdcb03f8b9184',
+            id: uuidv4(),
             userName: 'Barton Mccullough',
             avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
           },
@@ -367,9 +373,9 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     dueDate: '2024-09-17T23:59:59Z',
     comments: [
       {
-        id: '66cda2df2b2fdcb03f8b9186',
+        id: uuidv4(),
         owner: {
-          id: '66cda2df5b8d5f8ef7d5838b',
+          id: uuidv4(),
           userName: 'Lorie Baxter',
           avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
         },
@@ -379,29 +385,30 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     ],
   },
   {
-    id: '66cda2df7577a8f99825683c',
+    id: uuidv4(),
     name: 'Project Delta',
     owner: {
-      id: '66cda2dffa0768af4efb5ce7',
+      id: uuidv4(),
       userName: 'Alicia Rodgers',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     team: 'Team Visionaries',
     assigned: [
       {
-        id: '66cda2df2b2fdcb03f8b9184',
+        id: uuidv4(),
         userName: 'Barton Mccullough',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda2df5b8d5f8ef7d5838b',
+        id: uuidv4(),
         userName: 'Lorie Baxter',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
     ],
+    column: 'Run',
     attachment: [
       {
-        id: '66cda2dffa0768af4efb5ce6',
+        id: uuidv4(),
         fileName: 'project_gamma_timeline.xlsx',
         fileType: 'xlsx',
         fileSize: 512144,
@@ -409,7 +416,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: 'https://example.com/files/project_gamma_timeline.xlsx',
       },
       {
-        id: '66cda2dffa0768af4etw12nm',
+        id: uuidv4(),
         fileName: 'project_gamma_timeline.xlsx',
         fileType: 'xlsx',
         fileSize: 512144,
@@ -419,11 +426,11 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     ],
     taskList: [
       {
-        id: '66cda2df2b2fdcb03f8b9185',
+        id: uuidv4(),
         status: 'Completed',
         assigned: [
           {
-            id: '66cda2df2b2fdcb03f8b9184',
+            id: uuidv4(),
             userName: 'Barton Mccullough',
             avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
           },
@@ -436,9 +443,9 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     dueDate: '2024-05-31T23:59:59Z',
     comments: [
       {
-        id: '66cda2df2b2fdcb03f8b9186',
+        id: uuidv4(),
         owner: {
-          id: '66cda2df5b8d5f8ef7d5838b',
+          id: uuidv4(),
           userName: 'Lorie Baxter',
           avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
         },
@@ -448,29 +455,30 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     ],
   },
   {
-    id: '66cda2df7577a8f99825683d',
+    id: uuidv4(),
     name: 'Project Epsilon',
     owner: {
-      id: '66cda2dffa0768af4efb5ce8',
+      id: uuidv4(),
       userName: 'Marcus Holloway',
       avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
     },
     team: 'Team Pioneers',
     assigned: [
       {
-        id: '66cda2df2b2fdcb03f8b9184',
+        id: uuidv4(),
         userName: 'Barton Mccullough',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
       {
-        id: '66cda2df5b8d5f8ef7d5838b',
+        id: uuidv4(),
         userName: 'Lorie Baxter',
         avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
       },
     ],
+    column: 'Run',
     attachment: [
       {
-        id: '66cda2dffa0768af4efb5ce6',
+        id: uuidv4(),
         fileName: 'project_gamma_timeline.xlsx',
         fileType: 'xlsx',
         fileSize: 512144,
@@ -478,7 +486,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         url: 'https://example.com/files/project_gamma_timeline.xlsx',
       },
       {
-        id: '66cda2dffa0768af4etw12nm',
+        id: uuidv4(),
         fileName: 'project_gamma_timeline.xlsx',
         fileType: 'xlsx',
         fileSize: 512144,
@@ -488,11 +496,11 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     ],
     taskList: [
       {
-        id: '66cda2df2b2fdcb03f8b9185',
+        id: uuidv4(),
         status: 'Completed',
         assigned: [
           {
-            id: '66cda2df2b2fdcb03f8b9184',
+            id: uuidv4(),
             userName: 'Barton Mccullough',
             avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
           },
@@ -505,9 +513,9 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     dueDate: '2024-07-31T23:59:59Z',
     comments: [
       {
-        id: '66cda2df2b2fdcb03f8b9186',
+        id: uuidv4(),
         owner: {
-          id: '66cda2df5b8d5f8ef7d5838b',
+          id: uuidv4(),
           userName: 'Lorie Baxter',
           avatar: `https://robohash.org/${Math.random().toString(36).substring(7)}`,
         },
@@ -515,5 +523,23 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         createdDate: '2023-05-22T10:45:00Z',
       },
     ],
+  },
+]
+
+export const PROJECT_COLUMNS: ProjectColumn[] = [
+  {
+    id: uuidv4(),
+    title: 'Pending',
+    projectIds: [PROJECT_DETAILS[0].id, PROJECT_DETAILS[1].id],
+  },
+  {
+    id: uuidv4(),
+    title: 'Run',
+    projectIds: [PROJECT_DETAILS[2].id, PROJECT_DETAILS[3].id],
+  },
+  {
+    id: uuidv4(),
+    title: 'Completed',
+    projectIds: [PROJECT_DETAILS[4].id],
   },
 ]

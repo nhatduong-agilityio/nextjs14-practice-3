@@ -1,5 +1,7 @@
+import { ProjectBoard } from '@/components/sections/project-board'
+
 const Project = () => {
-  return <>Dashboard Project</>
+  return <ProjectBoard />
 }
 
 export default Project

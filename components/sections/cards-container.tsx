@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { forwardRef, HTMLAttributes, memo, ReactNode } from 'react'
 
 // Components
 import { Heading } from '../ui/heading'
@@ -9,27 +9,40 @@ import { withMoreMenu } from '../hocs/withMoreMenu'
 
 // Types
 import { OptionItem } from '@/lib/types'
+import { cn } from '@/lib/utils'
 
-export interface CardContainerProps {
+export interface CardContainerProps extends HTMLAttributes<HTMLElement> {
   title?: string
   moreMenuTitle?: string
-  children?: React.ReactNode
+  children?: ReactNode
   menuOptions?: OptionItem[]
+  innerRef?: (element: HTMLElement | null) => void
 }
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const CardsContainer = memo(({ title = 'Cards', moreMenuTitle, menuOptions, children }: CardContainerProps) => {
+export const CardsContainer = ({
+  title = 'Cards',
+  moreMenuTitle,
+  menuOptions,
+  className,
+  children,
+  innerRef,
+  ...props
+}: CardContainerProps) => {
   return (
-    <section className='w-full flex flex-col shadow-sm border border-separator rounded-3xl p-[5px]'>
+    <section
+      ref={innerRef}
+      className={cn('w-full flex flex-col shadow-sm border border-separator rounded-3xl p-[5px]', className)}
+      {...props}
+    >
       <div className='flex justify-between items-center p-[15px] pt-2.5'>
         <Heading headingLevel='h4' variant='secondary' size='md'>
           {title}
         </Heading>
         {menuOptions && <MoreMenu title={moreMenuTitle} menuOptions={menuOptions} />}
       </div>
-      <div className='w-full grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 lg:gap-30'>{children}</div>
+      {children}
     </section>
   )
-})
-CardsContainer.displayName = 'CardsContainer'
+}
