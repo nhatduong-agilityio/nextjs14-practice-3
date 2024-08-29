@@ -56,10 +56,11 @@ export const ProjectBoard = () => {
     <DragDropContext onDragEnd={onDragEnd}>
       <StrictModeDroppable droppableId='board' type='COLUMN' direction='horizontal'>
         {(provided) => (
-          <div className='flex min-h-full min-w-full' ref={provided.innerRef} {...provided.droppableProps}>
+          <div className='flex min-h-full min-w-full gap-5' ref={provided.innerRef} {...provided.droppableProps}>
             {ordered.map((key, index) => (
               <ProjectColumn key={key} index={index} title={key} projects={columns[key]} />
             ))}
+            <ProjectColumn isDragDisabled index={ordered.length} title='EMPTY' />
             {provided.placeholder}
           </div>
         )}

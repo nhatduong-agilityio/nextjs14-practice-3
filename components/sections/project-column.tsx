@@ -8,23 +8,24 @@ import { ProjectDetail } from '@/lib/models'
 
 export interface ProjectColumnProps {
   title: string
-  projects: ProjectDetail[]
+  isDragDisabled?: boolean
+  projects?: ProjectDetail[]
   index: number
 }
 
-export const ProjectColumn = ({ title, projects, index }: ProjectColumnProps) => {
+export const ProjectColumn = ({ title, projects, isDragDisabled = false, index }: ProjectColumnProps) => {
   return (
-    <Draggable draggableId={title} index={index}>
+    <Draggable isDragDisabled={isDragDisabled} draggableId={title} index={index}>
       {(provided, snapshot) => (
         <CardsContainer
           innerRef={provided.innerRef}
-          title={title}
+          title={isDragDisabled ? '' : title}
           draggable={snapshot.isDragging}
-          className='w-[302px]'
+          className='w-[302px] h-fit'
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <ProjectColumnContent listId={title} listType='PROJECT' projects={projects} />
+          {projects && <ProjectColumnContent listId={title} listType='PROJECT' projects={projects} />}
         </CardsContainer>
       )}
     </Draggable>
