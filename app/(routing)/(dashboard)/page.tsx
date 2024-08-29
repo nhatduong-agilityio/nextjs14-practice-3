@@ -8,14 +8,10 @@ import { SignOutButton } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
-import { Heading } from '@/components/ui/heading'
 import { PageHeader } from '@/components/sections/page-header'
 import { Text } from '@/components/ui/text'
-import { CardsContainer } from '@/components/sections/cards-container'
-import { CardTeam } from '@/components/sections/card-team'
-import { PROJECT_DETAILS, TEAM_DETAIL, TEAM_DETAILS } from '@/constants/data'
-import { CardProject } from '@/components/sections/card-project'
-import { CardAddNew } from '@/components/sections/card-add-new'
+import { CardTeamList } from '@/components/sections/card-team-list'
+import { CardProjectList } from '@/components/sections/card-project-list'
 
 const Dashboard = () => {
   const { setTheme } = useTheme()
@@ -37,44 +33,6 @@ const Dashboard = () => {
     </DropdownMenu>
   )
 
-  const listActionsTeam = [
-    {
-      name: 'Add New Teams…',
-      action: () => null,
-    },
-    {
-      name: 'Edit Current Teams…',
-      action: () => null,
-    },
-    {
-      name: 'Add New Member…',
-      action: () => null,
-    },
-    {
-      name: 'Remove Current Member…',
-      action: () => null,
-    },
-  ]
-
-  const listActionsProject = [
-    {
-      name: 'Add New Project…',
-      action: () => null,
-    },
-    {
-      name: 'Edit Current Project…',
-      action: () => null,
-    },
-    {
-      name: 'Add New Member…',
-      action: () => null,
-    },
-    {
-      name: 'Remove Current Member…',
-      action: () => null,
-    },
-  ]
-
   return (
     <div className='flex h-full flex-col p-5 lg:p-10'>
       <PageHeader className='gap-2.5'>
@@ -84,18 +42,8 @@ const Dashboard = () => {
       </PageHeader>
 
       <div className='w-full flex flex-col gap-5'>
-        <CardsContainer title='Team' menuOptions={listActionsTeam}>
-          {TEAM_DETAILS.map((team) => (
-            <CardTeam key={team.id} team={team} />
-          ))}
-          <CardAddNew title='Add Team' className='min-h-[144px]' />
-        </CardsContainer>
-        <CardsContainer title='Projects' menuOptions={listActionsProject}>
-          {PROJECT_DETAILS.map((project) => (
-            <CardProject key={project.id} project={project} />
-          ))}
-          <CardAddNew title='Add Project' className='min-h-[237px]' />
-        </CardsContainer>
+        <CardTeamList />
+        <CardProjectList />
       </div>
     </div>
   )

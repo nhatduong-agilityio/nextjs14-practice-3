@@ -22,11 +22,12 @@ import { calculateDaysLeft, calculateProgress, cn, getInitials } from '@/lib/uti
 
 export interface CardProjectProps extends ComponentProps<typeof Card> {
   project: ProjectDetail
+  innerRef?: (element: HTMLElement | null) => void
 }
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const CardProject = memo(({ project, className, ...props }: CardProjectProps) => {
+export const CardProject = ({ project, className, innerRef, ...props }: CardProjectProps) => {
   const { assigned, name, team, attachment, dueDate, taskList } = project
 
   const listCardActions = [
@@ -57,7 +58,7 @@ export const CardProject = memo(({ project, className, ...props }: CardProjectPr
   const progress = useMemo(() => calculateProgress(taskList), [taskList])
 
   return (
-    <Card className={cn('w-full cursor-pointer hover:bg-card/80', className)} {...props}>
+    <Card ref={innerRef} className={cn('w-full cursor-pointer hover:bg-card/80', className)} {...props}>
       <CardHeader className='flex flex-col justify-between items-start'>
         <div className='w-full flex justify-between items-center'>
           <CardTitle className='truncate'>{name}</CardTitle>
@@ -98,5 +99,4 @@ export const CardProject = memo(({ project, className, ...props }: CardProjectPr
       </CardFooter>
     </Card>
   )
-})
-CardProject.displayName = 'CardProject'
+}
