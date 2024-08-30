@@ -20,7 +20,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const linkHref = pathname === '/sign-in' ? '/sign-up' : '/sign-in'
 
   return (
-    <main className='h-dvh w-dvw flex justify-center items-center bg-background px-4 md:px-5 xl:px-0'>
+    <main className='h-dvh w-dvw flex justify-center items-center bg-body px-4 md:px-5 xl:px-0'>
       <section
         className={cn(
           '2xl:flex rounded-lg md:rounded-xl shadow',
@@ -29,7 +29,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       >
         <div
           className={cn(
-            'flex flex-col justify-center items-center p-5 md:p-30 xl:px-50 xl:pt-60 xl:pb-90 bg-body rounded-lg md:rounded-xl gap-6 md:gap-50',
+            'flex flex-col justify-center items-center p-5 md:p-30 xl:px-50 xl:pt-60 xl:pb-90 bg-background rounded-lg md:rounded-xl gap-6 md:gap-50',
             isOpen &&
               'hidden 2xl:flex rounded-lg md:rounded-xl 2xl:rounded-e-none animate-fade-in-right border border-border-secondary',
           )}

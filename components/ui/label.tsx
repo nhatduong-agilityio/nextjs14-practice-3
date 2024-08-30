@@ -16,6 +16,7 @@ const labelVariants = cva('leading-[22px] font-[400] peer-disabled:cursor-not-al
     size: {
       default: 'text-xs',
       md: 'text-base',
+      lg: 'text-[18px]',
     },
   },
   defaultVariants: {
