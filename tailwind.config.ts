@@ -100,7 +100,10 @@ const config = {
           secondary: 'hsl(var(--border-secondary))',
         },
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
+        background: {
+          DEFAULT: 'hsl(var(--background))',
+          secondary: 'hsl(var(--background-secondary))',
+        },
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
@@ -141,6 +144,13 @@ const config = {
         select: {
           DEFAULT: 'hsl(var(--select))',
           foreground: 'hsl(var(--select-foreground))',
+        },
+        toggle: {
+          DEFAULT: 'hsl(var(--toggle))',
+          foreground: 'hsl(var(--toggle-foreground))',
+        },
+        dropdown: {
+          DEFAULT: 'hsl(var(--dropdown))',
         },
       },
       borderRadius: {

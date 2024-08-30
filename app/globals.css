@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 240 11% 98%;
+    --background-secondary: 240 11% 98%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -54,6 +55,9 @@
     --progress-foreground: 156 64% 54%;
     --select:  240 11% 98%;
     --select-foreground: 240 5% 59%;
+    --toggle: 240 6% 73%;
+    --toggle-foreground: 0 0% 100%;
+    --dropdown: 240 7% 29%;
 
     /** orange */
     --orange-20: 42 100% 63%;
@@ -77,13 +81,14 @@
     --blue-80: 217 100% 56%;
     --blue-20: 205 100% 66%;
 
-    --body: 240 11% 98%;
+    --body: 0 0% 100%;
     --brand: 213 100% 50%;
     --white: 0 0% 100%;
   }
 
   .dark {
-    --background: 240 16% 9%;
+    --background: 240 13% 13%;
+    --background-secondary: 240 16% 9%;
     --foreground: 240 11% 98%;
     --card: 240 10% 18%;
     --card-foreground: 240 11% 98%;
@@ -132,6 +137,9 @@
     --progress-foreground: 156 64% 54%;
     --select: 240 13% 13%;
     --select-foreground: 240 5% 43%;
+    --toggle: 240 7% 29%;
+    --toggle-foreground: 240 5% 59%;
+    --dropdown: 240 6% 73%;
 
     /** orange */
     --orange-20: 42 100% 63%;
@@ -155,7 +163,7 @@
     --blue-80: 217 100% 56%;
     --blue-20: 205 100% 66%;
 
-    --body: 240 13% 13%;
+    --body: 240 16% 9%;
     --brand: 240 11% 98%;
     --white: 0 0% 100%;
   }
