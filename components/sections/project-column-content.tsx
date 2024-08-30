@@ -1,7 +1,9 @@
 'use client'
 
-import React, { memo, ReactNode } from 'react'
-import { Droppable, Draggable, DroppableProvided } from '@hello-pangea/dnd'
+import React from 'react'
+import { Droppable, Draggable } from '@hello-pangea/dnd'
+
+// Components
 import { CardProject } from './card-project'
 import { ProjectDetail } from '@/lib/models'
 
@@ -13,6 +15,7 @@ const ProjectList = ({ projects }: { projects: ProjectDetail[] }) => {
           <Draggable draggableId={project.id} index={index}>
             {(provided, dragSnapshot) => (
               <CardProject
+                className='shadow-xs'
                 innerRef={provided.innerRef}
                 key={project.id}
                 project={project}
@@ -43,7 +46,7 @@ export const ProjectColumnContent = ({ listId = 'LIST', listType, projects }: Pr
     <Droppable droppableId={listId} type={listType}>
       {(provided, dropSnapshot) => (
         <div
-          className='flex flex-col h-full w-ful overflow-x-hidden overflow-y-auto max-h-full pb-2.5'
+          className='flex flex-col h-full w-ful overflow-x-hidden overflow-y-auto scrollbar max-h-full'
           {...provided.droppableProps}
           ref={provided.innerRef}
         >
