@@ -11,7 +11,9 @@ import { ProjectColumn } from './project-column'
 import { StrictModeDroppable } from '../droppable-provider'
 
 // Utils
-import { generateProjectMap, reorder, reorderProjectMap } from '@/lib/utils'
+import { cn, generateProjectMap, reorder, reorderProjectMap } from '@/lib/utils'
+import { useProjectFilter } from '@/hooks/useProjectFilter'
+import { ARRANGE } from '@/constants/filters'
 
 export const ProjectBoard = () => {
   const initialData = generateProjectMap(PROJECT_DETAILS)
@@ -19,6 +21,10 @@ export const ProjectBoard = () => {
   const [columns, setColumns] = useState(initialData)
 
   const [ordered, setOrdered] = useState(Object.keys(initialData))
+
+  const { getFilter } = useProjectFilter()
+
+  const isListBoard = getFilter('arrange') === ARRANGE.LIST
 
   const onDragEnd: OnDragEndResponder = (result) => {
     if (!result.destination) {
@@ -29,7 +35,10 @@ export const ProjectBoard = () => {
     const destination = result.destination
 
     // did not move anywhere - can bail early
-    if (source.droppableId === destination.droppableId && source.index === destination.index) {
+    if (
+      (source.droppableId === destination.droppableId && source.index === destination.index) ||
+      destination.droppableId === 'EMPTY'
+    ) {
       return
     }
 
@@ -52,15 +61,20 @@ export const ProjectBoard = () => {
 
     setColumns(data.projectMap)
   }
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <StrictModeDroppable droppableId='board' type='COLUMN' direction='horizontal'>
+      <StrictModeDroppable droppableId='board' type='COLUMN' direction={isListBoard ? 'vertical' : 'horizontal'}>
         {(provided) => (
-          <div className='flex min-h-full min-w-full gap-5' ref={provided.innerRef} {...provided.droppableProps}>
+          <div
+            className={cn('flex min-h-full min-w-full gap-5 overflow-x-auto', isListBoard && 'flex-col')}
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+          >
             {ordered.map((key, index) => (
-              <ProjectColumn key={key} index={index} title={key} projects={columns[key]} />
+              <ProjectColumn key={key} index={index} title={key} projects={columns[key]} isListBoard={isListBoard} />
             ))}
-            <ProjectColumn isDragDisabled index={ordered.length} title='EMPTY' />
+            <ProjectColumn isDragDisabled index={ordered.length} title='EMPTY' isListBoard={isListBoard} />
             {provided.placeholder}
           </div>
         )}
