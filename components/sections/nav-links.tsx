@@ -45,7 +45,7 @@ const NAVIGATION_LINKS: NavigationItem[] = [
     url: ROUTES.MESSAGES,
     icon: <MessagesIcon />,
   },
-  { label: NAVIGATION_LABELS.PROJECT, url: ROUTES.PROJECT, icon: <ProjectIcon /> },
+  { label: NAVIGATION_LABELS.PROJECT, url: ROUTES.PROJECTS, icon: <ProjectIcon /> },
   {
     label: NAVIGATION_LABELS.SCHEDULE,
     url: ROUTES.SCHEDULE,

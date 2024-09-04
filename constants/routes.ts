@@ -1,7 +1,7 @@
 export const ROUTES = {
   DASHBOARD: '/',
   MESSAGES: '/messages',
-  PROJECT: '/project',
+  PROJECTS: '/projects',
   SCHEDULE: '/schedule',
   IN_PROGRESS: '/schedule/in-progress',
   PENDING: '/schedule/pending',

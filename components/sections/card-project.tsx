@@ -1,3 +1,6 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
 import { ComponentProps, memo, useCallback, useMemo } from 'react'
 
 // Models
@@ -19,6 +22,7 @@ import { withMoreMenu } from '../hocs/withMoreMenu'
 
 // Utils
 import { calculateDaysLeft, calculateProgress, cn, getInitials } from '@/lib/utils'
+import { ROUTES } from '@/constants/routes'
 
 export interface CardProjectProps extends ComponentProps<typeof Card> {
   variant?: 'column' | 'row'
@@ -29,7 +33,9 @@ export interface CardProjectProps extends ComponentProps<typeof Card> {
 const MoreMenu = withMoreMenu(MoreIcon)
 
 export const CardProject = ({ variant = 'column', project, className, innerRef, ...props }: CardProjectProps) => {
-  const { assigned, name, team, attachment, dueDate, taskList } = project
+  const router = useRouter()
+
+  const { assigned, name, team, attachment, dueDate, taskList, id } = project
 
   const listCardActions = [
     {
@@ -59,6 +65,10 @@ export const CardProject = ({ variant = 'column', project, className, innerRef, 
   const progress = useMemo(() => calculateProgress(taskList), [taskList])
   const isVariantRow = variant === 'row'
 
+  const handleNavigateProjectDetail = () => {
+    router.push(`${ROUTES.PROJECTS}/${id}`)
+  }
+
   return (
     <Card
       ref={innerRef}
@@ -67,6 +77,7 @@ export const CardProject = ({ variant = 'column', project, className, innerRef, 
         isVariantRow && 'flex-row px-[25px] py-[15px] gap-[49px]',
         className,
       )}
+      onClick={handleNavigateProjectDetail}
       {...props}
     >
       <CardHeader className={cn('flex flex-col justify-between items-start', isVariantRow && 'flex-1 p-0')}>

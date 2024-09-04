@@ -11,8 +11,13 @@ export const metadata: Metadata = {
   description: 'Square Dashboard App',
 }
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
-  return <DashboardLayout>{children}</DashboardLayout>
+const Layout = ({ children, modal }: { children: React.ReactNode; modal: React.ReactNode }) => {
+  return (
+    <DashboardLayout>
+      {children}
+      {modal}
+    </DashboardLayout>
+  )
 }
 
 export default Layout
