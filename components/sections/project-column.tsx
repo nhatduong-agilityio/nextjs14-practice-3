@@ -9,15 +9,23 @@ import { ProjectColumnContent } from './project-column-content'
 import { Button } from '../ui/button'
 import { PlusIcon } from '@/icons/plus-icon'
 import { ProjectDetail } from '@/lib/models'
+import { cn } from '@/lib/utils'
 
 export interface ProjectColumnProps {
-  title: string
+  isListBoard?: boolean
   isDragDisabled?: boolean
   projects?: ProjectDetail[]
+  title: string
   index: number
 }
 
-export const ProjectColumn = ({ title, projects, isDragDisabled = false, index }: ProjectColumnProps) => {
+export const ProjectColumn = ({
+  title,
+  projects,
+  isDragDisabled = false,
+  isListBoard = false,
+  index,
+}: ProjectColumnProps) => {
   return (
     <Draggable isDragDisabled={isDragDisabled} draggableId={title} index={index}>
       {(dragProvided, snapshot) => (
@@ -33,9 +41,19 @@ export const ProjectColumn = ({ title, projects, isDragDisabled = false, index }
                 innerRef={dragProvided.innerRef}
                 title={isDragDisabled ? '' : title}
                 draggable={snapshot.isDragging}
-                className='w-[302px] h-fit max-h-[80dvh] overflow-hidden rounded-b-none pb-5'
+                className={cn(
+                  'w-[302px] h-fit max-h-[80dvh] overflow-hidden rounded-b-none pb-5',
+                  isListBoard && 'w-full',
+                )}
               >
-                {projects && <ProjectColumnContent listId={title} listType='PROJECT' projects={projects} />}
+                {projects && (
+                  <ProjectColumnContent
+                    isListBoard={isListBoard}
+                    listId={title}
+                    listType='PROJECT'
+                    projects={projects}
+                  />
+                )}
               </CardsContainer>
               <Button
                 variant='secondary'

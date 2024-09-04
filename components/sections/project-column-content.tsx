@@ -7,7 +7,7 @@ import { Droppable, Draggable } from '@hello-pangea/dnd'
 import { CardProject } from './card-project'
 import { ProjectDetail } from '@/lib/models'
 
-const ProjectList = ({ projects }: { projects: ProjectDetail[] }) => {
+const ProjectList = ({ projects, isListBoard }: { projects: ProjectDetail[]; isListBoard: boolean }) => {
   return (
     <div className='flex flex-col min-h-full gap-2.5'>
       {projects.map((project, index) => (
@@ -15,6 +15,7 @@ const ProjectList = ({ projects }: { projects: ProjectDetail[] }) => {
           <Draggable draggableId={project.id} index={index}>
             {(provided, dragSnapshot) => (
               <CardProject
+                variant={isListBoard ? 'row' : 'column'}
                 className='shadow-xs'
                 innerRef={provided.innerRef}
                 key={project.id}
@@ -36,12 +37,18 @@ const ProjectList = ({ projects }: { projects: ProjectDetail[] }) => {
 }
 
 export interface ProjectColumnContentProps {
+  isListBoard?: boolean
   listId: string
   listType: string
   projects: ProjectDetail[]
 }
 
-export const ProjectColumnContent = ({ listId = 'LIST', listType, projects }: ProjectColumnContentProps) => {
+export const ProjectColumnContent = ({
+  isListBoard = false,
+  listId = 'LIST',
+  listType,
+  projects,
+}: ProjectColumnContentProps) => {
   return (
     <Droppable droppableId={listId} type={listType}>
       {(provided, dropSnapshot) => (
@@ -50,7 +57,7 @@ export const ProjectColumnContent = ({ listId = 'LIST', listType, projects }: Pr
           {...provided.droppableProps}
           ref={provided.innerRef}
         >
-          <ProjectList projects={projects} />
+          <ProjectList isListBoard={isListBoard} projects={projects} />
           {provided.placeholder}
         </div>
       )}

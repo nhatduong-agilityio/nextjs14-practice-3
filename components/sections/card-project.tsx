@@ -21,13 +21,14 @@ import { withMoreMenu } from '../hocs/withMoreMenu'
 import { calculateDaysLeft, calculateProgress, cn, getInitials } from '@/lib/utils'
 
 export interface CardProjectProps extends ComponentProps<typeof Card> {
+  variant?: 'column' | 'row'
   project: ProjectDetail
   innerRef?: (element: HTMLElement | null) => void
 }
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const CardProject = ({ project, className, innerRef, ...props }: CardProjectProps) => {
+export const CardProject = ({ variant = 'column', project, className, innerRef, ...props }: CardProjectProps) => {
   const { assigned, name, team, attachment, dueDate, taskList } = project
 
   const listCardActions = [
@@ -56,18 +57,27 @@ export const CardProject = ({ project, className, innerRef, ...props }: CardProj
   }, [])
 
   const progress = useMemo(() => calculateProgress(taskList), [taskList])
+  const isVariantRow = variant === 'row'
 
   return (
-    <Card ref={innerRef} className={cn('w-full cursor-pointer hover:bg-card/80', className)} {...props}>
-      <CardHeader className='flex flex-col justify-between items-start'>
+    <Card
+      ref={innerRef}
+      className={cn(
+        'flex flex-col w-full cursor-pointer hover:bg-card/80',
+        isVariantRow && 'flex-row px-[25px] py-[15px] gap-[49px]',
+        className,
+      )}
+      {...props}
+    >
+      <CardHeader className={cn('flex flex-col justify-between items-start', isVariantRow && 'flex-1 p-0')}>
         <div className='w-full flex justify-between items-center'>
           <CardTitle className='truncate'>{name}</CardTitle>
-          <MoreMenu title='Project Actions' menuOptions={listCardActions} />
+          {!isVariantRow && <MoreMenu title='Project Actions' menuOptions={listCardActions} />}
         </div>
         <CardDescription>{team}</CardDescription>
       </CardHeader>
-      <CardContent className='w-full flex flex-col gap-6'>
-        <div className='flex gap-2.5'>
+      <CardContent className={cn('w-full flex flex-col gap-6', isVariantRow && 'flex-row flex-1 p-0 items-center')}>
+        <div className='flex gap-2.5 items-center'>
           <Badge variant='ghost' className='text-label-secondary'>
             <AttachmentIcon width={16} height={16} className='mr-[3px]' /> {attachment.length}
           </Badge>
@@ -75,9 +85,14 @@ export const CardProject = ({ project, className, innerRef, ...props }: CardProj
             {calculateDaysLeft(dueDate)} days left
           </Tag>
         </div>
-        <Progress value={progress} />
+        <Progress
+          value={progress}
+          {...(isVariantRow && {
+            direction: 'row',
+          })}
+        />
       </CardContent>
-      <CardFooter className='flex gap-2.5'>
+      <CardFooter className={cn('flex gap-2.5', isVariantRow && 'flex-[0.5] p-0')}>
         {assigned.slice(0, 7).map(({ avatar, userName }, index) => (
           <div
             key={userName}
@@ -97,6 +112,7 @@ export const CardProject = ({ project, className, innerRef, ...props }: CardProj
           </div>
         )}
       </CardFooter>
+      {isVariantRow && <MoreMenu title='Project Actions' menuOptions={listCardActions} />}
     </Card>
   )
 }

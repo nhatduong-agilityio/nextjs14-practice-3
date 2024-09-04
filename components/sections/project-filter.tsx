@@ -12,11 +12,11 @@ import { FilterIcon } from '@/icons/filter-icon'
 import { GanttIcon } from '@/icons/gantt-icon'
 import { KanBanIcon } from '@/icons/kan-ban-icon'
 import { ListIcon } from '@/icons/list-icon'
-import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import { Label } from '../ui/label'
 import { Text } from '../ui/text'
-import { Separator } from '../ui/separator'
+import { useProjectFilter } from '@/hooks/useProjectFilter'
+import { ARRANGE } from '@/constants/filters'
 
 export interface ProjectFilterProps {}
 
@@ -24,6 +24,7 @@ export const PROJECT_SORTS = ['Project Name', 'Newest Project', 'Due Date', 'Pro
 export const PROJECT_FILTERS = ['Newest Added', 'Newest Project', 'Due Date', 'Project Type']
 
 export const ProjectFilter = ({}: ProjectFilterProps) => {
+  const { setFilter, getFilter } = useProjectFilter()
   const [filters, setFilters] = useState<string[]>([])
   const [sorts, setSorts] = useState<string[]>([])
 
@@ -35,8 +36,11 @@ export const ProjectFilter = ({}: ProjectFilterProps) => {
     setSorts((prev) => (isChecked ? [...prev, value] : prev.filter((item) => item !== value)))
   }
 
+  const handleArrange = (value: string) => setFilter('arrange', value)
+
   const filteredLabels = filters.join(', ')
   const sortedLabels = sorts.join(', ')
+  const arrangeValue = getFilter('arrange') ?? ARRANGE.KAN_BAN
 
   return (
     <div className='w-full flex justify-between items-center'>
@@ -81,18 +85,28 @@ export const ProjectFilter = ({}: ProjectFilterProps) => {
           <FilterIcon className='group-data-[state=on]:text-toggle-foreground' />
         </Toggle>
 
-        <ToggleGroup type='single' className='gap-0 shadow-xs'>
-          <ToggleGroupItem value='bold' aria-label='Toggle kan ban board' className='group rounded-e-none'>
+        <ToggleGroup
+          type='single'
+          className='gap-0 shadow-xs'
+          onValueChange={handleArrange}
+          defaultValue={arrangeValue}
+        >
+          <ToggleGroupItem value={ARRANGE.KAN_BAN} aria-label='Toggle kan ban board' className='group rounded-e-none'>
             <KanBanIcon className='group-data-[state=on]:text-toggle-foreground' />
           </ToggleGroupItem>
           <ToggleGroupItem
-            value='italic'
+            value={ARRANGE.LIST}
             aria-label='Toggle list board'
             className='group rounded-none border-x border-separator'
           >
             <ListIcon className='group-data-[state=on]:text-toggle-foreground' />
           </ToggleGroupItem>
-          <ToggleGroupItem value='underline' aria-label='Toggle gantt board' className='group rounded-s-none'>
+          <ToggleGroupItem
+            value={ARRANGE.GANTT}
+            aria-label='Toggle gantt board'
+            className='group rounded-s-none'
+            disabled
+          >
             <GanttIcon className='group-data-[state=on]:text-toggle-foreground' />
           </ToggleGroupItem>
         </ToggleGroup>
