@@ -14,6 +14,7 @@ const checkboxVariants = cva(
       variant: {
         default: 'border-primary data-[state=checked]:bg-primary',
         sun: 'border-orange-20 data-[state=checked]:bg-orange-20',
+        leaf: 'border-label-secondary data-[state=checked]:border-green-20 data-[state=checked]:bg-green-20',
       },
     },
     defaultVariants: {

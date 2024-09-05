@@ -37,7 +37,7 @@ export const CardProject = ({ variant = 'column', project, className, innerRef, 
 
   const { assigned, name, team, attachment, dueDate, taskList, id } = project
 
-  const listCardActions = [
+  const listProjectActions = [
     {
       name: 'Show Detail',
       action: () => null,
@@ -83,7 +83,7 @@ export const CardProject = ({ variant = 'column', project, className, innerRef, 
       <CardHeader className={cn('flex flex-col justify-between items-start', isVariantRow && 'flex-1 p-0')}>
         <div className='w-full flex justify-between items-center'>
           <CardTitle className='truncate'>{name}</CardTitle>
-          {!isVariantRow && <MoreMenu title='Project Actions' menuOptions={listCardActions} />}
+          {!isVariantRow && <MoreMenu title='Project Actions' menuOptions={listProjectActions} />}
         </div>
         <CardDescription>{team}</CardDescription>
       </CardHeader>
@@ -99,7 +99,7 @@ export const CardProject = ({ variant = 'column', project, className, innerRef, 
         <Progress
           value={progress}
           {...(isVariantRow && {
-            direction: 'row',
+            direction: 'row-reverse',
           })}
         />
       </CardContent>
@@ -123,7 +123,7 @@ export const CardProject = ({ variant = 'column', project, className, innerRef, 
           </div>
         )}
       </CardFooter>
-      {isVariantRow && <MoreMenu title='Project Actions' menuOptions={listCardActions} />}
+      {isVariantRow && <MoreMenu title='Project Actions' menuOptions={listProjectActions} />}
     </Card>
   )
 }

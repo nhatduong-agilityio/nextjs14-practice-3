@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils'
 import { Text } from './text'
 
 export interface ProgressProps extends React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> {
-  direction?: 'column' | 'row'
+  direction?: 'column' | 'row' | 'row-reverse'
 }
 
 const Progress = React.forwardRef<React.ElementRef<typeof ProgressPrimitive.Root>, ProgressProps>(
@@ -15,7 +15,8 @@ const Progress = React.forwardRef<React.ElementRef<typeof ProgressPrimitive.Root
     <div
       className={cn(
         'w-full flex flex-col items-end gap-[5px]',
-        direction === 'row' && 'flex-row-reverse items-center gap-[15px]',
+        direction === 'row' && 'flex-row items-center gap-[15px]',
+        direction === 'row-reverse' && 'flex-row-reverse items-center gap-[15px]',
       )}
     >
       <Text className='text-label-secondary leading-4'>{value}%</Text>

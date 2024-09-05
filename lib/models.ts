@@ -22,6 +22,7 @@ export type Attachment = {
 
 export type Task = {
   id: string
+  title: string
   status: 'In Progress' | 'Pending' | 'Completed'
   assigned: User[]
   dueDate: string

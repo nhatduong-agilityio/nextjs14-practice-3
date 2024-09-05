@@ -44,6 +44,7 @@
     --text-link: 240 23% 12%;
     --text-link-selected: 217 100% 50%;
     --text-secondary: 240 5% 59%;
+    --text-label: 240 7% 29%;
     --icon: 240 5% 59%;
     --heading: 240 23% 12%;
     --heading-secondary: 240 5% 43%;
@@ -58,6 +59,7 @@
     --toggle: 240 6% 73%;
     --toggle-foreground: 0 0% 100%;
     --dropdown: 240 7% 29%;
+    --checkbox: 240 7% 29%;
 
     /** orange */
     --orange-20: 42 100% 63%;
@@ -124,6 +126,7 @@
     --separator-secondary: 240 11% 98%;
     --text-foreground: 240 5% 59%;
     --text-secondary: 240 5% 59%;
+    --text-label: 240 6% 73%;
     --icon: 240 5% 59%;
     --heading: 240 11% 98%;
     --heading-secondary: 240 5% 59%;
@@ -140,6 +143,7 @@
     --toggle: 240 7% 29%;
     --toggle-foreground: 240 5% 59%;
     --dropdown: 240 6% 73%;
+    --checkbox: 240 16% 90%;
 
     /** orange */
     --orange-20: 42 100% 63%;
