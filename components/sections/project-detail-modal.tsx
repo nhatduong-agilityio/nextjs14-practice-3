@@ -1,12 +1,13 @@
 'use client'
 
+import { useCallback, useEffect, useRef } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
-import { Text } from '../ui/text'
 import { Badge } from '../ui/badge'
 import { withMoreMenu } from '../hocs/withMoreMenu'
 import { MoreIcon } from '@/icons/more-icon'
 import { CheckIcon } from '@/icons/check-icon'
-import { Heading } from '../ui/heading'
+import { useRouter } from 'next/navigation'
+import { useOnClickOutside } from '@/hooks/useOnClickOutside'
 
 interface ProjectDetailModalProps {
   children: React.ReactNode
@@ -14,7 +15,10 @@ interface ProjectDetailModalProps {
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-const ProjectDetailModal = ({ children }: ProjectDetailModalProps) => {
+export const ProjectDetailModal = ({ children }: ProjectDetailModalProps) => {
+  const wrapper = useRef(null)
+  const router = useRouter()
+
   const listProjectActions = [
     {
       name: 'Show Detail',
@@ -30,9 +34,27 @@ const ProjectDetailModal = ({ children }: ProjectDetailModalProps) => {
     },
   ]
 
+  const onDismiss = useCallback(() => {
+    router.back()
+  }, [router])
+
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onDismiss()
+    },
+    [onDismiss],
+  )
+
+  useEffect(() => {
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [onKeyDown])
+
+  useOnClickOutside(wrapper, onDismiss)
+
   return (
-    <Dialog open={true}>
-      <DialogContent className='p-0 gap-0 bg-card-secondary'>
+    <Dialog defaultOpen>
+      <DialogContent ref={wrapper} className='p-0 gap-0 bg-card-secondary'>
         <DialogHeader className='flex flex-row px-5 pt-4 pb-[15px] space-y-0 items-center justify-between pr-[68px] border-b border-separator'>
           <Badge variant='outline' className='text-label-secondary h-8 rounded-[8px] font-poppins'>
             <CheckIcon width={20} height={20} className='mr-2' /> Mark Complete
@@ -46,5 +68,3 @@ const ProjectDetailModal = ({ children }: ProjectDetailModalProps) => {
     </Dialog>
   )
 }
-
-export default ProjectDetailModal
