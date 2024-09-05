@@ -4,7 +4,7 @@ import React from 'react'
 import { Draggable, Droppable } from '@hello-pangea/dnd'
 
 // Components
-import { CardsContainer } from './cards-container'
+import { CardContainer } from './card-container'
 import { ProjectColumnContent } from './project-column-content'
 import { Button } from '../ui/button'
 import { PlusIcon } from '@/icons/plus-icon'
@@ -37,7 +37,7 @@ export const ProjectColumn = ({
               {...dragProvided.draggableProps}
               {...dragProvided.dragHandleProps}
             >
-              <CardsContainer
+              <CardContainer
                 innerRef={dragProvided.innerRef}
                 title={isDragDisabled ? '' : title}
                 draggable={snapshot.isDragging}
@@ -54,7 +54,7 @@ export const ProjectColumn = ({
                     projects={projects}
                   />
                 )}
-              </CardsContainer>
+              </CardContainer>
               <Button
                 variant='secondary'
                 className='rounded-none rounded-b-3xl bg-card shadow-sm border border-t-0 border-separator'

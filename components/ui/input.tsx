@@ -19,15 +19,16 @@ const inputVariants = cva(
 )
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, VariantProps<typeof inputVariants> {
+  hasSeparator?: boolean
   icon?: React.ReactNode
   prefixLabel?: React.ReactNode
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, variant, icon, prefixLabel, ...props }, ref) => {
+  ({ hasSeparator = true, className, type, variant, icon, prefixLabel, ...props }, ref) => {
     return (
       <>
-        <div className='flex flex-row justify-start items-center relative'>
+        <div className='w-full flex flex-row justify-start items-center relative'>
           {prefixLabel && prefixLabel}
           <input
             type={type}
@@ -38,9 +39,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             {...props}
           />
-          <div className='absolute right-0'>{icon && icon}</div>
+          {icon && <div className='absolute right-0'>{icon}</div>}
         </div>
-        <Separator />
+        {hasSeparator && <Separator />}
       </>
     )
   },

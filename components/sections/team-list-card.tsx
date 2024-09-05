@@ -1,11 +1,11 @@
 'use client'
 
 import { TEAM_DETAILS } from '@/constants/data'
-import { CardsContainer } from './cards-container'
-import { CardTeam } from './card-team'
-import { CardAddNew } from './card-add-new'
+import { CardContainer } from './card-container'
+import { TeamCard } from './team-card'
+import { AddNewCard } from './add-new-card'
 
-export const CardTeamList = () => {
+export const TeamListCard = () => {
   const listActionsTeam = [
     {
       name: 'Add New Teams…',
@@ -26,13 +26,13 @@ export const CardTeamList = () => {
   ]
 
   return (
-    <CardsContainer title='Team' menuOptions={listActionsTeam}>
+    <CardContainer title='Team' menuOptions={listActionsTeam}>
       <div className='w-full grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 lg:gap-30'>
         {TEAM_DETAILS.map((team) => (
-          <CardTeam key={team.id} team={team} />
+          <TeamCard key={team.id} team={team} />
         ))}
-        <CardAddNew title='Add Team' className='min-h-[144px]' />
+        <AddNewCard title='Add Team' className='min-h-[144px]' />
       </div>
-    </CardsContainer>
+    </CardContainer>
   )
 }

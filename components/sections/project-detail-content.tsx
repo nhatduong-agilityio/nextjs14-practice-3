@@ -16,6 +16,9 @@ import { Progress } from '../ui/progress'
 import { Checkbox } from '../ui/checkbox'
 import { Badge } from '../ui/badge'
 import { ScheduleIcon } from '@/icons/schedule-icon'
+import { MessagesIcon } from '@/icons/messages-icon'
+import { CommentCard } from './comment-card'
+import { CommentFileInput } from './comment-file-input'
 
 interface ProjectDetailContentProps {
   projectId: string
@@ -26,7 +29,7 @@ const ProjectDetailContent = ({ projectId }: ProjectDetailContentProps) => {
 
   if (!project) return notFound()
 
-  const { name, owner, createdDate, assigned, dueDate, description, attachment, taskList } = project
+  const { name, owner, createdDate, assigned, dueDate, description, attachment, taskList, comments } = project
   const timeAgo = getTimeAgo(createdDate)
   const formattedDueDate = formatDate(dueDate)
   const progress = calculateProgress(taskList)
@@ -87,9 +90,9 @@ const ProjectDetailContent = ({ projectId }: ProjectDetailContentProps) => {
             Attachment
           </Heading>
           <div className='flex gap-[13px] w-full flex-wrap'>
-            {attachment.map(({ fileName, url }) => {
+            {attachment.map(({ id, fileName, url }) => {
               return (
-                <div key={fileName} className='flex flex-col gap-2.5'>
+                <div key={id} className='flex flex-col gap-2.5'>
                   <Image
                     src={url}
                     alt={fileName}
@@ -144,6 +147,25 @@ const ProjectDetailContent = ({ projectId }: ProjectDetailContentProps) => {
             )
           })}
         </div>
+      </div>
+      <div className='flex flex-col gap-5 mt-10'>
+        <div className='flex w-full gap-[13px] items-center justify-start'>
+          <MessagesIcon />
+          <Heading headingLevel='h4' className='text-base text-text-label'>
+            Comments ({comments.length})
+          </Heading>
+        </div>
+        <div>
+          {comments.map((comment) => (
+            <CommentCard key={comment.id} comment={comment} />
+          ))}
+        </div>
+        <CommentFileInput
+          onSubmit={(content) => {
+            console.log('Comment:', content)
+            // Handle the submission logic here
+          }}
+        />
       </div>
     </article>
   )

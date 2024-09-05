@@ -10,8 +10,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { PageHeader } from '@/components/sections/page-header'
 import { Text } from '@/components/ui/text'
-import { CardTeamList } from '@/components/sections/card-team-list'
-import { CardProjectList } from '@/components/sections/card-project-list'
+import { TeamListCard } from '@/components/sections/team-list-card'
+import { ProjectListCard } from '@/components/sections/project-list-card'
 
 const Dashboard = () => {
   const { setTheme } = useTheme()
@@ -42,8 +42,8 @@ const Dashboard = () => {
       </PageHeader>
 
       <div className='w-full flex flex-col gap-5'>
-        <CardTeamList />
-        <CardProjectList />
+        <TeamListCard />
+        <ProjectListCard />
       </div>
     </div>
   )

@@ -24,7 +24,7 @@ import { withMoreMenu } from '../hocs/withMoreMenu'
 import { calculateDaysLeft, calculateProgress, cn, getInitials } from '@/lib/utils'
 import { ROUTES } from '@/constants/routes'
 
-export interface CardProjectProps extends ComponentProps<typeof Card> {
+export interface ProjectCardProps extends ComponentProps<typeof Card> {
   variant?: 'column' | 'row'
   project: ProjectDetail
   innerRef?: (element: HTMLElement | null) => void
@@ -32,7 +32,7 @@ export interface CardProjectProps extends ComponentProps<typeof Card> {
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const CardProject = ({ variant = 'column', project, className, innerRef, ...props }: CardProjectProps) => {
+export const ProjectCard = ({ variant = 'column', project, className, innerRef, ...props }: ProjectCardProps) => {
   const router = useRouter()
 
   const { assigned, name, team, attachment, dueDate, taskList, id } = project

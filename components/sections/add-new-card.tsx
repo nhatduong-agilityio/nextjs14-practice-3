@@ -8,11 +8,11 @@ import { Heading } from '../ui/heading'
 // Utils
 import { cn } from '@/lib/utils'
 
-export interface CardAddNewProps extends ComponentProps<typeof Card> {
+export interface AddNewCardProps extends ComponentProps<typeof Card> {
   title?: string
 }
 
-export const CardAddNew = memo(({ className, title = 'Add', ...props }: CardAddNewProps) => {
+export const AddNewCard = memo(({ className, title = 'Add', ...props }: AddNewCardProps) => {
   return (
     <Card
       className={cn(
@@ -30,4 +30,4 @@ export const CardAddNew = memo(({ className, title = 'Add', ...props }: CardAddN
     </Card>
   )
 })
-CardAddNew.displayName = 'CardAddNew'
+AddNewCard.displayName = 'AddNewCard'

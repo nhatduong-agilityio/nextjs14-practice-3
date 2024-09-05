@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/select'
 import { TEAM_DETAILS } from '@/constants/data'
 import { useCallback, useState } from 'react'
-import { CardTeam } from './card-team'
+import { TeamCard } from './team-card'
 import { Button } from '../ui/button'
 
 export const TeamSelection = () => {
@@ -41,7 +41,7 @@ export const TeamSelection = () => {
         </SelectContent>
       </Select>
 
-      {teamDetail && <CardTeam className='my-[15px]' team={teamDetail} isOutline />}
+      {teamDetail && <TeamCard className='my-[15px]' team={teamDetail} isOutline />}
 
       <Button variant='ghost' size='text' className='justify-start font-medium'>
         + ADD NEW TEAM

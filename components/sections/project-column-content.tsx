@@ -4,7 +4,7 @@ import React from 'react'
 import { Droppable, Draggable } from '@hello-pangea/dnd'
 
 // Components
-import { CardProject } from './card-project'
+import { ProjectCard } from './project-card'
 import { ProjectDetail } from '@/lib/models'
 
 const ProjectList = ({ projects, isListBoard }: { projects: ProjectDetail[]; isListBoard: boolean }) => {
@@ -14,7 +14,7 @@ const ProjectList = ({ projects, isListBoard }: { projects: ProjectDetail[]; isL
         <div key={`${project.id}-${project.name}`}>
           <Draggable draggableId={project.id} index={index}>
             {(provided, dragSnapshot) => (
-              <CardProject
+              <ProjectCard
                 variant={isListBoard ? 'row' : 'column'}
                 className='shadow-xs'
                 innerRef={provided.innerRef}
@@ -53,7 +53,7 @@ export const ProjectColumnContent = ({
     <Droppable droppableId={listId} type={listType}>
       {(provided, dropSnapshot) => (
         <div
-          className='flex flex-col h-full w-ful overflow-x-hidden overflow-y-auto scrollbar max-h-full'
+          className='flex flex-col h-full w-ful overflow-x-hidden overflow-y-auto max-h-full'
           {...provided.droppableProps}
           ref={provided.innerRef}
         >
