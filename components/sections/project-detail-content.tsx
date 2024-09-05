@@ -19,12 +19,13 @@ import { ScheduleIcon } from '@/icons/schedule-icon'
 import { MessagesIcon } from '@/icons/messages-icon'
 import { CommentCard } from './comment-card'
 import { CommentFileInput } from './comment-file-input'
+import { memo } from 'react'
 
 interface ProjectDetailContentProps {
   projectId: string
 }
 
-const ProjectDetailContent = ({ projectId }: ProjectDetailContentProps) => {
+export const ProjectDetailContent = memo(({ projectId }: ProjectDetailContentProps) => {
   const project = PROJECT_DETAILS.find((project) => project.id === projectId)
 
   if (!project) return notFound()
@@ -169,6 +170,5 @@ const ProjectDetailContent = ({ projectId }: ProjectDetailContentProps) => {
       </div>
     </article>
   )
-}
-
-export default ProjectDetailContent
+})
+ProjectDetailContent.displayName = 'ProjectDetailContent'

@@ -7,35 +7,6 @@ import { Droppable, Draggable } from '@hello-pangea/dnd'
 import { ProjectCard } from './project-card'
 import { ProjectDetail } from '@/lib/models'
 
-const ProjectList = ({ projects, isListBoard }: { projects: ProjectDetail[]; isListBoard: boolean }) => {
-  return (
-    <div className='flex flex-col min-h-full gap-2.5'>
-      {projects.map((project, index) => (
-        <div key={`${project.id}-${project.name}`}>
-          <Draggable draggableId={project.id} index={index}>
-            {(provided, dragSnapshot) => (
-              <ProjectCard
-                variant={isListBoard ? 'row' : 'column'}
-                className='shadow-xs'
-                innerRef={provided.innerRef}
-                key={project.id}
-                project={project}
-                draggable={dragSnapshot.isDragging}
-                data-is-dragging={dragSnapshot.isDragging}
-                data-testid={project.id}
-                data-index={index}
-                aria-label={`${project.name}-${project.id}`}
-                {...provided.draggableProps}
-                {...provided.dragHandleProps}
-              />
-            )}
-          </Draggable>
-        </div>
-      ))}
-    </div>
-  )
-}
-
 export interface ProjectColumnContentProps {
   isListBoard?: boolean
   listId: string
@@ -57,7 +28,30 @@ export const ProjectColumnContent = ({
           {...provided.droppableProps}
           ref={provided.innerRef}
         >
-          <ProjectList isListBoard={isListBoard} projects={projects} />
+          <div className='flex flex-col min-h-full gap-2.5'>
+            {projects.map((project, index) => (
+              <div key={`${project.id}-${project.name}`}>
+                <Draggable draggableId={project.id} index={index}>
+                  {(provided, dragSnapshot) => (
+                    <ProjectCard
+                      variant={isListBoard ? 'row' : 'column'}
+                      className='shadow-xs'
+                      innerRef={provided.innerRef}
+                      key={project.id}
+                      project={project}
+                      draggable={dragSnapshot.isDragging}
+                      data-is-dragging={dragSnapshot.isDragging}
+                      data-testid={project.id}
+                      data-index={index}
+                      aria-label={`${project.name}-${project.id}`}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    />
+                  )}
+                </Draggable>
+              </div>
+            ))}
+          </div>
           {provided.placeholder}
         </div>
       )}
