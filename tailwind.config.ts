@@ -134,6 +134,7 @@ const config = {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
+          secondary: 'hsl(var(--card-secondary))',
         },
         tag: {
           label: 'hsl(var(--tag-label))',

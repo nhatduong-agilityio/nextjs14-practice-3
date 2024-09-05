@@ -12,6 +12,7 @@ import { OptionItem } from '@/lib/types'
 import { cn } from '@/lib/utils'
 
 export interface CardContainerProps extends HTMLAttributes<HTMLElement> {
+  hasTitle?: boolean
   title?: string
   moreMenuTitle?: string
   children?: ReactNode
@@ -21,7 +22,8 @@ export interface CardContainerProps extends HTMLAttributes<HTMLElement> {
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const CardsContainer = ({
+export const CardContainer = ({
+  hasTitle = true,
   title = 'Cards',
   moreMenuTitle,
   menuOptions,
@@ -36,10 +38,18 @@ export const CardsContainer = ({
       className={cn('w-full flex flex-col shadow-sm border border-separator rounded-3xl p-[5px]', className)}
       {...props}
     >
-      <div className='flex justify-between items-center p-[15px] pt-2.5'>
-        <Heading headingLevel='h4' variant='secondary' size='md'>
-          {title}
-        </Heading>
+      <div
+        className={cn(
+          'flex justify-between items-center p-[15px] pt-2.5',
+          hasTitle && !menuOptions && 'justify-start',
+          !hasTitle && menuOptions && 'justify-end',
+        )}
+      >
+        {hasTitle && (
+          <Heading headingLevel='h4' variant='secondary' size='md'>
+            {title}
+          </Heading>
+        )}
         {menuOptions && <MoreMenu title={moreMenuTitle} menuOptions={menuOptions} />}
       </div>
       {children}

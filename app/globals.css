@@ -8,7 +8,7 @@
     --background-secondary: 240 11% 98%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 11% 98%;
     --card-secondary: 0 0% 100%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 7% 29%;
@@ -54,7 +54,7 @@
     --tag-label: 240 7% 29%;
     --progress: 240 16% 90%;
     --progress-foreground: 156 64% 54%;
-    --select:  240 11% 98%;
+    --select: 240 11% 98%;
     --select-foreground: 240 5% 59%;
     --toggle: 240 6% 73%;
     --toggle-foreground: 0 0% 100%;
@@ -93,7 +93,7 @@
     --background-secondary: 240 16% 9%;
     --foreground: 240 11% 98%;
     --card: 240 10% 18%;
-    --card-foreground: 240 11% 98%;
+    --card-foreground: 240 10% 18%;
     --card-secondary: 240 13% 13%;
     --popover: 240 10% 18%;
     --popover-foreground: 240 11% 98%;
@@ -193,17 +193,18 @@
       scrollbar-width: none;  /* Firefox */
   }
 
-  .scrollbar::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     width: 3px;
+    height: 2px;
     margin-left: 5px;
   }
 
-  .scrollbar::-webkit-scrollbar-track {
+  ::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 50px;
   }
 
-  .scrollbar::-webkit-scrollbar-thumb {
+  ::-webkit-scrollbar-thumb {
     background: #979797;
     border-radius: 50px;
   }

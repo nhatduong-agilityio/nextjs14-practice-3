@@ -16,14 +16,14 @@ import { withMoreMenu } from '../hocs/withMoreMenu'
 // Utils
 import { cn, getInitials } from '@/lib/utils'
 
-export interface CardTeamProps extends ComponentProps<typeof Card> {
+export interface TeamCardProps extends ComponentProps<typeof Card> {
   team: TeamDetail
   isOutline?: boolean
 }
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const CardTeam = memo(({ team, className, isOutline = false, ...props }: CardTeamProps) => {
+export const TeamCard = memo(({ team, className, isOutline = false, ...props }: TeamCardProps) => {
   const { users, name } = team
 
   const listCardActions = [
@@ -85,4 +85,4 @@ export const CardTeam = memo(({ team, className, isOutline = false, ...props }: 
     </Card>
   )
 })
-CardTeam.displayName = 'CardTeam'
+TeamCard.displayName = 'TeamCard'

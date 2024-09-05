@@ -1,11 +1,11 @@
 'use client'
 
 import { PROJECT_DETAILS } from '@/constants/data'
-import { CardsContainer } from './cards-container'
-import { CardAddNew } from './card-add-new'
-import { CardProject } from './card-project'
+import { CardContainer } from './card-container'
+import { AddNewCard } from './add-new-card'
+import { ProjectCard } from './project-card'
 
-export const CardProjectList = () => {
+export const ProjectListCard = () => {
   const listActionsProject = [
     {
       name: 'Add New Project…',
@@ -26,13 +26,13 @@ export const CardProjectList = () => {
   ]
 
   return (
-    <CardsContainer title='Projects' menuOptions={listActionsProject}>
+    <CardContainer title='Projects' menuOptions={listActionsProject}>
       <div className='w-full grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 lg:gap-30'>
         {PROJECT_DETAILS.map((project) => (
-          <CardProject key={project.id} project={project} />
+          <ProjectCard key={project.id} project={project} />
         ))}
-        <CardAddNew title='Add Project' className='min-h-[237px]' />
+        <AddNewCard title='Add Project' className='min-h-[237px]' />
       </div>
-    </CardsContainer>
+    </CardContainer>
   )
 }

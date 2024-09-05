@@ -17,6 +17,11 @@ const nextConfig = {
         hostname: 'www.w3.org',
         pathname: '/WAI/ER/tests/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'example.com',
+        pathname: '/files/**',
+      },
     ],
 
   },
