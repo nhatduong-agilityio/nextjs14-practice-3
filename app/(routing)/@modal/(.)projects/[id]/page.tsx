@@ -1,15 +1,12 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import ProjectDetailContent from '@/components/sections/project-detail-content'
+import ProjectDetailModal from '@/components/sections/project-detail-modal'
 
-const ProjectDetailModal = ({ params: { id } }: { params: { id: string } }) => {
+const ProjectDetail = ({ params: { id } }: { params: { id: string } }) => {
   return (
-    <Dialog open={true}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>This is project detail modal: {id}</DialogTitle>
-        </DialogHeader>
-      </DialogContent>
-    </Dialog>
+    <ProjectDetailModal>
+      <ProjectDetailContent projectId={id} />
+    </ProjectDetailModal>
   )
 }
 
-export default ProjectDetailModal
+export default ProjectDetail

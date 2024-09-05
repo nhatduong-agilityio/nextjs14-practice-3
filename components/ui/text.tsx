@@ -10,6 +10,7 @@ const textVariants = cva('text-base font-[400]', {
       error: 'text-destructive',
       link: 'font-poppins font-medium',
       secondary: 'text-text-secondary',
+      label: 'text-text-label',
     },
     size: {
       default: 'leading-6',

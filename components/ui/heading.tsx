@@ -13,6 +13,7 @@ const headingVariants = cva('text-lg font-semibold', {
       default: 'leading-9',
       lg: 'leading-[42px] text-xl',
       md: 'text-md',
+      xs: 'text-xs',
     },
   },
   defaultVariants: {

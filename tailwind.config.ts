@@ -79,6 +79,7 @@ const config = {
           link: 'hsl(var(--text-link))',
           'link-selected': 'hsl(var(--text-link-selected))',
           secondary: 'hsl(var(--text-secondary))',
+          label: 'hsl(var(--text-label))',
         },
         icon: {
           DEFAULT: 'hsl(var(--icon))',
@@ -151,6 +152,9 @@ const config = {
         },
         dropdown: {
           DEFAULT: 'hsl(var(--dropdown))',
+        },
+        checkbox: {
+          DEFAULT: 'hsl(var(--checkbox))',
         },
       },
       borderRadius: {
