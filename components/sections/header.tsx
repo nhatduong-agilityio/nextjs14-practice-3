@@ -1,18 +1,9 @@
 'use client'
 
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet'
+// Components
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { BrandIcon } from '@/icons/brand-icon'
 import { Button } from '../ui/button'
-import { Label } from '../ui/label'
-import { Input } from '../ui/input'
 import { GanttIcon } from '@/icons/gantt-icon'
 import { NotificationIcon } from '@/icons/notification-icon'
 import { PlusIcon } from '@/icons/plus-icon'

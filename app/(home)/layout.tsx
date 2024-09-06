@@ -5,10 +5,10 @@ import { DashboardLayout } from '@/components/layouts/dashboard-layout'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Square Dashboard',
-    default: 'Square Dashboard',
+    template: '%s | Square Dashboard Home',
+    default: 'Square Dashboard Home',
   },
-  description: 'Square Dashboard App',
+  description: 'Square Dashboard App Home',
 }
 
 const Layout = ({ children, modal }: { children: React.ReactNode; modal: React.ReactNode }) => {

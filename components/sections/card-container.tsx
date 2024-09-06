@@ -1,15 +1,17 @@
-import { forwardRef, HTMLAttributes, memo, ReactNode } from 'react'
+import { HTMLAttributes, ReactNode } from 'react'
 
 // Components
 import { Heading } from '../ui/heading'
 import { MoreIcon } from '@/icons/more-icon'
 
 // Hocs
-import { withMoreMenu } from '../hocs/with-more-menu'
+import { withMoreMenu } from '@/hocs/with-more-menu'
 
 // Types
-import { OptionItem } from '@/lib/types'
-import { cn } from '@/lib/utils'
+import { OptionItem } from '@/types/option'
+
+// Utils
+import { cn } from '@/utils/cn'
 
 export interface CardContainerProps extends HTMLAttributes<HTMLElement> {
   hasTitle?: boolean

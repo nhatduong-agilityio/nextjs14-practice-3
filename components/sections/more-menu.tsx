@@ -6,10 +6,10 @@ import { Label } from '@/components/ui/label'
 import { CloseIcon } from '@/icons/close-icon'
 
 // Types
-import { OptionItem } from '@/lib/types'
+import { OptionItem } from '@/types/option'
 
 // Utils
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils/cn'
 
 export interface MoreMenuProps {
   menuOptions: OptionItem[]

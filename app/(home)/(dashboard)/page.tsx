@@ -10,8 +10,10 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import { PageHeader } from '@/components/sections/page-header'
 import { Text } from '@/components/ui/text'
-import { TeamListCard } from '@/components/sections/team-list-card'
-import { ProjectListCard } from '@/components/sections/project-list-card'
+
+// Features
+import { TeamListCard } from '@/features/teams/components/team-list-card'
+import { ProjectListCard } from '@/features/projects/components/project-list-card'
 
 const Dashboard = () => {
   const { setTheme } = useTheme()

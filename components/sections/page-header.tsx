@@ -1,5 +1,8 @@
-import { cn } from '@/lib/utils'
+// Components
 import { Heading } from '../ui/heading'
+
+// Utils
+import { cn } from '@/utils/cn'
 
 export interface PageHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string

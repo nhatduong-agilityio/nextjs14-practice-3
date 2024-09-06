@@ -1,7 +1,8 @@
 'use client'
 
 import { v4 as uuidv4 } from 'uuid'
-import { ProjectColumn, ProjectDetail, TeamDetail } from '@/lib/models'
+import { ProjectColumn, ProjectDetail } from '@/types/project'
+import { TeamDetail } from '@/types/team'
 
 export const TEAM_DETAIL = {
   id: 'b767c413-98b6-4698-98a2-edd5593d75a2',
