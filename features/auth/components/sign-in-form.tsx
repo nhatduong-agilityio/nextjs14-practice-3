@@ -4,6 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import Link from 'next/link'
+import { useSignIn } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
 
 // Components
 import { Button } from '@/components/ui/button'
@@ -19,7 +21,7 @@ import { GoogleLightIcon } from '@/icons/google-light-icon'
 import { FacebookLightIcon } from '@/icons/facebook-light-icon'
 
 // Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
-const passwordValidation = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
+const passwordValidation = new RegExp(/^[A-Za-z\d@$!%*?&.]{8,}$/)
 
 const FormSchema = z.object({
   emailOrUsername: z.union([
@@ -36,6 +38,9 @@ const FormSchema = z.object({
 })
 
 export const SignInForm = () => {
+  const { isLoaded, signIn, setActive } = useSignIn()
+  const router = useRouter()
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -45,8 +50,33 @@ export const SignInForm = () => {
     },
   })
 
-  const onSubmit = (data: z.infer<typeof FormSchema>) => {
-    console.log(data)
+  const onSubmit = async ({ emailOrUsername, password }: z.infer<typeof FormSchema>) => {
+    if (!isLoaded) {
+      return
+    }
+
+    // Start the sign-in process using the email and password provided
+    try {
+      const signInAttempt = await signIn.create({
+        identifier: emailOrUsername,
+        password,
+      })
+
+      // If sign-in process is complete, set the created session as active
+      // and redirect the user
+      if (signInAttempt.status === 'complete') {
+        await setActive({ session: signInAttempt.createdSessionId })
+        router.push('/')
+      } else {
+        // If the status is not complete, check why. User may need to
+        // complete further steps.
+        console.error(JSON.stringify(signInAttempt, null, 2))
+      }
+    } catch (err: any) {
+      // See https://clerk.com/docs/custom-flows/error-handling
+      // for more info on error handling
+      console.error(JSON.stringify(err, null, 2))
+    }
   }
 
   return (
