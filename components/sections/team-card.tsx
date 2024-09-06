@@ -11,7 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 
 // Hocs
-import { withMoreMenu } from '../hocs/withMoreMenu'
+import { withMoreMenu } from '../hocs/with-more-menu'
 
 // Utils
 import { cn, getInitials } from '@/lib/utils'
