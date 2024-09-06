@@ -1,15 +1,5 @@
-import { Heading } from '@/components/ui/heading'
-import { Text } from '@/components/ui/text'
-import Link from 'next/link'
+import { MainNotFound } from '@/components/not-founds/main-not-found'
 
-const NotFound = () => {
-  return (
-    <section>
-      <Heading headingLevel='h2'>Not Found</Heading>
-      <Text>Could not find requested resource</Text>
-      <Link href='/'>Return Home</Link>
-    </section>
-  )
-}
+const NotFound = () => <MainNotFound />
 
 export default NotFound

@@ -6,7 +6,7 @@ import { PlusIcon } from '@/icons/plus-icon'
 import { Heading } from '../ui/heading'
 
 // Utils
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils/cn'
 
 export interface AddNewCardProps extends ComponentProps<typeof Card> {
   title?: string

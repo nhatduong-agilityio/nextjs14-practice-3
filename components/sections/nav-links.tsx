@@ -1,6 +1,11 @@
 'use client'
 
+import { useMemo } from 'react'
+
+// Constants
 import { ROUTES } from '@/constants/routes'
+
+// Components
 import { ActivityIcon } from '@/icons/activity-icon'
 import { DashboardIcon } from '@/icons/dashboard-icon'
 import { MessagesIcon } from '@/icons/messages-icon'
@@ -9,7 +14,6 @@ import { ScheduleIcon } from '@/icons/schedule-icon'
 import { SettingsIcon } from '@/icons/settings-icon'
 import { NavItem } from '../ui/nav-item'
 import { usePathname } from 'next/navigation'
-import { useCallback, useMemo } from 'react'
 import { Badge } from '../ui/badge'
 
 interface NavigationItem {

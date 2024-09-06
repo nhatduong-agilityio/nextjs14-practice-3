@@ -1,6 +1,6 @@
 import { PageHeader } from '@/components/sections/page-header'
-import { ProjectBoard } from '@/components/sections/project-board'
-import { ProjectFilter } from '@/components/sections/project-filter'
+import { ProjectBoard } from '@/features/projects/components/project-board'
+import { ProjectFilter } from '@/features/projects/components/project-filter'
 
 const Projects = () => {
   return (

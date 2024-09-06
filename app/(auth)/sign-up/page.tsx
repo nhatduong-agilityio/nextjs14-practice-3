@@ -3,7 +3,9 @@
 import * as React from 'react'
 import { useSignUp } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
-import { SignUpForm } from '@/components/sections/sign-up-form'
+
+// Features
+import { SignUpForm } from '@/features/auth/components/sign-up-form'
 
 const SignUpPage = () => {
   const { isLoaded, signUp, setActive } = useSignUp()

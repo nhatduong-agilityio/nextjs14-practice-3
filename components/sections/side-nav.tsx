@@ -1,7 +1,10 @@
+// Components
 import { Separator } from '../ui/separator'
 import { Sheet } from '../ui/sheet'
 import { NavLinks } from './nav-links'
-import { TeamSelection } from './team-selection'
+
+// Features
+import { TeamSelection } from '@/features/teams/components/team-selection'
 
 export const SideNav = () => {
   return (

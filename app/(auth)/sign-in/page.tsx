@@ -6,7 +6,9 @@ import { useRouter } from 'next/navigation'
 import { Input } from '@/components/ui/input'
 import { Heading } from '@/components/ui/heading'
 import { EmailIcon } from '@/icons/email-icon'
-import { SignInForm } from '@/components/sections/sign-in-form'
+
+// Features
+import { SignInForm } from '@/features/auth/components/sign-in-form'
 
 const SignInPage = () => {
   const { isLoaded, signIn, setActive } = useSignIn()
