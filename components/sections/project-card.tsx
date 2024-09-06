@@ -18,7 +18,7 @@ import { ActivityIcon } from '@/icons/activity-icon'
 import { Progress } from '../ui/progress'
 
 // Hocs
-import { withMoreMenu } from '../hocs/withMoreMenu'
+import { withMoreMenu } from '../hocs/with-more-menu'
 
 // Utils
 import { calculateDaysLeft, calculateProgress, cn, getInitials } from '@/lib/utils'

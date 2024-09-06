@@ -93,7 +93,6 @@ export const SignInForm = () => {
                   Remember Me
                 </FormLabel>
               </div>
-
               <Link href='/forgot-password' className='leading-4 font-medium text-link text-base hover:underline'>
                 Forgot Password
               </Link>

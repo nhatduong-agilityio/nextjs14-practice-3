@@ -5,7 +5,7 @@ import { Heading } from '../ui/heading'
 import { MoreIcon } from '@/icons/more-icon'
 
 // Hocs
-import { withMoreMenu } from '../hocs/withMoreMenu'
+import { withMoreMenu } from '../hocs/with-more-menu'
 
 // Types
 import { OptionItem } from '@/lib/types'

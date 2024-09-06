@@ -3,11 +3,11 @@
 import { useCallback, useEffect, useRef } from 'react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { Badge } from '../ui/badge'
-import { withMoreMenu } from '../hocs/withMoreMenu'
+import { withMoreMenu } from '../hocs/with-more-menu'
 import { MoreIcon } from '@/icons/more-icon'
 import { CheckIcon } from '@/icons/check-icon'
 import { useRouter } from 'next/navigation'
-import { useOnClickOutside } from '@/hooks/useOnClickOutside'
+import { useOnClickOutside } from '@/hooks/use-on-click-outside'
 
 interface ProjectDetailModalProps {
   children: React.ReactNode

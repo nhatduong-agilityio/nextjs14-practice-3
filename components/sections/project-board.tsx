@@ -12,7 +12,7 @@ import { StrictModeDroppable } from '../droppable-provider'
 
 // Utils
 import { cn, generateProjectMap, reorder, reorderProjectMap } from '@/lib/utils'
-import { useProjectFilter } from '@/hooks/useProjectFilter'
+import { useProjectFilter } from '@/hooks/use-project-filter'
 import { ARRANGE } from '@/constants/filters'
 
 export const ProjectBoard = () => {

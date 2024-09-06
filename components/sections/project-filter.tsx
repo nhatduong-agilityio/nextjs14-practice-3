@@ -15,7 +15,7 @@ import { ListIcon } from '@/icons/list-icon'
 import { useState } from 'react'
 import { Label } from '../ui/label'
 import { Text } from '../ui/text'
-import { useProjectFilter } from '@/hooks/useProjectFilter'
+import { useProjectFilter } from '@/hooks/use-project-filter'
 import { ARRANGE } from '@/constants/filters'
 
 export interface ProjectFilterProps {}
