@@ -2,7 +2,6 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
 
 // Components
 import { Button } from '@/components/ui/button'
@@ -15,28 +14,17 @@ import { Text } from '@/components/ui/text'
 import { WorldIcon } from '@/icons/world-icon'
 import { UserIcon } from '@/icons/user-icon'
 
-// Minimum 8 characters, at least one uppercase letter, one lowercase letter, one number and one special character
-const passwordValidation = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)
-
-const FormSchema = z.object({
-  fullName: z
-    .string()
-    .min(2, { message: 'Full name must be at least 2 characters.' })
-    .max(30, { message: 'Full name must not exceed 30 characters.' }),
-  emailAddress: z.string().email({ message: 'Invalid email address' }),
-  businessUrl: z
-    .string()
-    .toLowerCase()
-    .min(2, { message: 'Business URL must be at least 2 characters and lower case.' })
-    .optional(),
-  password: z.string().min(8, { message: 'Password must be at least 8 characters long' }).regex(passwordValidation, {
-    message: 'Password must include uppercase, lowercase, number, and special character',
-  }),
-})
+// Lib
+import { SignUpFormSchema, SignUpFormSchemaType } from '../lib/schema'
+import { useSignUp } from '../hooks/use-sign-up'
+import { useToast } from '@/hooks/use-toast'
+import { useCallback, useEffect } from 'react'
 
 export const SignUpForm = () => {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
+  const { toast } = useToast()
+
+  const form = useForm<SignUpFormSchemaType>({
+    resolver: zodResolver(SignUpFormSchema),
     defaultValues: {
       fullName: '',
       emailAddress: '',
@@ -44,10 +32,25 @@ export const SignUpForm = () => {
       password: '',
     },
   })
+  const {
+    setError,
+    formState: { isSubmitting },
+  } = form
 
-  const onSubmit = (data: z.infer<typeof FormSchema>) => {
-    console.log(data)
-  }
+  const handleShowToast = useCallback(
+    (title: string, message: string, variant?: 'default' | 'active' | 'destructive') => {
+      toast({
+        variant,
+        title,
+        description: message,
+      })
+    },
+    [toast],
+  )
+
+  // If sign-up process is complete, set the created session as active
+  // And redirect the user
+  const { onSubmit } = useSignUp(setError, handleShowToast)
 
   return (
     <Form {...form}>
@@ -116,8 +119,8 @@ export const SignUpForm = () => {
             </FormItem>
           )}
         />
-        <Button size='lg' type='submit' className='bg-blue-20 h-50 mt-2.5'>
-          Create an account
+        <Button size='lg' type='submit' className='bg-blue-20 h-50 mt-2.5' disabled={isSubmitting}>
+          {isSubmitting ? 'Creating an account...' : 'Create an account'}
         </Button>
       </form>
     </Form>
