@@ -5,6 +5,7 @@ import './globals.css'
 
 // Components
 import { ThemeProvider } from './theme-provider'
+import { Toaster } from '@/components/ui/toaster'
 
 const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'], variable: '--font-poppins' })
 const roboto = Roboto({ weight: ['400', '500', '700'], subsets: ['latin'], variable: '--font-roboto' })
@@ -28,6 +29,7 @@ const RootLayout = ({
         <body>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>

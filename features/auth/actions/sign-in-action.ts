@@ -1,11 +1,11 @@
 'use server'
 
 import { clerkClient } from '@clerk/nextjs/server'
-import { FormSchema, FormSchemaType } from '../lib/schema'
+import { SignInFormSchema, SignInFormSchemaType } from '../lib/schema'
 
-export const signInAction = async (formData: FormSchemaType) => {
+export const signInAction = async (formData: SignInFormSchemaType) => {
   // Validate the form data using the Zod schema
-  const result = FormSchema.safeParse(formData)
+  const result = SignInFormSchema.safeParse(formData)
 
   if (!result.success) {
     // If validation fails, return the errors

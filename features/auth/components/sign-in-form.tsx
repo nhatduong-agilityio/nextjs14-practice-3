@@ -3,10 +3,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-
-// Constants
-import { ROUTES } from '@/constants/routes'
 
 // Components
 import { Button } from '@/components/ui/button'
@@ -22,16 +18,18 @@ import { GoogleLightIcon } from '@/icons/google-light-icon'
 import { FacebookLightIcon } from '@/icons/facebook-light-icon'
 
 // Lib
-import { FormSchema, FormSchemaType } from '../lib/schema'
+import { SignInFormSchema, SignInFormSchemaType } from '../lib/schema'
 
 // Actions
-import { useSignInSubmit } from '../hooks/useSignIn'
+import { useSignIn } from '../hooks/use-sign-in'
+import { useToast } from '@/hooks/use-toast'
+import { useCallback } from 'react'
 
 export const SignInForm = () => {
-  const router = useRouter()
+  const { toast } = useToast()
 
-  const form = useForm<FormSchemaType>({
-    resolver: zodResolver(FormSchema),
+  const form = useForm<SignInFormSchemaType>({
+    resolver: zodResolver(SignInFormSchema),
     defaultValues: {
       emailOrUsername: '',
       password: '',
@@ -43,9 +41,20 @@ export const SignInForm = () => {
     formState: { isSubmitting },
   } = form
 
+  const handleShowToast = useCallback(
+    (title: string, message: string, variant?: 'default' | 'active' | 'destructive') => {
+      toast({
+        variant,
+        title,
+        description: message,
+      })
+    },
+    [toast],
+  )
+
   // If sign-in process is complete, set the created session as active
   // And redirect the user
-  const { onSubmit } = useSignInSubmit(setError)
+  const { onSubmit } = useSignIn(setError, handleShowToast)
 
   return (
     <Form {...form}>
@@ -108,7 +117,7 @@ export const SignInForm = () => {
           </Label>
           <Separator variant='dashed' className='flex-1' />
         </div>
-        <Button size='lg' className='bg-red-20 my-2.5 hover:bg-red-20/90' onClick={() => router.push(ROUTES.DASHBOARD)}>
+        <Button size='lg' className='bg-red-20 my-2.5 hover:bg-red-20/90'>
           <GoogleLightIcon className='mr-[11px]' /> Continue with Google
         </Button>
         <Button size='lg' className='bg-blue-90'>

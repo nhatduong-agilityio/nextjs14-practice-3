@@ -71,7 +71,7 @@ export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
             isOpen && 'flex',
           )}
         >
-          {children}
+          <div className='flex flex-col sm:min-w-[506px] pt-2.5 px-2.5 overflow-y-scroll no-scrollbar'>{children}</div>
           <Button
             size='icon'
             variant='rounded'
