@@ -5,64 +5,64 @@ import { ProjectColumn, ProjectDetail } from '@/types/project'
 import { TeamDetail } from '@/types/team'
 
 export const TEAM_DETAIL = {
-  id: 'b767c413-98b6-4698-98a2-edd5593d75a2',
+  id: '2ae01f07-fc7d-4ce7-8bc7-b5eedbceaaba',
   name: 'Burks Dillon',
-  logo: 'https://robohash.org/b9dkk',
+  logo: 'https://i.pravatar.cc/150?u=2ae01f07-fc7d-4ce7-8bc7-b5eedbceaaba',
   users: [
     {
-      id: '7afbbff9-4913-4787-9176-7609f9bd9ff0',
+      id: '40113d86-a932-4aaf-b191-e13f01392707',
       userName: 'Kerri Landry',
-      avatar: 'https://robohash.org/tje9za',
+      avatar: 'https://i.pravatar.cc/150?u=40113d86-a932-4aaf-b191-e13f01392707',
     },
     {
-      id: 'c0edb2ca-4a17-4a49-8f98-2c3e4ae06d55',
+      id: '8dd9e612-ec99-4b94-b7c4-50deb580feab',
       userName: 'Susanne Chavez',
-      avatar: 'https://robohash.org/e0ztr',
+      avatar: 'https://i.pravatar.cc/150?u=8dd9e612-ec99-4b94-b7c4-50deb580feab',
     },
     {
-      id: 'c0108f0a-41d2-44d2-a82f-87a547aa8dbc',
+      id: '6f753cb1-d9fa-404f-8c16-9de2284f00dc',
       userName: 'Kent Jordan',
-      avatar: 'https://robohash.org/tsa31i',
+      avatar: 'https://i.pravatar.cc/150?u=6f753cb1-d9fa-404f-8c16-9de2284f00dc',
     },
     {
-      id: 'd9154bd9-8893-4c65-839c-e4430dcef65b',
+      id: '991de46e-9945-4321-8e76-0e6dcc13cbfe',
       userName: 'Roseann Finch',
-      avatar: 'https://robohash.org/lcotd9',
+      avatar: 'https://i.pravatar.cc/150?u=991de46e-9945-4321-8e76-0e6dcc13cbfe',
     },
     {
-      id: '6a47a78f-1ce1-443c-9c1a-571a1f6d0f55',
+      id: '250aee8e-80bf-40d9-a73c-738dfef5adbf',
       userName: 'Gibson Shaw',
-      avatar: 'https://robohash.org/au5eg',
+      avatar: 'https://i.pravatar.cc/150?u=250aee8e-80bf-40d9-a73c-738dfef5adbf',
     },
     {
-      id: 'c267400b-6e69-4864-b721-e2c8ea71c45a',
+      id: '8aaa4ed5-e3f5-4dcf-9408-473f6de26309',
       userName: 'Vargas Bowen',
-      avatar: 'https://robohash.org/00laxm',
+      avatar: 'https://i.pravatar.cc/150?u=8aaa4ed5-e3f5-4dcf-9408-473f6de26309',
     },
     {
-      id: 'de20037d-f45e-4b86-8bd1-45013b73cf72',
+      id: '94ef14ba-e5cf-4885-add8-577b698defb4',
       userName: 'Lorie Baxter',
-      avatar: 'https://robohash.org/snoq9e',
+      avatar: 'https://i.pravatar.cc/150?u=94ef14ba-e5cf-4885-add8-577b698defb4',
     },
     {
-      id: '1066f916-4cee-4ac1-b6d1-0678d9889d6a',
+      id: '96efa8ca-4c4f-4b71-a720-2d074d7ee111',
       userName: 'Lolita Parker',
-      avatar: 'https://robohash.org/xn0buq',
+      avatar: 'https://i.pravatar.cc/150?u=96efa8ca-4c4f-4b71-a720-2d074d7ee111',
     },
     {
-      id: '0a59b75b-23dd-4f36-9ef1-c8b13d9fda29',
+      id: '674085c7-5735-47ce-9918-e30433464cda',
       userName: 'Melva Adkins',
-      avatar: 'https://robohash.org/tp209o',
+      avatar: 'https://i.pravatar.cc/150?u=674085c7-5735-47ce-9918-e30433464cda',
     },
     {
-      id: '3295136e-2d9a-45b0-a6cc-1a11cc12e0de',
+      id: 'd5e212ab-db96-47aa-b9ac-b5240779074a',
       userName: 'Esperanza Lyons',
-      avatar: 'https://robohash.org/5gsxbf',
+      avatar: 'https://i.pravatar.cc/150?u=d5e212ab-db96-47aa-b9ac-b5240779074a',
     },
     {
-      id: 'f721b45b-0eb3-46e5-b28e-4270e8139f03',
+      id: '80bfb6ef-0624-49ed-a956-5b51defb1f07',
       userName: 'Everett Oneill',
-      avatar: 'https://robohash.org/7zqdfl',
+      avatar: 'https://i.pravatar.cc/150?u=80bfb6ef-0624-49ed-a956-5b51defb1f07',
     },
   ],
 }
@@ -71,89 +71,89 @@ export const TEAM_DETAILS: TeamDetail[] = [
   {
     id: '2ae01f07-fc7d-4ce7-8bc7-b5eedbceaaba',
     name: 'Burks Dillon',
-    logo: 'https://robohash.org/u4ob2h',
+    logo: 'https://i.pravatar.cc/150?u=2ae01f07-fc7d-4ce7-8bc7-b5eedbceaaba',
     users: [
       {
         id: '40113d86-a932-4aaf-b191-e13f01392707',
         userName: 'Kerri Landry',
-        avatar: 'https://robohash.org/p88j3',
+        avatar: 'https://i.pravatar.cc/150?u=40113d86-a932-4aaf-b191-e13f01392707',
       },
       {
         id: '8dd9e612-ec99-4b94-b7c4-50deb580feab',
         userName: 'Susanne Chavez',
-        avatar: 'https://robohash.org/tfkwjq',
+        avatar: 'https://i.pravatar.cc/150?u=8dd9e612-ec99-4b94-b7c4-50deb580feab',
       },
       {
         id: '6f753cb1-d9fa-404f-8c16-9de2284f00dc',
         userName: 'Kent Jordan',
-        avatar: 'https://robohash.org/e2d9q',
+        avatar: 'https://i.pravatar.cc/150?u=6f753cb1-d9fa-404f-8c16-9de2284f00dc',
       },
       {
         id: '991de46e-9945-4321-8e76-0e6dcc13cbfe',
         userName: 'Roseann Finch',
-        avatar: 'https://robohash.org/h1sef',
+        avatar: 'https://i.pravatar.cc/150?u=991de46e-9945-4321-8e76-0e6dcc13cbfe',
       },
       {
         id: '250aee8e-80bf-40d9-a73c-738dfef5adbf',
         userName: 'Gibson Shaw',
-        avatar: 'https://robohash.org/cq4trj',
+        avatar: 'https://i.pravatar.cc/150?u=250aee8e-80bf-40d9-a73c-738dfef5adbf',
       },
       {
         id: '8aaa4ed5-e3f5-4dcf-9408-473f6de26309',
         userName: 'Vargas Bowen',
-        avatar: 'https://robohash.org/hjs54',
+        avatar: 'https://i.pravatar.cc/150?u=8aaa4ed5-e3f5-4dcf-9408-473f6de26309',
       },
       {
         id: '94ef14ba-e5cf-4885-add8-577b698defb4',
         userName: 'Lorie Baxter',
-        avatar: 'https://robohash.org/385k5',
+        avatar: 'https://i.pravatar.cc/150?u=94ef14ba-e5cf-4885-add8-577b698defb4',
       },
       {
         id: '96efa8ca-4c4f-4b71-a720-2d074d7ee111',
         userName: 'Lolita Parker',
-        avatar: 'https://robohash.org/vat7rt',
+        avatar: 'https://i.pravatar.cc/150?u=96efa8ca-4c4f-4b71-a720-2d074d7ee111',
       },
       {
         id: '674085c7-5735-47ce-9918-e30433464cda',
         userName: 'Melva Adkins',
-        avatar: 'https://robohash.org/ucl0x',
+        avatar: 'https://i.pravatar.cc/150?u=674085c7-5735-47ce-9918-e30433464cda',
       },
       {
         id: 'd5e212ab-db96-47aa-b9ac-b5240779074a',
         userName: 'Esperanza Lyons',
-        avatar: 'https://robohash.org/tipoxo',
+        avatar: 'https://i.pravatar.cc/150?u=d5e212ab-db96-47aa-b9ac-b5240779074a',
       },
       {
         id: '80bfb6ef-0624-49ed-a956-5b51defb1f07',
         userName: 'Everett Oneill',
-        avatar: 'https://robohash.org/thgh5',
+        avatar: 'https://i.pravatar.cc/150?u=80bfb6ef-0624-49ed-a956-5b51defb1f07',
       },
     ],
   },
   {
     id: '1e481952-80c4-42ba-bd4a-7605ecdf4911',
     name: 'Sampson Woodard',
-    logo: 'https://robohash.org/zq1ar9',
+    logo: 'https://i.pravatar.cc/150?u=1e481952-80c4-42ba-bd4a-7605ecdf4911',
     users: [
       {
         id: '3432488e-bf22-44b6-b2c0-de440a1f2a15',
         userName: 'Brooke Sweet',
-        avatar: 'https://robohash.org/4zdd4e',
+        avatar: 'https://i.pravatar.cc/150?u=3432488e-bf22-44b6-b2c0-de440a1f2a15',
       },
       {
         id: '9dc7e1d3-48dd-41e3-bfb1-4cd8030dfb00',
         userName: 'Martin Gray',
-        avatar: 'https://robohash.org/uclapa',
+        avatar: 'https://i.pravatar.cc/150?u=9dc7e1d3-48dd-41e3-bfb1-4cd8030dfb00',
       },
       {
         id: '2955b48f-89ba-4723-a59a-3055e9da5c7b',
         userName: 'Barton Mccullough',
-        avatar: 'https://robohash.org/hhvjm7',
+        avatar: 'https://i.pravatar.cc/150?u=2955b48f-89ba-4723-a59a-3055e9da5c7b',
       },
       {
         id: '91db089e-e1ff-4b87-a3f3-5f9578f91844',
         userName: 'Phelps George',
-        avatar: 'https://robohash.org/i3g8pm',
+        avatar: 'https://i.pravatar.cc/150?u=91db089e-e1ff-4b87-a3f3-5f9578f91844',
       },
     ],
   },
@@ -166,19 +166,19 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     owner: {
       id: '5eac536d-40c0-4a4b-a097-fdb747cf4fc9',
       userName: 'Kerri Landry',
-      avatar: 'https://robohash.org/bl5cso',
+      avatar: 'https://i.pravatar.cc/150?u=5eac536d-40c0-4a4b-a097-fdb747cf4fc9',
     },
     team: 'Team Innovators',
     assigned: [
       {
         id: '8b1d2bb2-bdd7-4773-98fb-395988d36bc0',
         userName: 'Susanne Chavez',
-        avatar: 'https://robohash.org/jc5l7f',
+        avatar: 'https://i.pravatar.cc/150?u=8b1d2bb2-bdd7-4773-98fb-395988d36bc0',
       },
       {
         id: '696c1db0-3607-4958-bd87-1c75954315b6',
         userName: 'Kent Jordan',
-        avatar: 'https://robohash.org/ayn41l',
+        avatar: 'https://i.pravatar.cc/150?u=696c1db0-3607-4958-bd87-1c75954315b6',
       },
     ],
     column: 'Pending',
@@ -189,7 +189,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         fileType: 'pdf',
         fileSize: 2048576,
         uploadDate: '2023-05-15T10:30:00Z',
-        url: 'https://file-examples.com/storage/fef44df12666d835ba71c24/2017/10/file_example_JPG_100kB.jpg',
+        url: 'https://cdn-icons-png.flaticon.com/512/337/337946.png',
       },
     ],
     taskList: [
@@ -201,7 +201,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
           {
             id: 'b68d3ce8-a678-4723-8662-e762311736f6',
             userName: 'Vargas Bowen',
-            avatar: 'https://robohash.org/0clltf',
+            avatar: 'https://i.pravatar.cc/150?u=b68d3ce8-a678-4723-8662-e762311736f6',
           },
         ],
         dueDate: '2023-06-30T23:59:59Z',
@@ -214,7 +214,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
           {
             id: '885c409c-727c-453b-bdfd-356e02a66c92',
             userName: 'Vargas Bowen',
-            avatar: 'https://robohash.org/vxae4',
+            avatar: 'https://i.pravatar.cc/150?u=885c409c-727c-453b-bdfd-356e02a66c92',
           },
         ],
         dueDate: '2023-06-30T23:59:59Z',
@@ -227,7 +227,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
           {
             id: '53f2cee6-a381-4d3d-8521-2717bd09dfe3',
             userName: 'Vargas Bowen',
-            avatar: 'https://robohash.org/mxprh',
+            avatar: 'https://i.pravatar.cc/150?u=53f2cee6-a381-4d3d-8521-2717bd09dfe3',
           },
         ],
         dueDate: '2023-06-30T23:59:59Z',
@@ -240,7 +240,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
           {
             id: '4f86d6cd-ae2b-4f9a-99fd-b556fa07917e',
             userName: 'Vargas Bowen',
-            avatar: 'https://robohash.org/ouzo',
+            avatar: 'https://i.pravatar.cc/150?u=4f86d6cd-ae2b-4f9a-99fd-b556fa07917e',
           },
         ],
         dueDate: '2023-06-30T23:59:59Z',
@@ -255,7 +255,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         owner: {
           id: '97e9a157-60d9-444c-8e04-1cc68bfcedd7',
           userName: 'Esperanza Lyons',
-          avatar: 'https://robohash.org/egra7n',
+          avatar: 'https://i.pravatar.cc/150?u=97e9a157-60d9-444c-8e04-1cc68bfcedd7',
         },
         content: 'Great progress on the initial phase!',
         createdDate: '2023-05-10T14:30:00Z',
@@ -268,14 +268,14 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     owner: {
       id: '6a78cf89-3678-4a0b-810d-5765a3525943',
       userName: 'Brooke Sweet',
-      avatar: 'https://robohash.org/bowoq9',
+      avatar: 'https://i.pravatar.cc/150?u=6a78cf89-3678-4a0b-810d-5765a3525943',
     },
     team: 'Team Achievers',
     assigned: [
       {
         id: 'e3b2c29e-543c-4b86-9db1-c0efba31aa36',
         userName: 'Martin Gray',
-        avatar: 'https://robohash.org/f1yanp',
+        avatar: 'https://i.pravatar.cc/150?u=e3b2c29e-543c-4b86-9db1-c0efba31aa36',
       },
     ],
     column: 'Pending',
@@ -286,7 +286,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         fileType: 'docx',
         fileSize: 1024288,
         uploadDate: '2023-05-20T14:45:00Z',
-        url: 'https://file-examples.com/storage/fe8c7eef0c6364f6c9504cc/2017/02/file-sample_100kB.docx',
+        url: 'https://cdn-icons-png.flaticon.com/5968/5968517.png',
       },
     ],
     taskList: [
@@ -298,7 +298,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
           {
             id: 'e553eb5a-9fb7-439d-b7d2-4d9465932ee8',
             userName: 'Brooke Sweet',
-            avatar: 'https://robohash.org/bnaipv',
+            avatar: 'https://i.pravatar.cc/150?u=e553eb5a-9fb7-439d-b7d2-4d9465932ee8',
           },
         ],
         dueDate: '2023-07-15T23:59:59Z',
@@ -313,7 +313,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         owner: {
           id: '1a575181-789f-48c9-ad95-93f92d8e7860',
           userName: 'Martin Gray',
-          avatar: 'https://robohash.org/3xbtoh',
+          avatar: 'https://i.pravatar.cc/150?u=1a575181-789f-48c9-ad95-93f92d8e7860',
         },
         content: "Let's schedule a kick-off meeting soon.",
         createdDate: '2023-05-12T16:20:00Z',
@@ -326,19 +326,19 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     owner: {
       id: '9e12eba5-42d1-4ed2-8ed2-f49040d0cd20',
       userName: 'Phelps George',
-      avatar: 'https://robohash.org/cze2d',
+      avatar: 'https://i.pravatar.cc/150?u=9e12eba5-42d1-4ed2-8ed2-f49040d0cd20',
     },
     team: 'Team Visionaries',
     assigned: [
       {
         id: '5ad767a2-10d7-4483-9890-b36dcc3846b1',
         userName: 'Barton Mccullough',
-        avatar: 'https://robohash.org/d806e',
+        avatar: 'https://i.pravatar.cc/150?u=5ad767a2-10d7-4483-9890-b36dcc3846b1',
       },
       {
         id: 'ba6c754e-f4c8-47ea-a8d8-c07907206bc4',
         userName: 'Lorie Baxter',
-        avatar: 'https://robohash.org/gwlui',
+        avatar: 'https://i.pravatar.cc/150?u=ba6c754e-f4c8-47ea-a8d8-c07907206bc4',
       },
     ],
     column: 'Run',
@@ -349,7 +349,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         fileType: 'xlsx',
         fileSize: 512144,
         uploadDate: '2023-05-25T09:15:00Z',
-        url: 'https://file-examples.com/storage/fe8c7eef0c6364f6c9504cc/2017/02/file_example_XLSX_10.xlsx',
+        url: 'https://cdn-icons-png.flaticon.com/512/888/888850.png',
       },
       {
         id: '2be610e1-dd85-41f7-bb6a-fd38e14704c2',
@@ -357,7 +357,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         fileType: 'pptx',
         fileSize: 512144,
         uploadDate: '2023-05-25T09:15:00Z',
-        url: 'https://file-examples.com/storage/fe8c7eef0c6364f6c9504cc/2017/08/file_example_PPT_250kB.ppt',
+        url: 'https://cdn-icons-png.flaticon.com/512/888/888874.png',
       },
     ],
     taskList: [
@@ -369,7 +369,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
           {
             id: '6370fcea-341e-4051-ba69-f8ba1f0c5b17',
             userName: 'Barton Mccullough',
-            avatar: 'https://robohash.org/teps5',
+            avatar: 'https://i.pravatar.cc/150?u=6370fcea-341e-4051-ba69-f8ba1f0c5b17',
           },
         ],
         dueDate: '2023-06-15T23:59:59Z',
@@ -384,7 +384,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         owner: {
           id: '83225a8a-474b-4f3e-8625-93e8b0f097a1',
           userName: 'Lorie Baxter',
-          avatar: 'https://robohash.org/g68h3w',
+          avatar: 'https://i.pravatar.cc/150?u=83225a8a-474b-4f3e-8625-93e8b0f097a1',
         },
         content: 'Exciting project! Looking forward to our first milestone.',
         createdDate: '2023-05-22T10:45:00Z',
@@ -397,19 +397,19 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     owner: {
       id: '2102a8d5-af59-4ebb-8703-936a9ebca3ee',
       userName: 'Alicia Rodgers',
-      avatar: 'https://robohash.org/5yvag',
+      avatar: 'https://i.pravatar.cc/150?u=2102a8d5-af59-4ebb-8703-936a9ebca3ee',
     },
     team: 'Team Visionaries',
     assigned: [
       {
         id: 'ada9fd6b-54d1-484d-8265-d5b189a73c3c',
         userName: 'Barton Mccullough',
-        avatar: 'https://robohash.org/rzm52o',
+        avatar: 'https://i.pravatar.cc/150?u=ada9fd6b-54d1-484d-8265-d5b189a73c3c',
       },
       {
         id: 'ab5fb27e-7896-41af-89ae-139b6fa9d664',
         userName: 'Lorie Baxter',
-        avatar: 'https://robohash.org/j79wis',
+        avatar: 'https://i.pravatar.cc/150?u=ab5fb27e-7896-41af-89ae-139b6fa9d664',
       },
     ],
     column: 'Run',
@@ -420,7 +420,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         fileType: 'xlsx',
         fileSize: 512144,
         uploadDate: '2023-05-25T09:15:00Z',
-        url: 'https://example.com/files/project_gamma_timeline.xlsx',
+        url: 'https://cdn-icons-png.flaticon.com/888/888850.png',
       },
       {
         id: '4153e99c-fce4-42c0-9d3c-17dc738205f9',
@@ -428,7 +428,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         fileType: 'xlsx',
         fileSize: 512144,
         uploadDate: '2023-05-25T09:15:00Z',
-        url: 'https://example.com/files/project_gamma_timeline.xlsx',
+        url: 'https://cdn-icons-png.flaticon.com/888/888850.png',
       },
     ],
     taskList: [
@@ -440,7 +440,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
           {
             id: 'ca08bee5-a30c-43ea-aa43-799def2ed4e4',
             userName: 'Barton Mccullough',
-            avatar: 'https://robohash.org/lm8p4q',
+            avatar: 'https://i.pravatar.cc/150?u=ca08bee5-a30c-43ea-aa43-799def2ed4e4',
           },
         ],
         dueDate: '2023-06-15T23:59:59Z',
@@ -455,7 +455,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         owner: {
           id: 'de500266-7bd9-4c6a-bd40-f63e427f665c',
           userName: 'Lorie Baxter',
-          avatar: 'https://robohash.org/4cfz5e',
+          avatar: 'https://i.pravatar.cc/150?u=de500266-7bd9-4c6a-bd40-f63e427f665c',
         },
         content: 'Exciting project! Looking forward to our first milestone.',
         createdDate: '2023-05-22T10:45:00Z',
@@ -468,19 +468,19 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
     owner: {
       id: '5a2beaec-7d25-4f00-8e4d-5d752d006c68',
       userName: 'Marcus Holloway',
-      avatar: 'https://robohash.org/1q8d5k',
+      avatar: 'https://i.pravatar.cc/150?u=5a2beaec-7d25-4f00-8e4d-5d752d006c68',
     },
     team: 'Team Pioneers',
     assigned: [
       {
         id: 'ef5a1d53-03cf-4ed4-a390-6fd12019f7e4',
         userName: 'Barton Mccullough',
-        avatar: 'https://robohash.org/60xpbq',
+        avatar: 'https://i.pravatar.cc/150?u=ef5a1d53-03cf-4ed4-a390-6fd12019f7e4',
       },
       {
         id: 'fc1b7ad9-166d-4e20-974d-1baf87b6c071',
         userName: 'Lorie Baxter',
-        avatar: 'https://robohash.org/tkek7l',
+        avatar: 'https://i.pravatar.cc/150?u=fc1b7ad9-166d-4e20-974d-1baf87b6c071',
       },
     ],
     column: 'Run',
@@ -491,7 +491,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         fileType: 'xlsx',
         fileSize: 512144,
         uploadDate: '2023-05-25T09:15:00Z',
-        url: 'https://example.com/files/project_gamma_timeline.xlsx',
+        url: 'https://cdn-icons-png.flaticon.com/888/888850.png',
       },
       {
         id: '564936cf-e764-4783-bfca-a6b3aab31e56',
@@ -499,7 +499,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         fileType: 'xlsx',
         fileSize: 512144,
         uploadDate: '2023-05-25T09:15:00Z',
-        url: 'https://example.com/files/project_gamma_timeline.xlsx',
+        url: 'https://cdn-icons-png.flaticon.com/888/888850.png',
       },
     ],
     taskList: [
@@ -511,7 +511,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
           {
             id: 'd07924c6-053b-49c8-bd9e-02bfd60ee18a',
             userName: 'Barton Mccullough',
-            avatar: 'https://robohash.org/jp57wv',
+            avatar: 'https://i.pravatar.cc/150?u=d07924c6-053b-49c8-bd9e-02bfd60ee18a',
           },
         ],
         dueDate: '2023-06-15T23:59:59Z',
@@ -526,7 +526,7 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         owner: {
           id: '251c7668-f23c-4f69-b193-84b070612642',
           userName: 'Lorie Baxter',
-          avatar: 'https://robohash.org/0crvtj',
+          avatar: 'https://i.pravatar.cc/150?u=251c7668-f23c-4f69-b193-84b070612642',
         },
         content: 'Exciting project! Looking forward to our first milestone.',
         createdDate: '2023-05-22T10:45:00Z',

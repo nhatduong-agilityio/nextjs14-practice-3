@@ -18,8 +18,8 @@ import { FilterIcon } from '@/icons/filter-icon'
 import { GanttIcon } from '@/icons/gantt-icon'
 import { KanBanIcon } from '@/icons/kan-ban-icon'
 import { ListIcon } from '@/icons/list-icon'
-import { Label } from '../../../components/ui/label'
-import { Text } from '../../../components/ui/text'
+import { Label } from '@/components/ui/label'
+import { Text } from '@/components/ui/text'
 
 // Hooks
 import { useProjectFilter } from '../hooks/use-project-filter'

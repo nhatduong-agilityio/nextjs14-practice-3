@@ -23,7 +23,6 @@ const nextConfig = {
         pathname: '/files/**',
       },
     ],
-
   },
 };
 

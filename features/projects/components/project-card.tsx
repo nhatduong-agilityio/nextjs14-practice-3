@@ -9,13 +9,13 @@ import { ROUTES } from '@/constants/routes'
 // Components
 import { MoreIcon } from '@/icons/more-icon'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { Avatar, AvatarFallback, AvatarImage } from '../../../components/ui/avatar'
-import { Text } from '../../../components/ui/text'
-import { Badge } from '../../../components/ui/badge'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Text } from '@/components/ui/text'
+import { Badge } from '@/components/ui/badge'
 import { AttachmentIcon } from '@/icons/attachment-icon'
-import { Tag } from '../../../components/ui/tag'
+import { Tag } from '@/components/ui/tag'
 import { ActivityIcon } from '@/icons/activity-icon'
-import { Progress } from '../../../components/ui/progress'
+import { Progress } from '@/components/ui/progress'
 
 // Types
 import { ProjectDetail } from '@/types/project'
@@ -44,7 +44,7 @@ export const ProjectCard = ({ variant = 'column', project, className, innerRef, 
   const listProjectActions = [
     {
       name: 'Show Detail',
-      action: () => null,
+      action: () => router.push(`${ROUTES.PROJECTS}/${id}`),
     },
     {
       name: 'Delete Project',

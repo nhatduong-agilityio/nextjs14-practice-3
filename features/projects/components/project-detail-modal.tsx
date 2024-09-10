@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 // Components
@@ -24,11 +24,12 @@ const MoreMenu = withMoreMenu(MoreIcon)
 export const ProjectDetailModal = ({ children }: ProjectDetailModalProps) => {
   const wrapper = useRef(null)
   const router = useRouter()
+  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false)
 
   const listProjectActions = [
     {
-      name: 'Show Detail',
-      action: () => null,
+      name: 'Go To Page Detail',
+      action: () => window.location.reload(),
     },
     {
       name: 'Delete Project',
@@ -41,8 +42,8 @@ export const ProjectDetailModal = ({ children }: ProjectDetailModalProps) => {
   ]
 
   const onDismiss = useCallback(() => {
-    router.back()
-  }, [router])
+    !isMoreMenuOpen && router.back()
+  }, [isMoreMenuOpen, router])
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -65,7 +66,7 @@ export const ProjectDetailModal = ({ children }: ProjectDetailModalProps) => {
           <Badge variant='outline' className='text-label-secondary h-8 rounded-[8px] font-poppins'>
             <CheckIcon width={20} height={20} className='mr-2' /> Mark Complete
           </Badge>
-          <MoreMenu title='Project Actions' menuOptions={listProjectActions} />
+          <MoreMenu title='Project Actions' menuOptions={listProjectActions} onClick={() => setIsMoreMenuOpen(true)} />
         </DialogHeader>
         <DialogTitle className='hidden'>Project Detail Modal</DialogTitle>
         <DialogDescription className='hidden'>Project Detail Modal Description</DialogDescription>
