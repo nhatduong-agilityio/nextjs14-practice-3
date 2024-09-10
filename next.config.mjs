@@ -9,8 +9,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'file-examples.com',
-        pathname: '/storage/**',
+        hostname: 'cdn-icons-png.flaticon.com',
       },
       {
         protocol: 'https',
@@ -19,8 +18,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'example.com',
-        pathname: '/files/**',
+        hostname: 'i.pravatar.cc',
       },
     ],
   },
