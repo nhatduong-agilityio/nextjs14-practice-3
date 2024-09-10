@@ -1,4 +1,4 @@
-import { ProjectDetail } from '@/types/project'
+import { ProjectColumn, ProjectDetail } from '@/types/project'
 import { DraggableLocation } from '@hello-pangea/dnd'
 
 // A little function to help us with reordering the result
@@ -61,14 +61,29 @@ export const reorderProjectMap = ({
  * @param projects The array of ProjectDetails
  * @returns A map of column names to their respective arrays of ProjectDetails
  */
-export const generateProjectMap = (projects: ProjectDetail[]) => {
-  const columns = Array.from(new Set(projects.map((project) => project.column)))
+export const generateProjectMap = (
+  projects: ProjectDetail[],
+  columns: ProjectColumn[],
+): Record<string, ProjectDetail[]> => {
+  const projectMap: Record<string, ProjectDetail[]> = {}
+  const columnIdToTitleMap: Record<string, string> = {}
 
-  return columns.reduce(
-    (previous, column) => ({
-      ...previous,
-      [column]: projects.filter((project) => project.column === column),
-    }),
-    {} as Record<string, ProjectDetail[]>,
-  )
+  columns.forEach((column) => {
+    projectMap[column.title] = []
+    columnIdToTitleMap[column.id] = column.title
+  })
+
+  projects.forEach((project) => {
+    const columnTitle = columnIdToTitleMap[project.columnId]
+    if (columnTitle && projectMap[columnTitle]) {
+      projectMap[columnTitle].push(project)
+    }
+  })
+
+  // Sort projects within each column based on their index
+  Object.values(projectMap).forEach((columnProjects) => {
+    columnProjects.sort((a, b) => a.index - b.index)
+  })
+
+  return projectMap
 }

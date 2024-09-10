@@ -30,7 +30,8 @@ export type ProjectDetail = {
   owner: User
   team: string
   assigned: User[]
-  column: string
+  columnId: string
+  index: number
   attachment: Attachment[]
   taskList: Task[]
   description: string
@@ -42,6 +43,7 @@ export type ProjectDetail = {
 export type ProjectColumn = {
   id: string
   title: string
+  index: number
   projectIds: string[]
 }
 
