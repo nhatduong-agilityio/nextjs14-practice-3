@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import { DragDropContext, OnDragEndResponder } from '@hello-pangea/dnd'
 
 // Constants
-import { PROJECT_DETAILS } from '@/constants/data'
 import { ARRANGE } from '@/constants/filters'
 
 // Components
@@ -17,11 +16,18 @@ import { generateProjectMap, reorder, reorderProjectMap } from '../utils/project
 
 // Hooks
 import { useProjectFilter } from '../hooks/use-project-filter'
+import { ProjectDetail, ProjectColumn as ProjectColumnType } from '@/types/project'
 
-export const ProjectBoard = () => {
-  const initialData = generateProjectMap(PROJECT_DETAILS)
+interface ProjectBoardProps {
+  projects: ProjectDetail[]
+  columns: ProjectColumnType[]
+  error?: string
+}
 
-  const [columns, setColumns] = useState(initialData)
+export const ProjectBoard = ({ projects, columns, error }: ProjectBoardProps) => {
+  const initialData = generateProjectMap(projects, columns)
+
+  const [columnsOrdered, setColumnsOrdered] = useState(initialData)
 
   const [ordered, setOrdered] = useState(Object.keys(initialData))
 
@@ -52,17 +58,17 @@ export const ProjectBoard = () => {
       return
     }
 
-    const column = columns[source.droppableId]
+    const column = columnsOrdered[source.droppableId]
     const withQuoteRemoved = [...column]
     withQuoteRemoved.splice(source.index, 1)
 
     const data = reorderProjectMap({
-      projectMap: columns,
+      projectMap: columnsOrdered,
       source,
       destination,
     })
 
-    setColumns(data.projectMap)
+    setColumnsOrdered(data.projectMap)
   }
 
   return (
@@ -75,7 +81,13 @@ export const ProjectBoard = () => {
             {...provided.droppableProps}
           >
             {ordered.map((key, index) => (
-              <ProjectColumn key={key} index={index} title={key} projects={columns[key]} isListBoard={isListBoard} />
+              <ProjectColumn
+                key={key}
+                index={index}
+                title={key}
+                projects={columnsOrdered[key]}
+                isListBoard={isListBoard}
+              />
             ))}
             <ProjectColumn isDragDisabled index={ordered.length} title='EMPTY' isListBoard={isListBoard} />
             {provided.placeholder}

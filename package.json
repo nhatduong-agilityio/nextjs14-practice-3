@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"json-server --watch db.json --port 5500\" \"next dev\"",
+    "dev": "next dev",
     "build": "next build",
     "start": "concurrently \"next start\" \"node api/server.ts\"",
     "lint": "next lint",

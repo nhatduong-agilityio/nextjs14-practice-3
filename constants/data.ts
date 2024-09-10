@@ -181,7 +181,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         avatar: 'https://i.pravatar.cc/150?u=696c1db0-3607-4958-bd87-1c75954315b6',
       },
     ],
-    column: 'Pending',
+    columnId: '4fe298fd-d503-489e-92ba-dc13583d4527',
+    index: 0,
     attachment: [
       {
         id: '4a967249-fd35-450f-911d-32ef60e62676',
@@ -278,7 +279,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         avatar: 'https://i.pravatar.cc/150?u=e3b2c29e-543c-4b86-9db1-c0efba31aa36',
       },
     ],
-    column: 'Pending',
+    columnId: '4fe298fd-d503-489e-92ba-dc13583d4527',
+    index: 1,
     attachment: [
       {
         id: 'cc205336-36c7-4e81-bd64-d4496d7fa738',
@@ -341,7 +343,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         avatar: 'https://i.pravatar.cc/150?u=ba6c754e-f4c8-47ea-a8d8-c07907206bc4',
       },
     ],
-    column: 'Run',
+    columnId: '5b453d4d-c5ec-4f09-8d14-ce6cb6609df8',
+    index: 0,
     attachment: [
       {
         id: '8fc26ac8-3b73-426d-81c6-38d861effe92',
@@ -412,7 +415,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         avatar: 'https://i.pravatar.cc/150?u=ab5fb27e-7896-41af-89ae-139b6fa9d664',
       },
     ],
-    column: 'Run',
+    columnId: '5b453d4d-c5ec-4f09-8d14-ce6cb6609df8',
+    index: 1,
     attachment: [
       {
         id: 'df0653b8-3c3c-4b9f-ac3e-3d5ed0f327ee',
@@ -483,7 +487,8 @@ export const PROJECT_DETAILS: ProjectDetail[] = [
         avatar: 'https://i.pravatar.cc/150?u=fc1b7ad9-166d-4e20-974d-1baf87b6c071',
       },
     ],
-    column: 'Run',
+    columnId: '31bfddd5-7144-4935-840f-ad9093089ae1',
+    index: 0,
     attachment: [
       {
         id: 'de0f45d1-5aff-4664-a4bb-933513147460',
@@ -539,16 +544,19 @@ export const PROJECT_COLUMNS: ProjectColumn[] = [
   {
     id: '4fe298fd-d503-489e-92ba-dc13583d4527',
     title: 'Pending',
+    index: 0,
     projectIds: ['3a933dc4-bb32-4d12-a272-0af75661d0ca', 'df3ff9e3-f6d0-47d6-86b7-2bf2d9ca645f'],
   },
   {
     id: '5b453d4d-c5ec-4f09-8d14-ce6cb6609df8',
     title: 'Run',
+    index: 1,
     projectIds: ['c25b26a0-6428-48ae-bc93-2860e1b6f306', 'cf4da989-7847-4332-af8e-b3ffc7917595'],
   },
   {
     id: '31bfddd5-7144-4935-840f-ad9093089ae1',
     title: 'Completed',
+    index: 2,
     projectIds: ['3e77b626-61ab-45d1-bb0e-499ce1e7a6ca'],
   },
 ]
