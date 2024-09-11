@@ -1,5 +1,6 @@
 'use client'
 
+import { useCallback } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
@@ -18,7 +19,6 @@ import { UserIcon } from '@/icons/user-icon'
 import { SignUpFormSchema, SignUpFormSchemaType } from '../lib/schema'
 import { useSignUp } from '../hooks/use-sign-up'
 import { useToast } from '@/hooks/use-toast'
-import { useCallback, useEffect } from 'react'
 
 export const SignUpForm = () => {
   const { toast } = useToast()

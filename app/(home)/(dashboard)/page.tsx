@@ -1,4 +1,8 @@
+import { Metadata, Viewport } from 'next'
 import { Suspense } from 'react'
+
+// Constants
+import { PORT, ROUTES } from '@/constants/routes'
 
 // Components
 import { PageHeader } from '@/components/sections/page-header'
@@ -10,6 +14,32 @@ import { TeamListCard } from '@/features/teams/components/team-list-card'
 import { ProjectListCard } from '@/features/projects/components/project-list-card'
 import { getTeams } from '@/features/teams/actions/get-teams'
 import { getProjects } from '@/features/projects/actions/get-projects'
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+}
+
+export const metadata: Metadata = {
+  metadataBase: new URL(`${PORT}`),
+  title: 'Square Dashboard',
+  description: 'Square Dashboard Management Plans',
+  keywords: ['dashboard', 'square dashboard', 'nextjs'],
+  openGraph: {
+    type: 'website',
+    url: `${PORT}${ROUTES.DASHBOARD}`,
+    title: 'Square Dashboard',
+    description: 'Square Dashboard Management Plans',
+    siteName: 'Square Dashboard',
+  },
+  twitter: {
+    title: 'Square Dashboard',
+    description: 'Square Dashboard Management Plans',
+    card: 'summary',
+  },
+}
 
 const Dashboard = async () => {
   const { data: teams, error } = await getTeams()
