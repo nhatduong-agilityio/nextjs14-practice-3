@@ -1,14 +1,22 @@
 'use client'
 
-// Constants
-import { PROJECT_DETAILS } from '@/constants/data'
+import { useEffect } from 'react'
 
 // Components
 import { CardContainer } from '@/components/sections/card-container'
 import { AddNewCard } from '@/components/sections/add-new-card'
 import { ProjectCard } from './project-card'
+import { ProjectDetail } from '@/types/project'
+import { useToast } from '@/hooks/use-toast'
 
-export const ProjectListCard = () => {
+interface ProjectListCardProps {
+  error?: string
+  projects?: ProjectDetail[]
+}
+
+export const ProjectListCard = ({ error, projects }: ProjectListCardProps) => {
+  const { toast } = useToast()
+
   const listActionsProject = [
     {
       name: 'Add New Project…',
@@ -28,12 +36,20 @@ export const ProjectListCard = () => {
     },
   ]
 
+  useEffect(() => {
+    if (!projects && error) {
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: error || 'Failed to fetch projects. Please try again.',
+      })
+    }
+  }, [error, projects, toast])
+
   return (
     <CardContainer title='Projects' menuOptions={listActionsProject}>
       <div className='w-full grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-3 lg:gap-30'>
-        {PROJECT_DETAILS.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+        {projects && projects.map((project) => <ProjectCard key={project.id} project={project} />)}
         <AddNewCard title='Add Project' className='min-h-[237px]' />
       </div>
     </CardContainer>

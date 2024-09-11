@@ -18,6 +18,10 @@ import { generateProjectMap, reorder, reorderProjectMap } from '../utils/project
 import { useProjectFilter } from '../hooks/use-project-filter'
 import { ProjectDetail, ProjectColumn as ProjectColumnType } from '@/types/project'
 
+// Actions
+import { updateColumnOrder } from '../actions/update-column-order'
+import { updateProjectMap } from '../actions/update-project-map'
+
 interface ProjectBoardProps {
   projects: ProjectDetail[]
   columns: ProjectColumnType[]
@@ -35,7 +39,7 @@ export const ProjectBoard = ({ projects, columns, error }: ProjectBoardProps) =>
 
   const isListBoard = getFilter('arrange') === ARRANGE.LIST
 
-  const onDragEnd: OnDragEndResponder = (result) => {
+  const onDragEnd: OnDragEndResponder = async (result) => {
     if (!result.destination) {
       return
     }
@@ -55,6 +59,17 @@ export const ProjectBoard = ({ projects, columns, error }: ProjectBoardProps) =>
     if (result.type === 'COLUMN') {
       const reorderedOrder = reorder(ordered, source.index, destination.index)
       setOrdered(reorderedOrder)
+
+      // Update column order in the backend
+      const sourceColumn = columns.find((col) => col.index === source.index)
+      const destinationColumn = columns.find((col) => col.index === destination.index)
+
+      if (sourceColumn && destinationColumn) {
+        const updatedSourceColumn = { ...sourceColumn, index: destination.index }
+        const updatedDestinationColumn = { ...destinationColumn, index: source.index }
+
+        await updateColumnOrder(updatedSourceColumn, updatedDestinationColumn)
+      }
       return
     }
 
@@ -69,6 +84,15 @@ export const ProjectBoard = ({ projects, columns, error }: ProjectBoardProps) =>
     })
 
     setColumnsOrdered(data.projectMap)
+
+    const sourceColumn = columns.find((col) => col.title === source.droppableId)
+    const destinationColumn = columns.find((col) => col.title === destination.droppableId)
+    const movedProject = columnsOrdered[source.droppableId][source.index]
+    const patchedProject = columnsOrdered[destination.droppableId][destination.index]
+
+    if (sourceColumn && destinationColumn && movedProject) {
+      await updateProjectMap(data.projectMap, sourceColumn, destinationColumn, movedProject, patchedProject)
+    }
   }
 
   return (
