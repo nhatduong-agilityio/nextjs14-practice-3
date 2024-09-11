@@ -31,8 +31,6 @@ export const useSignUp = (
         return
       }
 
-      console.log('username', username)
-
       const sigUpnAttempt = await signUp.create({
         emailAddress,
         password,

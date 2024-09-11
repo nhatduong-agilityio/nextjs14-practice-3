@@ -80,10 +80,15 @@ export const generateProjectMap = (
     }
   })
 
-  // Sort projects within each column based on their index
-  Object.values(projectMap).forEach((columnProjects) => {
-    columnProjects.sort((a, b) => a.index - b.index)
+  // Sort columns based on their index
+  const sortedColumns = [...columns].sort((a, b) => a.index - b.index)
+
+  // Create a new sorted projectMap
+  const sortedProjectMap: Record<string, ProjectDetail[]> = {}
+
+  sortedColumns.forEach((column) => {
+    sortedProjectMap[column.title] = projectMap[column.title].sort((a, b) => a.index - b.index)
   })
 
-  return projectMap
+  return sortedProjectMap
 }
