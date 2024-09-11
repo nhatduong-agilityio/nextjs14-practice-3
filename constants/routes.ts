@@ -1,3 +1,5 @@
+export const PORT = process.env.NEXT_PUBLIC_URL
+
 export const ROUTES = {
   DASHBOARD: '/',
   MESSAGES: '/messages',
