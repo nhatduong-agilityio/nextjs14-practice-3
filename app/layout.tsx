@@ -1,14 +1,10 @@
-import type { Metadata } from 'next'
-import { Poppins, Roboto } from 'next/font/google'
+import { poppins, roboto } from '@/styles/fonts'
 import { ClerkProvider } from '@clerk/nextjs'
-import './globals.css'
+import '../styles/globals.css'
 
 // Components
-import { ThemeProvider } from './theme-provider'
-import { Toaster } from '@/components/ui/toaster'
-
-const poppins = Poppins({ weight: ['400', '500', '600', '700'], subsets: ['latin'], variable: '--font-poppins' })
-const roboto = Roboto({ weight: ['400', '500', '700'], subsets: ['latin'], variable: '--font-roboto' })
+import { ThemeProvider } from '@/components/providers/theme-provider'
+import { Toaster } from '@/components/providers/toaster'
 
 const RootLayout = ({
   children,
