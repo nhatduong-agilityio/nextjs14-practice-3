@@ -18,8 +18,6 @@ import { getProjects } from '@/features/projects/actions/get-projects'
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 }
 
 export const metadata: Metadata = {
@@ -48,7 +46,7 @@ const Dashboard = async () => {
   return (
     <div className='flex h-full flex-col p-5 lg:p-10'>
       <PageHeader className='gap-2.5'>
-        <Text variant='secondary' size='lg'>
+        <Text variant='secondary' className='text-heading-secondary' size='lg'>
           here’s your currently projects
         </Text>
       </PageHeader>

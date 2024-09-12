@@ -20,6 +20,7 @@ const SelectTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <SelectPrimitive.Trigger
     ref={ref}
+    aria-label='select-trigger-button'
     className={cn(
       'flex h-9 w-full items-center justify-between whitespace-nowrap bg-transparent text-select-foreground py-2 text-base font-poppins font-semibold leading-[21px] ring-offset-background placeholder:text-select-foreground focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
       className,

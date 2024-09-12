@@ -48,7 +48,7 @@ export const CardContainer = ({
         )}
       >
         {hasTitle && (
-          <Heading headingLevel='h4' variant='secondary' size='md'>
+          <Heading headingLevel='h2' variant='secondary' size='md' aria-label='card-container-heading'>
             {title}
           </Heading>
         )}

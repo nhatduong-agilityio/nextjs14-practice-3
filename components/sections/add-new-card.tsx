@@ -16,7 +16,7 @@ export const AddNewCard = memo(({ className, title = 'Add', ...props }: AddNewCa
   return (
     <Card
       className={cn(
-        'flex justify-center items-center w-full h-full border border-separator border-dashed bg-transparent gap-2.5 cursor-pointer hover:border-primary hover:bg-card',
+        'flex justify-center items-center w-full h-full border border-separator border-dashed bg-transparent gap-2.5 cursor-pointer hover:border-primary hover:shadow-md',
         className,
       )}
       {...props}
@@ -24,7 +24,7 @@ export const AddNewCard = memo(({ className, title = 'Add', ...props }: AddNewCa
       <div className='bg-white w-[38px] h-[38px] flex justify-center items-center rounded-full'>
         <PlusIcon className='text-primary' width={20} height={20} />
       </div>
-      <Heading headingLevel='h6' className='font-medium' size='md'>
+      <Heading headingLevel='h3' className='font-medium' size='md'>
         {title}
       </Heading>
     </Card>

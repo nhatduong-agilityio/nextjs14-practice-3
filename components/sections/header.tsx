@@ -10,11 +10,14 @@ import { PlusIcon } from '@/icons/plus-icon'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { SearchInput } from '../ui/search-input'
 import { NavLinks } from './nav-links'
+import Link from 'next/link'
 
 export const Header = () => {
   return (
     <header className='w-full sticky top-0 left-0 py-4 px-5 flex items-center justify-between bg-card z-10 border-b border-separator'>
-      <BrandIcon />
+      <Link href='/'>
+        <BrandIcon />
+      </Link>
 
       <Sheet>
         <SheetTrigger asChild>

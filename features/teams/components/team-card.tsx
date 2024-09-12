@@ -46,7 +46,7 @@ export const TeamCard = memo(({ team, className, isOutline = false, ...props }: 
   const moreUsers = users.length - 7
 
   return (
-    <Card className={cn('w-full cursor-pointer hover:bg-card/80', isOutline && 'shadow-none', className)} {...props}>
+    <Card className={cn('w-full cursor-pointer hover:shadow-md', isOutline && 'shadow-none', className)} {...props}>
       <CardHeader className={cn('flex flex-row justify-between items-start', isOutline && 'p-0 pb-[15px]')}>
         <div className={cn('flex justify-between items-center gap-5', isOutline && 'gap-2.5')}>
           <Image
