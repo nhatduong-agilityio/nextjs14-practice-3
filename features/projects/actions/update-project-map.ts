@@ -1,4 +1,4 @@
-'use server'
+// 'use server'
 
 import { ApiDataResponse } from '@/types/api'
 import { updateColumn } from './update-column'
@@ -21,12 +21,12 @@ export const updateProjectMap = async (
   sourceColumn: ProjectColumn,
   destinationColumn: ProjectColumn,
   movedProject: ProjectDetail,
-  patchedProject: ProjectDetail,
+  patchedProject?: ProjectDetail,
 ): Promise<ApiDataResponse<''>> => {
   try {
-    const isSameColumn = sourceColumn.id === destinationColumn.id
+    const isSameColumn = sourceColumn.id === destinationColumn.id && patchedProject
     const movedProjectIndex = movedProject.index
-    const patchedProjectIndex = patchedProject.index
+    const patchedProjectIndex = patchedProject ? patchedProject.index : 0
 
     if (isSameColumn) {
       // Update all affected projects
