@@ -8,7 +8,7 @@ const tagVariants = cva(
   {
     variants: {
       variant: {
-        default: 'border-transparent bg-icon/30 text-icon shadow-sm hover:bg-icon/20',
+        default: 'border-transparent bg-progress text-heading-secondary shadow-sm',
         warning: 'border-transparent bg-orange-90/30 text-orange-90 shadow-sm hover:bg-orange-90/20',
         destructive: 'border-transparent bg-destructive/30 text-destructive shadow hover:bg-destructive/20',
         label: 'border-transparent bg-tag-label/30 text-label-secondary shadow hover:bg-tag-label/20',
@@ -26,7 +26,7 @@ export interface TagProps extends React.HTMLAttributes<HTMLDivElement>, VariantP
 
 const Tag = ({ className, variant, icon, children, ...props }: TagProps) => {
   const iconColors = {
-    default: 'text-icon',
+    default: 'text-heading-secondary',
     warning: 'text-orange-90',
     destructive: 'text-destructive',
     label: 'text-label-secondary',

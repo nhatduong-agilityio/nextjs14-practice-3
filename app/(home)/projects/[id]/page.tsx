@@ -6,8 +6,6 @@ import { ProjectDetailContent } from '@/features/projects/components/project-det
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 }
 
 export const generateMetadata = async ({ params: { id } }: { params: { id: string } }): Promise<Metadata> => {

@@ -22,6 +22,7 @@ const Progress = React.forwardRef<React.ElementRef<typeof ProgressPrimitive.Root
       <Text className='text-label-secondary leading-4'>{value}%</Text>
       <ProgressPrimitive.Root
         ref={ref}
+        aria-label={`${direction}-progress-bar`}
         className={cn('relative h-1 w-full overflow-hidden rounded-full bg-progress', className)}
         {...props}
       >

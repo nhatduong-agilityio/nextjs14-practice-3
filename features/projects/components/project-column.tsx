@@ -40,6 +40,7 @@ export const ProjectColumn = ({
               className='flex flex-col'
               {...dragProvided.draggableProps}
               {...dragProvided.dragHandleProps}
+              role='none'
             >
               <CardContainer
                 innerRef={dragProvided.innerRef}

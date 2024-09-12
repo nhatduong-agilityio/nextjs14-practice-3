@@ -44,9 +44,9 @@ export const ProjectColumnContent = ({
                       data-is-dragging={dragSnapshot.isDragging}
                       data-testid={project.id}
                       data-index={index}
-                      aria-label={`${project.name}-${project.id}`}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
+                      role='none'
                     />
                   )}
                 </Draggable>

@@ -77,7 +77,7 @@ export const ProjectCard = ({ variant = 'column', project, className, innerRef, 
     <Card
       ref={innerRef}
       className={cn(
-        'flex flex-col w-full cursor-pointer hover:bg-card/80',
+        'flex flex-col w-full cursor-pointer hover:shadow-md',
         isVariantRow && 'flex-row px-[25px] py-[15px] gap-[49px]',
         className,
       )}

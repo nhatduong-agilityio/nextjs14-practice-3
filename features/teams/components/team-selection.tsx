@@ -30,7 +30,7 @@ export const TeamSelection = () => {
   return (
     <div className='flex flex-col'>
       <Select onValueChange={handleValueChange}>
-        <SelectTrigger>
+        <SelectTrigger className='text-popover-foreground'>
           <SelectValue placeholder='TEAMS' />
         </SelectTrigger>
         <SelectContent className='w-full'>
@@ -45,7 +45,7 @@ export const TeamSelection = () => {
         </SelectContent>
       </Select>
       {teamDetail && <TeamCard className='my-[15px]' team={teamDetail} isOutline />}
-      <Button variant='ghost' size='text' className='justify-start font-medium'>
+      <Button variant='ghost' size='text' className='justify-start font-medium text-text-link-selected'>
         + ADD NEW TEAM
       </Button>
     </div>
