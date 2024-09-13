@@ -31,12 +31,12 @@ export class ApiService {
 
       if (!response.ok) {
         const error = await response.json()
-        throw new Error(error.message || `Error ${response.status}: ${response.statusText}`)
+
+        throw new Error(`Error ${response.status}: ${error.message}`)
       }
 
       return await response.json()
     } catch (error) {
-      console.error('API Error:', error)
       throw error
     }
   }
