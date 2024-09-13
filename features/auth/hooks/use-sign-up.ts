@@ -44,13 +44,9 @@ export const useSignUp = (
       } else {
         setError('root', {
           type: 'manual',
-          message: JSON.stringify(sigUpnAttempt, null, 2) || 'Sign-up was not completed. Please try again.',
+          message: 'Sign-up was not completed. Please try again.',
         })
-        onShowToast?.(
-          'Sign-up Failed',
-          JSON.stringify(sigUpnAttempt, null, 2) || 'Sign-up was not completed. Please try again.',
-          'destructive',
-        )
+        onShowToast?.('Sign-up Failed', 'Sign-up was not completed. Please try again.', 'destructive')
       }
     } catch (err) {
       setError('root', {

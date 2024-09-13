@@ -22,6 +22,7 @@ const MoreMenu = memo(
     return (
       <Popover>
         <PopoverTrigger
+          aria-disabled={disabled}
           aria-label='popover-trigger-button'
           test-id='popover-trigger'
           disabled={disabled}

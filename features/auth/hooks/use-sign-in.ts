@@ -43,13 +43,9 @@ export const useSignIn = (
       } else {
         setError('root', {
           type: 'manual',
-          message: JSON.stringify(signInAttempt, null, 2) || 'Sign-in was not completed. Please try again.',
+          message: 'Sign-in was not completed. Please try again.',
         })
-        onShowToast?.(
-          'Sign-in Failed',
-          JSON.stringify(signInAttempt, null, 2) || 'Sign-in was not completed. Please try again.',
-          'destructive',
-        )
+        onShowToast?.('Sign-in Failed', 'Sign-in was not completed. Please try again.', 'destructive')
       }
     } catch (err) {
       setError('root', {
