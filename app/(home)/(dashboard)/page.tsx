@@ -14,6 +14,8 @@ import { TeamListCard } from '@/features/teams/components/team-list-card'
 import { ProjectListCard } from '@/features/projects/components/project-list-card'
 import { getTeams } from '@/features/teams/actions/get-teams'
 import { getProjects } from '@/features/projects/actions/get-projects'
+import { TeamListCardSkeleton } from '@/features/teams/components/team-list-card-skeleton'
+import { ProjectListCardSkeleton } from '@/features/projects/components/project-list-card-skeleton'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -51,10 +53,10 @@ const Dashboard = async () => {
         </Text>
       </PageHeader>
       <div className='w-full flex flex-col gap-5'>
-        <Suspense fallback={<Skeleton />}>
+        <Suspense fallback={<TeamListCardSkeleton />}>
           <TeamListCard teams={teams} error={error} />
         </Suspense>
-        <Suspense fallback={<Skeleton />}>
+        <Suspense fallback={<ProjectListCardSkeleton />}>
           <ProjectListCard projects={projects} error={projectError} />
         </Suspense>
       </div>
