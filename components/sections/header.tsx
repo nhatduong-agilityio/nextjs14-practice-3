@@ -15,7 +15,7 @@ import Link from 'next/link'
 export const Header = () => {
   return (
     <header className='w-full sticky top-0 left-0 py-4 px-5 flex items-center justify-between bg-card z-10 border-b border-separator'>
-      <Link href='/'>
+      <Link href='/' aria-label='brand-link'>
         <BrandIcon />
       </Link>
 
