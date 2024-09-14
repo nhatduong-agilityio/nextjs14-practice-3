@@ -45,8 +45,9 @@ export const TeamSelection = () => {
         </SelectContent>
       </Select>
       {teamDetail && <TeamCard className='my-[15px]' team={teamDetail} isOutline />}
-      <Button variant='ghost' size='text' className='justify-start font-medium text-text-link-selected'>
-        + ADD NEW TEAM
+      <Button variant='ghost' size='text' className='justify-start font-medium text-text-link-selected py-2'>
+        <span className='mr-1'>+</span>
+        <span>ADD NEW TEAM</span>
       </Button>
     </div>
   )
