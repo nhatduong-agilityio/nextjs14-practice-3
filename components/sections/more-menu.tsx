@@ -44,15 +44,19 @@ const MoreMenu = memo(
           </div>
 
           <div className='flex flex-col gap-3.5'>
-            {menuOptions.map(({ name, action }) => {
+            {menuOptions.map(({ name, action, isDisable }) => {
               return (
                 <PopoverClose asChild className='cursor-pointer' key={name}>
                   <Label
                     onClick={(e) => {
+                      if (isDisable) return
                       e.stopPropagation()
                       requestAnimationFrame(action)
                     }}
-                    className='leading-4 text-popover-secondary hover:text-popover-foreground hover:font-medium'
+                    className={cn(
+                      'leading-4 text-popover-secondary hover:text-popover-foreground hover:font-medium',
+                      isDisable && 'cursor-not-allowed',
+                    )}
                   >
                     {name}
                   </Label>

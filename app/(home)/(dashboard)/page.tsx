@@ -7,7 +7,6 @@ import { PORT, ROUTES } from '@/constants/routes'
 // Components
 import { PageHeader } from '@/components/sections/page-header'
 import { Text } from '@/components/ui/text'
-import { Skeleton } from '@/components/ui/skeleton'
 
 // Features
 import { TeamListCard } from '@/features/teams/components/team-list-card'
@@ -41,9 +40,9 @@ export const metadata: Metadata = {
   },
 }
 
-const Dashboard = async () => {
-  const { data: teams, error } = await getTeams()
-  const { data: projects, error: projectError } = await getProjects()
+const Dashboard = async ({ searchParams }: { searchParams: { name: string } }) => {
+  const queryParams = searchParams.name ? new URLSearchParams({ name_like: searchParams.name }) : undefined
+  const [teamsResponse, projectsResponse] = await Promise.all([getTeams(queryParams), getProjects(queryParams)])
 
   return (
     <div className='flex h-full flex-col p-5 lg:p-10'>
@@ -54,10 +53,10 @@ const Dashboard = async () => {
       </PageHeader>
       <div className='w-full flex flex-col gap-5'>
         <Suspense fallback={<TeamListCardSkeleton />}>
-          <TeamListCard teams={teams} error={error} />
+          <TeamListCard teams={teamsResponse.data} error={teamsResponse.error} />
         </Suspense>
         <Suspense fallback={<ProjectListCardSkeleton />}>
-          <ProjectListCard projects={projects} error={projectError} />
+          <ProjectListCard projects={projectsResponse.data} error={projectsResponse.error} />
         </Suspense>
       </div>
     </div>

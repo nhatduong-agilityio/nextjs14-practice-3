@@ -13,7 +13,7 @@ import { OptionItem } from '@/types/option'
 // Utils
 import { cn } from '@/utils/cn'
 
-export interface CardContainerProps extends HTMLAttributes<HTMLElement> {
+interface CardContainerProps extends HTMLAttributes<HTMLElement> {
   hasTitle?: boolean
   title?: string
   moreMenuTitle?: string

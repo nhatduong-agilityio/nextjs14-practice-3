@@ -8,7 +8,7 @@ import { ProjectCard } from './project-card'
 // Types
 import { ProjectDetail } from '@/types/project'
 
-export interface ProjectColumnContentProps {
+interface ProjectColumnContentProps {
   isListBoard?: boolean
   listId: string
   listType: string

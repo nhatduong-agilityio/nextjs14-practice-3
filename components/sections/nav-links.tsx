@@ -1,9 +1,11 @@
 'use client'
 
 import { useMemo } from 'react'
+import { usePathname } from 'next/navigation'
 
 // Constants
 import { ROUTES } from '@/constants/routes'
+import { NAVIGATION_LABELS } from '@/constants/navigation'
 
 // Components
 import { ActivityIcon } from '@/icons/activity-icon'
@@ -13,30 +15,10 @@ import { ProjectIcon } from '@/icons/project-icon'
 import { ScheduleIcon } from '@/icons/schedule-icon'
 import { SettingsIcon } from '@/icons/settings-icon'
 import { NavItem } from '../ui/nav-item'
-import { usePathname } from 'next/navigation'
 import { Badge } from '../ui/badge'
 
-interface NavigationItem {
-  hasSubItem?: boolean
-  isSubItem?: boolean
-  icon?: JSX.Element
-  subNavigationItem?: NavigationItem[]
-  suffixContent?: JSX.Element
-  label: string
-  url: string
-}
-
-const NAVIGATION_LABELS = {
-  DASHBOARD: 'Dashboard',
-  MESSAGES: 'Messages',
-  PROJECT: 'Project',
-  SCHEDULE: 'Schedule',
-  IN_PROGRESS: 'In Progress',
-  PENDING: 'Pending',
-  COMPLETED: 'Completed',
-  ACTIVITY: 'Activity',
-  SETTINGS: 'Settings',
-}
+// Types
+import { NavigationItem } from '@/types/navigation'
 
 const NAVIGATION_LINKS: NavigationItem[] = [
   {

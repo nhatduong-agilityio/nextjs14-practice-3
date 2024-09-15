@@ -21,18 +21,22 @@ export const ProjectListCard = ({ error, projects }: ProjectListCardProps) => {
     {
       name: 'Add New Project…',
       action: () => null,
+      isDisable: true,
     },
     {
       name: 'Edit Current Project…',
       action: () => null,
+      isDisable: true,
     },
     {
       name: 'Add New Member…',
       action: () => null,
+      isDisable: true,
     },
     {
       name: 'Remove Current Member…',
       action: () => null,
+      isDisable: true,
     },
   ]
 

@@ -28,7 +28,7 @@ import { cn } from '@/utils/cn'
 import { calculateDaysLeft, getInitials } from '@/utils/formats'
 import { calculateProjectProgress } from '../utils/project-card'
 
-export interface ProjectCardProps extends ComponentProps<typeof Card> {
+interface ProjectCardProps extends ComponentProps<typeof Card> {
   variant?: 'column' | 'row'
   project: ProjectDetail
   innerRef?: (element: HTMLElement | null) => void
@@ -49,10 +49,12 @@ export const ProjectCard = ({ variant = 'column', project, className, innerRef, 
     {
       name: 'Delete Project',
       action: () => null,
+      isDisable: true,
     },
     {
       name: 'Edit Project',
       action: () => null,
+      isDisable: true,
     },
   ]
 
@@ -69,9 +71,9 @@ export const ProjectCard = ({ variant = 'column', project, className, innerRef, 
   const progress = useMemo(() => calculateProjectProgress(taskList), [taskList])
   const isVariantRow = variant === 'row'
 
-  const handleNavigateProjectDetail = () => {
+  const handleNavigateProjectDetail = useCallback(() => {
     router.push(`${ROUTES.PROJECTS}/${id}`)
-  }
+  }, [id, router])
 
   return (
     <Card

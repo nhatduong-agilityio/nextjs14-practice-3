@@ -15,7 +15,7 @@ import { cn } from '@/utils/cn'
 // Types
 import { ProjectDetail } from '@/types/project'
 
-export interface ProjectColumnProps {
+interface ProjectColumnProps {
   isListBoard?: boolean
   isDragDisabled?: boolean
   projects?: ProjectDetail[]
