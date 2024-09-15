@@ -1,9 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
-
-// Constants
-import { TEAM_DETAILS } from '@/constants/data'
+import { memo, useEffect } from 'react'
 
 // Components
 import { CardContainer } from '@/components/sections/card-container'
@@ -11,31 +8,36 @@ import { TeamCard } from './team-card'
 import { AddNewCard } from '@/components/sections/add-new-card'
 import { useToast } from '@/hooks/use-toast'
 import { TeamDetail } from '@/types/team'
+import { OptionItem } from '@/types/option'
 
 interface TeamListCardProps {
   teams?: TeamDetail[]
   error?: string
 }
 
-export const TeamListCard = ({ teams, error }: TeamListCardProps) => {
+export const TeamListCard = memo(({ teams, error }: TeamListCardProps) => {
   const { toast } = useToast()
 
-  const listActionsTeam = [
+  const listActionsTeam: OptionItem[] = [
     {
       name: 'Add New Teams…',
       action: () => null,
+      isDisable: true,
     },
     {
       name: 'Edit Current Teams…',
       action: () => null,
+      isDisable: true,
     },
     {
       name: 'Add New Member…',
       action: () => null,
+      isDisable: true,
     },
     {
       name: 'Remove Current Member…',
       action: () => null,
+      isDisable: true,
     },
   ]
 
@@ -57,4 +59,5 @@ export const TeamListCard = ({ teams, error }: TeamListCardProps) => {
       </div>
     </CardContainer>
   )
-}
+})
+TeamListCard.displayName = 'TeamListCard'

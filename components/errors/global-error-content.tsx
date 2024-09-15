@@ -1,8 +1,9 @@
+import { memo } from 'react'
 import { Button } from '@/components/ui/button'
 import { Heading } from '@/components/ui/heading'
 
-export const GlobalErrorContent = ({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) => {
-  return (
+export const GlobalErrorContent = memo(
+  ({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) => (
     <html lang='en'>
       <body>
         <section className='h-[50dvh] flex justify-center items-center'>
@@ -15,5 +16,6 @@ export const GlobalErrorContent = ({ error, reset }: { error: Error & { digest?:
         </section>
       </body>
     </html>
-  )
-}
+  ),
+)
+GlobalErrorContent.displayName = 'GlobalErrorContent'

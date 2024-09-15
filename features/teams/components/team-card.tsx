@@ -17,7 +17,7 @@ import { getInitials } from '@/utils/formats'
 // Types
 import { TeamDetail } from '@/types/team'
 
-export interface TeamCardProps extends ComponentProps<typeof Card> {
+interface TeamCardProps extends ComponentProps<typeof Card> {
   team: TeamDetail
   isOutline?: boolean
 }
@@ -31,14 +31,17 @@ export const TeamCard = memo(({ team, className, isOutline = false, ...props }: 
     {
       name: 'Show Detail',
       action: () => null,
+      isDisable: true,
     },
     {
       name: 'Delete Team',
       action: () => null,
+      isDisable: true,
     },
     {
       name: 'Edit Team',
       action: () => null,
+      isDisable: true,
     },
   ]
 

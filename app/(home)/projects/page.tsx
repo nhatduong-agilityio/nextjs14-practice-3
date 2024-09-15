@@ -1,12 +1,16 @@
 import type { Viewport } from 'next'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+
+// Constants
+import { PORT, ROUTES } from '@/constants/routes'
+
+// Components
 import { PageHeader } from '@/components/sections/page-header'
 import { getColumns } from '@/features/projects/actions/get-columns'
 import { getProjects } from '@/features/projects/actions/get-projects'
 import { ProjectBoard } from '@/features/projects/components/project-board'
 import { ProjectFilter } from '@/features/projects/components/project-filter'
-import { PORT, ROUTES } from '@/constants/routes'
 
 export const viewport: Viewport = {
   width: 'device-width',

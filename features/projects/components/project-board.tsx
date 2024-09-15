@@ -28,7 +28,7 @@ interface ProjectBoardProps {
   error?: string
 }
 
-export const ProjectBoard = ({ projects, columns, error }: ProjectBoardProps) => {
+export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
   const initialData = generateProjectMap(projects, columns)
 
   const [columnsOrdered, setColumnsOrdered] = useState(initialData)

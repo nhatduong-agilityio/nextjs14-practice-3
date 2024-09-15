@@ -24,7 +24,7 @@ import { Text } from '@/components/ui/text'
 // Hooks
 import { useProjectFilter } from '../hooks/use-project-filter'
 
-export interface ProjectFilterProps {}
+interface ProjectFilterProps {}
 
 export const PROJECT_SORTS = ['Project Name', 'Newest Project', 'Due Date', 'Project Type']
 export const PROJECT_FILTERS = ['Newest Added', 'Newest Project', 'Due Date', 'Project Type']

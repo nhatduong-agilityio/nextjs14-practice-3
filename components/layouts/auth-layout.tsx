@@ -1,23 +1,35 @@
 'use client'
 
+import { ReactNode } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+
+// Constants
+import { ROUTES } from '@/constants/routes'
+
+// Components
 import { Button } from '@/components/ui/button'
 import { Heading } from '@/components/ui/heading'
-import Image from 'next/image'
-import TeamWorkImage from '@/public/team-work.svg'
 import { BrandIcon } from '@/icons/brand-icon'
-import { useDisclosure } from '@/hooks/use-disclosure'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/utils/cn'
 import { CloseIcon } from '@/icons/close-icon'
-import Link from 'next/link'
 
-export const AuthLayout = ({ children }: { children: React.ReactNode }) => {
+// Hooks
+import { useDisclosure } from '@/hooks/use-disclosure'
+
+// Utils
+import { cn } from '@/utils/cn'
+
+// Images
+import TeamWorkImage from '@/public/team-work.svg'
+
+export const AuthLayout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const titleButton = pathname === '/sign-in' ? 'Login' : 'Create an account'
-  const titleButtonLink = pathname === '/sign-in' ? 'Create an account' : 'Login'
-  const linkHref = pathname === '/sign-in' ? '/sign-up' : '/sign-in'
+  const titleButton = pathname === ROUTES.SIGN_IN ? 'Login' : 'Create an account'
+  const titleButtonLink = pathname === ROUTES.SIGN_IN ? 'Create an account' : 'Login'
+  const linkHref = pathname === ROUTES.SIGN_IN ? ROUTES.SIGN_UP : ROUTES.SIGN_IN
 
   return (
     <main className='h-dvh w-dvw flex justify-center items-center bg-body px-4 md:px-5 xl:px-0'>
