@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
@@ -34,7 +34,7 @@ export const SignUpForm = () => {
   })
   const {
     setError,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = form
 
   const handleShowToast = useCallback(
@@ -48,9 +48,24 @@ export const SignUpForm = () => {
     [toast],
   )
 
+  const setAllFieldsError = useCallback(
+    (error: string) => {
+      setError('fullName', { type: 'manual', message: error })
+      setError('emailAddress', { type: 'manual', message: error })
+      setError('password', { type: 'manual', message: error })
+    },
+    [setError],
+  )
+
   // If sign-up process is complete, set the created session as active
   // And redirect the user
   const { onSubmit } = useSignUp(setError, handleShowToast)
+
+  useEffect(() => {
+    if (errors.root?.message) {
+      setAllFieldsError(errors.root.message)
+    }
+  }, [errors.root?.message, setAllFieldsError])
 
   return (
     <Form {...form}>

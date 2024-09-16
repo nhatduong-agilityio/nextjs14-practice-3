@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 
 // Components
 import { Button } from '@/components/ui/button'
@@ -38,7 +38,7 @@ export const SignInForm = () => {
   })
   const {
     setError,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = form
 
   const handleShowToast = useCallback(
@@ -52,9 +52,23 @@ export const SignInForm = () => {
     [toast],
   )
 
+  const setAllFieldsError = useCallback(
+    (error: string) => {
+      setError('emailOrUsername', { type: 'manual', message: error })
+      setError('password', { type: 'manual', message: error })
+    },
+    [setError],
+  )
+
   // If sign-in process is complete, set the created session as active
   // And redirect the user
   const { onSubmit } = useSignIn(setError, handleShowToast)
+
+  useEffect(() => {
+    if (errors.root?.message) {
+      setAllFieldsError(errors.root.message)
+    }
+  }, [errors.root?.message, setAllFieldsError])
 
   return (
     <Form {...form}>
