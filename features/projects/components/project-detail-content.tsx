@@ -106,7 +106,7 @@ export const ProjectDetailContent = memo(({ projectId }: ProjectDetailContentPro
                     alt={fileName}
                     width={300}
                     height={185}
-                    style={{ objectFit: 'contain', height: 185, width: 'auto' }}
+                    style={{ objectFit: 'contain', height: 185, width: 300 }}
                     className='rounded-[5px]'
                     priority
                   />

@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSelectedLayoutSegment } from 'next/navigation'
 
 // Components
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
@@ -12,24 +12,24 @@ import { CheckIcon } from '@/icons/check-icon'
 // Hocs
 import { withMoreMenu } from '@/hocs/with-more-menu'
 
-// Hooks
-import { useOnClickOutside } from '@/hooks/use-on-click-outside'
+// Constants
+import { ROUTES } from '@/constants/routes'
 
 interface ProjectDetailModalProps {
+  projectId: string
   children: React.ReactNode
 }
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const ProjectDetailModal = ({ children }: ProjectDetailModalProps) => {
+export const ProjectDetailModal = ({ projectId, children }: ProjectDetailModalProps) => {
   const wrapper = useRef(null)
   const router = useRouter()
-  const [isMoreMenuOpen, setIsMoreMenuOpen] = useState(false)
 
   const listProjectActions = [
     {
       name: 'Go To Page Detail',
-      action: () => window.location.reload(),
+      action: () => window.open(`${ROUTES.PROJECTS}/${projectId}`, '_blank'),
     },
     {
       name: 'Delete Project',
@@ -42,8 +42,8 @@ export const ProjectDetailModal = ({ children }: ProjectDetailModalProps) => {
   ]
 
   const onDismiss = useCallback(() => {
-    !isMoreMenuOpen && router.back()
-  }, [isMoreMenuOpen, router])
+    router.back()
+  }, [router])
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -57,16 +57,14 @@ export const ProjectDetailModal = ({ children }: ProjectDetailModalProps) => {
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [onKeyDown])
 
-  useOnClickOutside(wrapper, onDismiss)
-
   return (
-    <Dialog defaultOpen>
+    <Dialog defaultOpen onOpenChange={(open) => !open && onDismiss()}>
       <DialogContent ref={wrapper} className='p-0 gap-0 bg-card-secondary'>
         <DialogHeader className='flex flex-row px-5 pt-4 pb-[15px] space-y-0 items-center justify-between pr-[68px] border-b border-separator'>
           <Badge variant='outline' className='text-label-secondary h-8 rounded-[8px] font-poppins'>
             <CheckIcon width={20} height={20} className='mr-2' /> Mark Complete
           </Badge>
-          <MoreMenu title='Project Actions' menuOptions={listProjectActions} onClick={() => setIsMoreMenuOpen(true)} />
+          <MoreMenu title='Project Actions' menuOptions={listProjectActions} />
         </DialogHeader>
         <DialogTitle className='hidden'>Project Detail Modal</DialogTitle>
         <DialogDescription className='hidden'>Project Detail Modal Description</DialogDescription>

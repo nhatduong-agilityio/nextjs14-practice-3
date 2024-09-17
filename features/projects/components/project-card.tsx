@@ -44,7 +44,7 @@ export const ProjectCard = ({ variant = 'column', project, className, innerRef, 
   const listProjectActions = [
     {
       name: 'Show Detail',
-      action: () => router.push(`${ROUTES.PROJECTS}/${id}`),
+      action: () => window.open(`${ROUTES.PROJECTS}/${id}`, '_blank'),
     },
     {
       name: 'Delete Project',
