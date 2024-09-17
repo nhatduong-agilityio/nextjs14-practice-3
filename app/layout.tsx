@@ -1,5 +1,5 @@
-import { poppins, roboto } from '@/styles/fonts'
 import { ClerkProvider } from '@clerk/nextjs'
+import { poppins, roboto } from '../styles/fonts'
 import '../styles/globals.css'
 
 // Components

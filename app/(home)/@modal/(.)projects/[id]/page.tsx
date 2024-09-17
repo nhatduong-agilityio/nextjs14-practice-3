@@ -5,7 +5,7 @@ import { ProjectDetailModal } from '@/features/projects/components/project-detai
 const ProjectDetail = ({ params: { id } }: { params: { id: string } }) => {
   return (
     <Suspense fallback={null}>
-      <ProjectDetailModal>
+      <ProjectDetailModal projectId={id}>
         <ProjectDetailContent projectId={id} />
       </ProjectDetailModal>
     </Suspense>
