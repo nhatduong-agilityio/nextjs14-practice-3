@@ -55,7 +55,7 @@ export const ProjectDetailContent = memo(({ project }: ProjectDetailContentProps
       </div>
       <div className='flex gap-32 mt-[26px]'>
         <div className='flex flex-col gap-2.5'>
-          <Heading headingLevel='h4' size='xs'>
+          <Heading headingLevel='h3' size='xs'>
             ASSIGNED TO
           </Heading>
           <div className='flex gap-2.5'>
@@ -140,13 +140,13 @@ export const ProjectDetailContent = memo(({ project }: ProjectDetailContentProps
           {taskList.map(({ id, title, dueDate, assigned }) => {
             return (
               <div key={id} className='flex items-center gap-5'>
-                <Checkbox className='w-[19px] h-[19px]' variant='leaf' />
+                <Checkbox aria-label={`checkbox-${id}`} className='w-[19px] h-[19px]' variant='leaf' />
                 <div className='flex items-center gap-2.5'>
                   <Text size='md' className='leading-[26px] text-checkbox'>
                     {title}
                   </Text>
-                  <Badge variant='ghost' className='text-select-foreground leading-4'>
-                    <ScheduleIcon width={16} height={16} className='mr-1 text-select-foreground' />
+                  <Badge variant='ghost' className='text-checkbox leading-4'>
+                    <ScheduleIcon width={16} height={16} className='mr-1 text-checkbox' />
                     {formatDate(dueDate)}
                   </Badge>
                   <div className='flex items-center gap-2.5 flex-wrap'>
