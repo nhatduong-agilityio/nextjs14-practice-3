@@ -12,16 +12,16 @@ const RootLayout = ({
   children: React.ReactNode
 }>) => {
   return (
-    <ClerkProvider>
-      <html lang='en' className={`${poppins.variable} ${roboto.variable}`}>
-        <body>
+    <html lang='en' className={`${poppins.variable} ${roboto.variable}`} suppressHydrationWarning>
+      <body>
+        <ClerkProvider>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
             {children}
             <Toaster />
           </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   )
 }
 

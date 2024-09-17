@@ -36,7 +36,7 @@ export const ProjectColumnContent = ({
                   {(provided, dragSnapshot) => (
                     <ProjectCard
                       variant={isListBoard ? 'row' : 'column'}
-                      className='shadow-xs'
+                      className='shadow-xs hover:shadow-xs'
                       innerRef={provided.innerRef}
                       key={project.id}
                       project={project}

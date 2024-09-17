@@ -3,18 +3,29 @@
 import { useTheme } from 'next-themes'
 import { SignOutButton } from '@clerk/nextjs'
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
+import { useEffect, useState } from 'react'
 
 // Components
 import { Button } from '@/components/ui/button'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { SettingsIcon } from '@/icons/settings-icon'
 import { Heading } from '@/components/ui/heading'
+import { Spinner } from './spinner'
 
 export const Settings = () => {
   const { setTheme, theme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const handleChangeTheme = (value: string) => {
     setTheme(value)
+  }
+
+  if (!mounted) {
+    return <Spinner size={10} />
   }
 
   const themeOptions = [

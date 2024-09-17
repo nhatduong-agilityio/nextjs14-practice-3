@@ -1,4 +1,4 @@
-// 'use server'
+'use server'
 
 import { ApiDataResponse } from '@/types/api'
 import { updateColumn } from './update-column'
@@ -22,16 +22,25 @@ export const updateProjectMap = async (
   destinationColumn: ProjectColumn,
   movedProject: ProjectDetail,
   patchedProject?: ProjectDetail,
-): Promise<ApiDataResponse<''>> => {
+): Promise<ApiDataResponse<Record<string, ProjectDetail[]>>> => {
   try {
     const isSameColumn = sourceColumn.id === destinationColumn.id && patchedProject
     const movedProjectIndex = movedProject.index
-    const patchedProjectIndex = patchedProject ? patchedProject.index : 0
+    const prevProjectsDestinationColumn = columnsOrdered[destinationColumn.title].filter(
+      (project) => project.id !== movedProject.id,
+    )
+    const patchedProjectIndex = patchedProject
+      ? patchedProject.index
+      : prevProjectsDestinationColumn.length !== 0
+        ? prevProjectsDestinationColumn.length
+        : 0
 
     if (isSameColumn) {
       // Update all affected projects
-      await updateProject(movedProject.id, { ...movedProject, index: patchedProjectIndex })
-      await updateProject(patchedProject.id, { ...patchedProject, index: movedProjectIndex })
+      await Promise.all([
+        updateProject(movedProject.id, { ...movedProject, index: patchedProjectIndex }),
+        updateProject(patchedProject.id, { ...patchedProject, index: movedProjectIndex }),
+      ])
 
       // Update column
       const updatedColumnProjects = updateArrayWithIDs(sourceColumn.projectIds, [movedProject.id, patchedProject.id])
@@ -48,15 +57,24 @@ export const updateProjectMap = async (
       )
 
       if (newProjectsSourceColumn.length > 0) {
-        await newProjectsSourceColumn.map((project) =>
-          updateProject(project.id, { ...project, index: project.index - 1 }),
+        // await newProjectsSourceColumn.map((project) =>
+        //   updateProject(project.id, { ...project, index: project.index - 1 }),
+        // )
+
+        await Promise.all(
+          newProjectsSourceColumn.map((project) => updateProject(project.id, { ...project, index: project.index - 1 })),
         )
       }
 
       if (newProjectsDestinationColumn.length > 0) {
-        await newProjectsDestinationColumn.map((project) =>
-          updateProject(project.id, { ...project, index: project.index + 1 }),
+        await Promise.all(
+          newProjectsDestinationColumn.map((project) =>
+            updateProject(project.id, { ...project, index: project.index + 1 }),
+          ),
         )
+        // await newProjectsDestinationColumn.map((project) =>
+        //   updateProject(project.id, { ...project, index: project.index + 1 }),
+        // )
       }
 
       await updateProject(movedProject.id, {
@@ -68,11 +86,14 @@ export const updateProjectMap = async (
       // Update columns
       const updatedSourceProjects = sourceColumn.projectIds.filter((id) => id !== movedProject.id)
       const updatedDestinationProjects = updateArrayWithIDs(destinationColumn.projectIds, [movedProject.id])
-      await updateColumn(sourceColumn.id, { ...sourceColumn, projectIds: updatedSourceProjects })
-      await updateColumn(destinationColumn.id, { ...destinationColumn, projectIds: updatedDestinationProjects })
+      await Promise.all([
+        updateColumn(sourceColumn.id, { ...sourceColumn, projectIds: updatedSourceProjects }),
+        updateColumn(destinationColumn.id, { ...destinationColumn, projectIds: updatedDestinationProjects }),
+      ])
     }
 
-    return { data: '' }
+    // Return the updated columnsOrdered state
+    return { data: columnsOrdered }
   } catch (error) {
     const errorMessage = (error as Error).message || 'Failed to update after drag. Please try again.'
     return { error: errorMessage }
