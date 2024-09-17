@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import { useTransition, useOptimistic, useCallback, useMemo } from 'react'
 import { DragDropContext, OnDragEndResponder } from '@hello-pangea/dnd'
 
 // Constants
@@ -29,71 +29,115 @@ interface ProjectBoardProps {
 }
 
 export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
-  const initialData = generateProjectMap(projects, columns)
+  // Memoize the initial data to prevent unnecessary recalculations
+  const initialData = useMemo(() => generateProjectMap(projects, columns), [projects, columns])
 
-  const [columnsOrdered, setColumnsOrdered] = useState(initialData)
+  // Use optimistic state for immediate UI updates
+  const [optimisticState, setOptimisticState] = useOptimistic(
+    { columnsOrdered: initialData, ordered: Object.keys(initialData) },
+    (state, newState: Partial<{ columnsOrdered: Record<string, ProjectDetail[]>; ordered: string[] }>) => ({
+      ...state,
+      ...newState,
+    }),
+  )
 
-  const [ordered, setOrdered] = useState(Object.keys(initialData))
+  // Use transition for managing async state updates
+  const [isPending, startTransition] = useTransition()
 
   const { getFilter } = useProjectFilter()
-
   const isListBoard = getFilter('arrange') === ARRANGE.LIST
 
-  const onDragEnd: OnDragEndResponder = async (result) => {
-    if (!result.destination) {
-      return
-    }
-
-    const source = result.source
-    const destination = result.destination
-
-    // did not move anywhere - can bail early
-    if (
-      (source.droppableId === destination.droppableId && source.index === destination.index) ||
-      destination.droppableId === 'EMPTY'
-    ) {
-      return
-    }
-
-    // reordering column
-    if (result.type === 'COLUMN') {
-      const reorderedOrder = reorder(ordered, source.index, destination.index)
-      setOrdered(reorderedOrder)
-
-      // Update column order in the backend
-      const sourceColumn = columns.find((col) => col.index === source.index)
-      const destinationColumn = columns.find((col) => col.index === destination.index)
-
-      if (sourceColumn && destinationColumn) {
-        const updatedSourceColumn = { ...sourceColumn, index: destination.index }
-        const updatedDestinationColumn = { ...destinationColumn, index: source.index }
-
-        await updateColumnOrder(updatedSourceColumn, updatedDestinationColumn)
+  // Memoize the client-side wrapper for the server action
+  const clientUpdateProjectMap = useCallback(
+    async (...args: Parameters<typeof updateProjectMap>) => {
+      const result = await updateProjectMap(...args)
+      if (result.data) {
+        setOptimisticState({ columnsOrdered: result.data })
       }
-      return
-    }
+      return result
+    },
+    [setOptimisticState],
+  )
 
-    const column = columnsOrdered[source.droppableId]
-    const withQuoteRemoved = [...column]
-    withQuoteRemoved.splice(source.index, 1)
+  // Handle drag end event
+  const onDragEnd: OnDragEndResponder = useCallback(
+    (result) => {
+      if (!result.destination) return
 
-    const data = reorderProjectMap({
-      projectMap: columnsOrdered,
-      source,
-      destination,
-    })
+      const source = result.source
+      const destination = result.destination
 
-    setColumnsOrdered(data.projectMap)
+      if (
+        (source.droppableId === destination.droppableId && source.index === destination.index) ||
+        destination.droppableId === 'EMPTY'
+      ) {
+        return
+      }
 
-    const sourceColumn = columns.find((col) => col.title === source.droppableId)
-    const destinationColumn = columns.find((col) => col.title === destination.droppableId)
-    const movedProject = columnsOrdered[source.droppableId][source.index]
-    const patchedProject = columnsOrdered[destination.droppableId][destination.index]
+      startTransition(async () => {
+        if (result.type === 'COLUMN') {
+          // Handle column reordering
+          const reorderedOrder = reorder(optimisticState.ordered, source.index, destination.index)
+          setOptimisticState({ ordered: reorderedOrder })
 
-    if (sourceColumn && destinationColumn && movedProject) {
-      await updateProjectMap(data.projectMap, sourceColumn, destinationColumn, movedProject, patchedProject)
-    }
-  }
+          try {
+            const sourceColumn = columns.find((col) => col.index === source.index)
+            const destinationColumn = columns.find((col) => col.index === destination.index)
+
+            if (sourceColumn && destinationColumn) {
+              const updatedSourceColumn = { ...sourceColumn, index: destination.index }
+              const updatedDestinationColumn = { ...destinationColumn, index: source.index }
+
+              await updateColumnOrder(updatedSourceColumn, updatedDestinationColumn)
+            }
+          } catch (error) {
+            // Revert optimistic update on error
+            setOptimisticState({ ordered: optimisticState.ordered })
+          }
+          return
+        }
+
+        // Handle project reordering
+        const data = reorderProjectMap({
+          projectMap: optimisticState.columnsOrdered,
+          source,
+          destination,
+        })
+
+        setOptimisticState({ columnsOrdered: data.projectMap })
+
+        try {
+          const sourceColumn = columns.find((col) => col.title === source.droppableId)
+          const destinationColumn = columns.find((col) => col.title === destination.droppableId)
+          const movedProject = optimisticState.columnsOrdered[source.droppableId][source.index]
+          const patchedProject = optimisticState.columnsOrdered[destination.droppableId][destination.index]
+
+          if (sourceColumn && destinationColumn && movedProject) {
+            await clientUpdateProjectMap(data.projectMap, sourceColumn, destinationColumn, movedProject, patchedProject)
+          }
+        } catch (error) {
+          // Revert optimistic update on error
+          setOptimisticState({ columnsOrdered: optimisticState.columnsOrdered })
+        }
+      })
+    },
+    [columns, optimisticState.columnsOrdered, optimisticState.ordered, setOptimisticState, clientUpdateProjectMap],
+  )
+
+  // Memoize the project columns to prevent unnecessary re-renders
+  const projectColumns = useMemo(
+    () =>
+      optimisticState.ordered.map((key, index) => (
+        <ProjectColumn
+          key={key}
+          index={index}
+          title={key}
+          projects={optimisticState.columnsOrdered[key]}
+          isListBoard={isListBoard}
+        />
+      )),
+    [optimisticState.ordered, optimisticState.columnsOrdered, isListBoard],
+  )
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -104,16 +148,13 @@ export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
-            {ordered.map((key, index) => (
-              <ProjectColumn
-                key={key}
-                index={index}
-                title={key}
-                projects={columnsOrdered[key]}
-                isListBoard={isListBoard}
-              />
-            ))}
-            <ProjectColumn isDragDisabled index={ordered.length} title='EMPTY' isListBoard={isListBoard} />
+            {projectColumns}
+            <ProjectColumn
+              isDragDisabled
+              index={optimisticState.ordered.length}
+              title='EMPTY'
+              isListBoard={isListBoard}
+            />
             {provided.placeholder}
           </div>
         )}
