@@ -1,5 +1,3 @@
-'use server'
-
 import { ApiDataResponse } from '@/types/api'
 import { updateColumn } from './update-column'
 import { updateProject } from './update-project'
@@ -57,10 +55,6 @@ export const updateProjectMap = async (
       )
 
       if (newProjectsSourceColumn.length > 0) {
-        // await newProjectsSourceColumn.map((project) =>
-        //   updateProject(project.id, { ...project, index: project.index - 1 }),
-        // )
-
         await Promise.all(
           newProjectsSourceColumn.map((project) => updateProject(project.id, { ...project, index: project.index - 1 })),
         )
@@ -72,9 +66,6 @@ export const updateProjectMap = async (
             updateProject(project.id, { ...project, index: project.index + 1 }),
           ),
         )
-        // await newProjectsDestinationColumn.map((project) =>
-        //   updateProject(project.id, { ...project, index: project.index + 1 }),
-        // )
       }
 
       await updateProject(movedProject.id, {
