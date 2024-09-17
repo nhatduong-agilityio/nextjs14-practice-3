@@ -1,11 +1,7 @@
 'use client'
 
-import { memo } from 'react'
-import { notFound } from 'next/navigation'
+import { memo, useCallback, useState } from 'react'
 import Image from 'next/image'
-
-// Constants
-import { PROJECT_DETAILS } from '@/constants/data'
 
 // Components
 import { Heading } from '@/components/ui/heading'
@@ -27,20 +23,27 @@ import { CommentFileInput } from './comment-file-input'
 // Utils
 import { formatDate, getInitials, getTimeAgo } from '@/utils/formats'
 import { calculateProjectProgress } from '../utils/project-card'
+import { ProjectDetail } from '@/types/project'
+import { cn } from '@/utils/cn'
+import { EditDescriptionForm } from './edit-description-form'
+import { useDisclosure } from '@/hooks/use-disclosure'
 
 interface ProjectDetailContentProps {
-  projectId: string
+  project: ProjectDetail
 }
 
-export const ProjectDetailContent = memo(({ projectId }: ProjectDetailContentProps) => {
-  const project = PROJECT_DETAILS.find((project) => project.id === projectId)
-
-  if (!project) return notFound()
-
+export const ProjectDetailContent = memo(({ project }: ProjectDetailContentProps) => {
   const { name, owner, createdDate, assigned, dueDate, description, attachment, taskList, comments } = project
+
+  const { isOpen, onClose, onOpen } = useDisclosure()
+  const [descClass, setDescClass] = useState('line-clamp-5')
+
   const timeAgo = getTimeAgo(createdDate)
   const formattedDueDate = formatDate(dueDate)
   const progress = calculateProjectProgress(taskList)
+  const isMaxDescription = description.length >= 480
+
+  const handleShowFullDesc = useCallback(() => setDescClass('line-clamp-none'), [])
 
   return (
     <article className='flex flex-col w-full py-8 px-10'>
@@ -79,16 +82,24 @@ export const ProjectDetailContent = memo(({ projectId }: ProjectDetailContentPro
         </div>
       </div>
       <Separator className='my-30' />
-      <div className='flex gap-5'>
+      <div className='flex gap-5' onDoubleClick={onOpen}>
         <DescriptionIcon />
         <div className='flex flex-col w-full gap-[13px]'>
-          <Heading headingLevel='h4' className='text-base text-text-label'>
-            Description
-          </Heading>
-          <Text className='line-clamp-5'>{description}</Text>
-          <Button variant='link' size='text' className='w-fit font-normal mt-[7px]'>
-            Show Full Description
-          </Button>
+          {isOpen ? (
+            <EditDescriptionForm project={project} onCancel={onClose} />
+          ) : (
+            <>
+              <Heading headingLevel='h4' className='text-base text-text-label'>
+                Description
+              </Heading>
+              <Text className={cn(descClass)}>{description}</Text>
+              {isMaxDescription && (
+                <Button variant='link' size='text' className='w-fit font-normal mt-[7px]' onClick={handleShowFullDesc}>
+                  Show Full Description
+                </Button>
+              )}
+            </>
+          )}
         </div>
       </div>
       <div className='flex gap-5 mt-10'>
