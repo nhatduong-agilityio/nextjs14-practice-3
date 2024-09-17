@@ -34,10 +34,12 @@ export const ProjectDetailModal = ({ projectId, children }: ProjectDetailModalPr
     {
       name: 'Delete Project',
       action: () => null,
+      isDisable: true,
     },
     {
       name: 'Edit Project',
       action: () => null,
+      isDisable: true,
     },
   ]
 

@@ -2,7 +2,7 @@ import { updateProjectMap } from '../update-project-map'
 import { updateColumn } from '../update-column'
 import { updateProject } from '../update-project'
 import { ProjectColumn, ProjectDetail } from '@/types/project'
-import { PROJECT_DETAILS } from '@/constants/data'
+import { PROJECT_COLUMNS, PROJECT_DETAILS } from '@/constants/data'
 
 jest.mock('../update-column')
 jest.mock('../update-project')
@@ -42,35 +42,71 @@ describe('updateProjectMap', () => {
 
     expect(updateProject).toHaveBeenCalledTimes(2)
     expect(updateColumn).toHaveBeenCalledTimes(1)
-    expect(result).toEqual({ data: '' })
+    expect(result).toEqual({ data: mockColumnsOrdered })
   })
 
   it('should update project map when moving between different columns', async () => {
     const result = await updateProjectMap(mockColumnsOrdered, mockSourceColumn, mockDestinationColumn, mockMovedProject)
 
-    expect(updateProject).toHaveBeenCalledTimes(3)
+    expect(updateProject).toHaveBeenCalledTimes(2) // 1 for moved project, 2 for updating indices
     expect(updateColumn).toHaveBeenCalledTimes(2)
-    expect(result).toEqual({ data: '' })
+    expect(result).toEqual({ data: mockColumnsOrdered })
   })
 
-  it('should handle errors with custom error messages', async () => {
-    const customErrorMessage = 'Custom error occurred'
-    ;(updateProject as jest.Mock).mockImplementation(() => {
-      throw new Error(customErrorMessage)
-    })
+  it('should handle errors and return an error message', async () => {
+    ;(updateProject as jest.Mock).mockRejectedValueOnce(new Error('Test error'))
 
     const result = await updateProjectMap(mockColumnsOrdered, mockSourceColumn, mockDestinationColumn, mockMovedProject)
 
-    expect(result).toEqual({ error: customErrorMessage })
+    expect(result).toEqual({ error: 'Test error' })
   })
 
-  it('should use default error message when error object has no message', async () => {
-    ;(updateProject as jest.Mock).mockImplementation(() => {
-      throw new Error()
-    })
+  it('should update indices of projects in destination column', async () => {
+    const mockDestinationColumnWithMultipleProjects: ProjectColumn = PROJECT_COLUMNS[2]
+
+    const mockColumnsOrderedWithMultipleDestinationProjects: Record<string, ProjectDetail[]> = {
+      Pending: [PROJECT_DETAILS[0], PROJECT_DETAILS[1]],
+      Completed: [PROJECT_DETAILS[4]],
+    }
+
+    await updateProjectMap(
+      mockColumnsOrderedWithMultipleDestinationProjects,
+      mockDestinationColumnWithMultipleProjects,
+      PROJECT_COLUMNS[0],
+      PROJECT_DETAILS[0],
+    )
+
+    expect(updateProject).toHaveBeenCalledTimes(2)
+  })
+
+  it('should use fallback error message when error has no message', async () => {
+    ;(updateProject as jest.Mock).mockRejectedValueOnce(new Error())
 
     const result = await updateProjectMap(mockColumnsOrdered, mockSourceColumn, mockDestinationColumn, mockMovedProject)
 
     expect(result).toEqual({ error: 'Failed to update after drag. Please try again.' })
+  })
+
+  it('should set patchedProjectIndex to 0 when destination column is empty', async () => {
+    const emptyDestinationColumn: ProjectColumn = {
+      id: 'empty-destination-column',
+      title: 'Empty Column',
+      index: 2,
+      projectIds: [],
+    }
+
+    const columnsOrderedWithEmptyDestination: Record<string, ProjectDetail[]> = {
+      Pending: [PROJECT_DETAILS[0], PROJECT_DETAILS[1]],
+      'Empty Column': [],
+    }
+
+    await updateProjectMap(
+      columnsOrderedWithEmptyDestination,
+      mockSourceColumn,
+      emptyDestinationColumn,
+      {} as ProjectDetail,
+    )
+
+    expect(updateProject).toHaveBeenCalledTimes(1)
   })
 })

@@ -28,7 +28,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
       <div className='flex flex-row justify-start items-center relative'>
         <input
           type={type}
-          className={cn(searchInputVariants({ className, variant }))}
+          className={cn('focus:max-w-full', searchInputVariants({ className, variant }))}
           placeholder={placeholder}
           ref={ref}
           {...props}
