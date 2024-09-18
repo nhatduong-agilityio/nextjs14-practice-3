@@ -54,12 +54,12 @@ NextJS Practice 3: Square Dashboard
 
 Make sure you install packages with correct version below:
 
-- [node v18.18.2+](https://nodejs.org/en/download/package-manager)
-- [pnpm 9.1.2+](https://pnpm.io/installation)
+- [node v22.6.0](https://nodejs.org/en/download/package-manager)
+- [pnpm 9.7.1](https://pnpm.io/installation)
 
 - **Note:**
   - Please add `.env` into root of project source code, refer `.env.sample`.
-  - Refer: Please clone data from `./mock-api` and create it on [mockAPI](https://mockapi.io/projects) then use in your project.
+  - Refer: Please clone data from `./db.json` and run it with `$ json-server --watch db.sjon --port 5500`.
 
 Check and update config image hosting on `next.config.mjs` file follow [Next.js document](https://nextjs.org/docs/messages/next-image-unconfigured-host)
 
