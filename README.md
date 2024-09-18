@@ -39,7 +39,7 @@ NextJS Practice 3: Square Dashboard
 ### Technical Stack
 
 - Next [14.2.5]
-- NextAuth
+- [Clerk](https://clerk.com/docs)
 - React [^18]
 - Node [v22.6.0]
 - Pnpm [9.7.1]
