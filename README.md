@@ -5,7 +5,7 @@ www.agilityio.com
 
 NextJS Practice 3: Square Dashboard
 
-21Th Aug 2024
+22Th Aug 2024
 
 ## Overview
 
@@ -15,7 +15,7 @@ NextJS Practice 3: Square Dashboard
 
 ## Timeline
 
-- 12 working days
+- 15 working days
 
 ## Targets
 
@@ -26,7 +26,6 @@ NextJS Practice 3: Square Dashboard
     - useSearchParams
     - usePathname
     - userRouter
-    - useFormStatus
     - useFormState
   - Directive:
     - 'use server'
