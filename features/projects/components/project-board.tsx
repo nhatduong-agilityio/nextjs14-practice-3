@@ -21,6 +21,7 @@ import { ProjectDetail, ProjectColumn as ProjectColumnType } from '@/types/proje
 // Actions
 import { updateColumnOrder } from '../actions/update-column-order'
 import { updateProjectMap } from '../actions/update-project-map'
+import { useToast } from '@/hooks/use-toast'
 
 interface ProjectBoardProps {
   projects: ProjectDetail[]
@@ -29,13 +30,22 @@ interface ProjectBoardProps {
 }
 
 export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
+  const { toast } = useToast()
+
   // Memoize the initial data to prevent unnecessary recalculations
   const initialData = useMemo(() => generateProjectMap(projects, columns), [projects, columns])
 
   // Use optimistic state for immediate UI updates
   const [optimisticState, setOptimisticState] = useOptimistic(
-    { columnsOrdered: initialData, ordered: Object.keys(initialData) },
-    (state, newState: Partial<{ columnsOrdered: Record<string, ProjectDetail[]>; ordered: string[] }>) => ({
+    { columnsOrdered: initialData, ordered: Object.keys(initialData), pendingProjectId: '' },
+    (
+      state,
+      newState: Partial<{
+        columnsOrdered: Record<string, ProjectDetail[]>
+        ordered: string[]
+        pendingProjectId: string
+      }>,
+    ) => ({
       ...state,
       ...newState,
     }),
@@ -46,18 +56,6 @@ export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
 
   const { getFilter } = useProjectFilter()
   const isListBoard = getFilter('arrange') === ARRANGE.LIST
-
-  // Memoize the client-side wrapper for the server action
-  const clientUpdateProjectMap = useCallback(
-    async (...args: Parameters<typeof updateProjectMap>) => {
-      const result = await updateProjectMap(...args)
-      if (result.data) {
-        setOptimisticState({ columnsOrdered: result.data })
-      }
-      return result
-    },
-    [setOptimisticState],
-  )
 
   // Handle drag end event
   const onDragEnd: OnDragEndResponder = useCallback(
@@ -95,33 +93,56 @@ export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
             setOptimisticState({ ordered: optimisticState.ordered })
           }
           return
-        }
+        } else {
+          // Handle project reordering
+          const data = reorderProjectMap({
+            projectMap: optimisticState.columnsOrdered,
+            source,
+            destination,
+          })
 
-        // Handle project reordering
-        const data = reorderProjectMap({
-          projectMap: optimisticState.columnsOrdered,
-          source,
-          destination,
-        })
-
-        setOptimisticState({ columnsOrdered: data.projectMap })
-
-        try {
-          const sourceColumn = columns.find((col) => col.title === source.droppableId)
-          const destinationColumn = columns.find((col) => col.title === destination.droppableId)
           const movedProject = optimisticState.columnsOrdered[source.droppableId][source.index]
-          const patchedProject = optimisticState.columnsOrdered[destination.droppableId][destination.index]
+          setOptimisticState({ columnsOrdered: data.projectMap, pendingProjectId: movedProject.id })
 
-          if (sourceColumn && destinationColumn && movedProject) {
-            await clientUpdateProjectMap(data.projectMap, sourceColumn, destinationColumn, movedProject, patchedProject)
+          try {
+            const sourceColumn = columns.find((col) => col.title === source.droppableId)
+            const destinationColumn = columns.find((col) => col.title === destination.droppableId)
+            const patchedProject = optimisticState.columnsOrdered[destination.droppableId][destination.index]
+
+            if (sourceColumn && destinationColumn && movedProject) {
+              const result = await updateProjectMap(
+                data.projectMap,
+                sourceColumn,
+                destinationColumn,
+                movedProject,
+                patchedProject,
+              )
+
+              if (result.data) {
+                setOptimisticState({ columnsOrdered: result.data, pendingProjectId: '' })
+              } else {
+                toast({
+                  title: 'Failed to update project board',
+                  description: result.error,
+                  variant: 'destructive',
+                })
+              }
+            }
+            setOptimisticState({ pendingProjectId: '' })
+          } catch (error) {
+            // Revert optimistic update on error
+            setOptimisticState({ columnsOrdered: optimisticState.columnsOrdered, pendingProjectId: '' })
+            // Display toast for error message
+            toast({
+              title: 'Failed to update project board',
+              description: 'Failed to update project board. Please try again.',
+              variant: 'destructive',
+            })
           }
-        } catch (error) {
-          // Revert optimistic update on error
-          setOptimisticState({ columnsOrdered: optimisticState.columnsOrdered })
         }
       })
     },
-    [columns, optimisticState.columnsOrdered, optimisticState.ordered, setOptimisticState, clientUpdateProjectMap],
+    [optimisticState.ordered, optimisticState.columnsOrdered, setOptimisticState, columns, toast],
   )
 
   // Memoize the project columns to prevent unnecessary re-renders
@@ -134,9 +155,10 @@ export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
           title={key}
           projects={optimisticState.columnsOrdered[key]}
           isListBoard={isListBoard}
+          pendingProjectId={optimisticState.pendingProjectId}
         />
       )),
-    [optimisticState.ordered, optimisticState.columnsOrdered, isListBoard],
+    [optimisticState.ordered, optimisticState.columnsOrdered, optimisticState.pendingProjectId, isListBoard],
   )
 
   return (

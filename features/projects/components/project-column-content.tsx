@@ -13,6 +13,7 @@ interface ProjectColumnContentProps {
   listId: string
   listType: string
   projects: ProjectDetail[]
+  pendingProjectId?: string
 }
 
 export const ProjectColumnContent = ({
@@ -20,6 +21,7 @@ export const ProjectColumnContent = ({
   listId = 'LIST',
   listType,
   projects,
+  pendingProjectId,
 }: ProjectColumnContentProps) => {
   return (
     <Droppable droppableId={listId} type={listType}>
@@ -44,6 +46,7 @@ export const ProjectColumnContent = ({
                       data-is-dragging={dragSnapshot.isDragging}
                       data-testid={project.id}
                       data-index={index}
+                      isPending={project.id === pendingProjectId}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       role='none'

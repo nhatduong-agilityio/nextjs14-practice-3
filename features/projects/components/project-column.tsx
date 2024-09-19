@@ -21,6 +21,7 @@ interface ProjectColumnProps {
   projects?: ProjectDetail[]
   title: string
   index: number
+  pendingProjectId?: string
 }
 
 export const ProjectColumn = ({
@@ -29,6 +30,7 @@ export const ProjectColumn = ({
   isDragDisabled = false,
   isListBoard = false,
   index,
+  pendingProjectId,
 }: ProjectColumnProps) => {
   return (
     <Draggable isDragDisabled={isDragDisabled} draggableId={title} index={index}>
@@ -57,6 +59,7 @@ export const ProjectColumn = ({
                     listId={title}
                     listType='PROJECT'
                     projects={projects}
+                    pendingProjectId={pendingProjectId}
                   />
                 )}
               </CardContainer>

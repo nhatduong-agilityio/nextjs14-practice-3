@@ -32,11 +32,19 @@ interface ProjectCardProps extends ComponentProps<typeof Card> {
   variant?: 'column' | 'row'
   project: ProjectDetail
   innerRef?: (element: HTMLElement | null) => void
+  isPending?: boolean
 }
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const ProjectCard = ({ variant = 'column', project, className, innerRef, ...props }: ProjectCardProps) => {
+export const ProjectCard = ({
+  variant = 'column',
+  project,
+  className,
+  innerRef,
+  isPending,
+  ...props
+}: ProjectCardProps) => {
   const router = useRouter()
 
   const { assigned, name, team, attachment, dueDate, taskList, id } = project
@@ -82,6 +90,7 @@ export const ProjectCard = ({ variant = 'column', project, className, innerRef, 
         'flex flex-col w-full cursor-pointer hover:shadow-md',
         isVariantRow && 'flex-row px-[25px] py-[15px] gap-[49px]',
         className,
+        isPending && 'opacity-50 pointer-events-none',
       )}
       onClick={handleNavigateProjectDetail}
       {...props}
