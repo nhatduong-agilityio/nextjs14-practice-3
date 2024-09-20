@@ -1,5 +1,11 @@
-import { GlobalNotFound } from '@/components/not-founds/global-not-found'
+import { MainNotFound } from '@/components/not-founds/main-not-found'
 
-const NotFound = () => <GlobalNotFound />
+const NotFound = () => (
+  <html lang='en'>
+    <body>
+      <MainNotFound />
+    </body>
+  </html>
+)
 
 export default NotFound

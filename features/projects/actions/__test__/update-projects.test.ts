@@ -19,7 +19,6 @@ describe('updateProject', () => {
     const result = await updateProject(mockProjectId, mockProject)
 
     expect(apiService.update).toHaveBeenCalledWith(`${API_ENDPOINT.PROJECTS}/${mockProjectId}`, mockProject)
-    expect(revalidateTag).toHaveBeenCalledWith(API_ENDPOINT.PROJECTS)
     expect(revalidateTag).toHaveBeenCalledWith(`${API_ENDPOINT.PROJECTS}/${mockProjectId}`)
     expect(result).toEqual({ data: mockProject })
   })

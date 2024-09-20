@@ -45,17 +45,18 @@ export const AuthLayout = ({ children }: { children: ReactNode }) => {
             isOpen &&
               'hidden 2xl:flex rounded-lg md:rounded-xl 2xl:rounded-e-none animate-fade-in-right border border-border-secondary',
           )}
+          data-testid='auth-left-section'
         >
-          <div className='w-full flex justify-between items-center'>
-            <BrandIcon />
+          <div className='w-full flex justify-between items-center' data-testid='auth-header'>
+            <BrandIcon data-testid='brand-icon' />
             {isOpen ? (
               <Link href={linkHref}>
-                <Button size='lg' variant='secondary' onClick={onOpen}>
+                <Button size='lg' variant='secondary' onClick={onOpen} data-testid='auth-link-button'>
                   {titleButtonLink}
                 </Button>
               </Link>
             ) : (
-              <Button size='lg' variant='secondary' onClick={onOpen}>
+              <Button size='lg' variant='secondary' onClick={onOpen} data-testid='auth-main-button'>
                 {titleButton}
               </Button>
             )}
@@ -65,6 +66,7 @@ export const AuthLayout = ({ children }: { children: ReactNode }) => {
             src={TeamWorkImage}
             priority
             sizes='100%'
+            data-testid='teamwork-image'
             // Make the image display full width
             style={{
               width: '100%',
@@ -82,13 +84,20 @@ export const AuthLayout = ({ children }: { children: ReactNode }) => {
             'hidden flex-col justify-start items-center p-5 md:p-30 xl:p-50 bg-card rounded-lg md:rounded-xl 2xl:rounded-s-none animate-fade-in-left relative max-h-[90dvh]',
             isOpen && 'flex',
           )}
+          data-testid='auth-right-section'
         >
-          <div className='flex flex-col sm:min-w-[506px] pt-2.5 px-2.5 overflow-y-scroll no-scrollbar'>{children}</div>
+          <div
+            className='flex flex-col sm:min-w-[506px] pt-2.5 px-2.5 overflow-y-scroll no-scrollbar'
+            data-testid='auth-children'
+          >
+            {children}
+          </div>
           <Button
             size='icon'
             variant='rounded'
             className='bg-input-foreground md:w-12 md:h-12 absolute top-[-2px] right-[-10px]'
             onClick={onClose}
+            data-testid='auth-close-button'
           >
             <CloseIcon className='text-secondary' />
           </Button>

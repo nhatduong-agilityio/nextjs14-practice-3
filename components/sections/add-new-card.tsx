@@ -20,11 +20,15 @@ export const AddNewCard = memo(({ className, title = 'Add', ...props }: AddNewCa
         className,
       )}
       {...props}
+      data-testid='add-new-card'
     >
-      <div className='bg-white w-[38px] h-[38px] flex justify-center items-center rounded-full'>
+      <div
+        className='bg-white w-[38px] h-[38px] flex justify-center items-center rounded-full'
+        data-testid='plus-icon-wrapper'
+      >
         <PlusIcon className='text-primary' width={20} height={20} />
       </div>
-      <Heading headingLevel='h3' className='font-medium' size='md'>
+      <Heading headingLevel='h3' className='font-medium' size='md' data-testid='card-title'>
         {title}
       </Heading>
     </Card>

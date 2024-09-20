@@ -39,12 +39,12 @@ export const Header = () => {
 
   return (
     <header className='w-full sticky top-0 left-0 py-4 px-5 flex items-center justify-between bg-card z-10 border-b border-separator'>
-      <Link href='/' aria-label='brand-link'>
+      <Link href='/' aria-label='brand-link' data-testid='brand-link'>
         <BrandIcon />
       </Link>
       <Sheet>
         <SheetTrigger asChild>
-          <Button size='icon' variant='outline' className='lg:hidden'>
+          <Button size='icon' variant='outline' className='lg:hidden' data-testid='gantt-icon-button'>
             <GanttIcon />
           </Button>
         </SheetTrigger>
@@ -52,17 +52,17 @@ export const Header = () => {
           <NavLinks />
         </SheetContent>
       </Sheet>
-      <nav className='items-center gap-5 hidden lg:flex'>
-        <SearchInput value={searchTerm} onChange={handleSearch} />
-        <Button className='w-fit'>
+      <nav className='items-center gap-5 hidden lg:flex' data-testid='nav-bar'>
+        <SearchInput value={searchTerm} onChange={handleSearch} data-testid='search-input' />
+        <Button className='w-fit' data-testid='new-button'>
           <PlusIcon className='mr-2 text-primary-foreground' /> New
         </Button>
-        <Button size='text' variant='ghost'>
+        <Button size='text' variant='ghost' data-testid='notification-button'>
           <NotificationIcon className='hover:text-primary' />
         </Button>
-        <Avatar size='sm'>
-          <AvatarImage src='https://github.com/shadcn.png' alt='@shadcn' />
-          <AvatarFallback>CN</AvatarFallback>
+        <Avatar size='sm' data-testid='avatar'>
+          <AvatarImage src='https://github.com/shadcn.png' alt='@shadcn' data-testid='avatar-image' />
+          <AvatarFallback data-testid='avatar-fallback'>CN</AvatarFallback>
         </Avatar>
       </nav>
     </header>

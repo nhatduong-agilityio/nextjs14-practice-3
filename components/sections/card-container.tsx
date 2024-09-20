@@ -39,6 +39,7 @@ export const CardContainer = ({
       ref={innerRef}
       className={cn('w-full flex flex-col shadow-sm border border-separator rounded-3xl p-[5px]', className)}
       {...props}
+      data-testid='card-container'
     >
       <div
         className={cn(
@@ -46,15 +47,22 @@ export const CardContainer = ({
           hasTitle && !menuOptions && 'justify-start',
           !hasTitle && menuOptions && 'justify-end',
         )}
+        data-testid='card-container-header'
       >
         {hasTitle && (
-          <Heading headingLevel='h2' variant='secondary' size='md' aria-label='card-container-heading'>
+          <Heading
+            headingLevel='h2'
+            variant='secondary'
+            size='md'
+            aria-label='card-container-heading'
+            data-testid='card-container-title'
+          >
             {title}
           </Heading>
         )}
-        {menuOptions && <MoreMenu title={moreMenuTitle} menuOptions={menuOptions} />}
+        {menuOptions && <MoreMenu title={moreMenuTitle} menuOptions={menuOptions} data-testid='more-menu' />}
       </div>
-      {children}
+      <div data-testid='card-container-children'>{children}</div>
     </section>
   )
 }

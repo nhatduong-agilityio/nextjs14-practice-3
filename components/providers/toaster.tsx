@@ -10,7 +10,7 @@ export const Toaster = () => {
     <ToastProvider>
       {toasts.map(({ id, title, description, action, ...props }) => {
         return (
-          <Toast key={id} {...props}>
+          <Toast key={id} {...props} data-testid='toast'>
             <div className='grid gap-1'>
               {title && <ToastTitle>{title}</ToastTitle>}
               {description && <ToastDescription>{description}</ToastDescription>}
