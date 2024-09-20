@@ -51,8 +51,8 @@ describe('editDescription', () => {
 
     expect(updateProject).toHaveBeenCalled()
     expect(result).toEqual({
-      error: 'Database Error',
-      message: 'Failed to Create Invoice.',
+      error: 'Failed to fetch',
+      message: 'Failed to update description.',
     })
   })
 })
