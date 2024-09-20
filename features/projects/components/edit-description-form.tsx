@@ -1,6 +1,6 @@
 'use client'
 
-import { memo, useOptimistic } from 'react'
+import { memo, useEffect, useOptimistic } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Button } from '@/components/ui/button'
@@ -10,6 +10,7 @@ import { ProjectDetail } from '@/types/project'
 import { editDescription } from '../actions/edit-description'
 import { useFormState } from 'react-dom'
 import { Text } from '@/components/ui/text'
+import { useToast } from '@/hooks/use-toast'
 
 interface EditDescriptionFormProps {
   project: ProjectDetail
@@ -17,6 +18,8 @@ interface EditDescriptionFormProps {
 }
 
 export const EditDescriptionForm = memo(({ project, onCancel }: EditDescriptionFormProps) => {
+  const { toast } = useToast()
+
   const [optimisticProject, updateOptimisticProject] = useOptimistic(
     { description: project.description },
     (state, newDescription: string) => ({
@@ -38,6 +41,16 @@ export const EditDescriptionForm = memo(({ project, onCancel }: EditDescriptionF
     desc && updateOptimisticProject(desc)
     formAction(data)
   }
+
+  useEffect(() => {
+    if (state.message && state.error) {
+      toast({
+        title: state.error,
+        description: state.message,
+        variant: 'destructive',
+      })
+    }
+  }, [state.error, state.message, toast])
 
   return (
     <Form {...form}>
