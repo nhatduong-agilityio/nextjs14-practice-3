@@ -1,5 +1,3 @@
-'use server'
-
 import { ProjectDetail } from '@/types/project'
 import { updateProject } from './update-project'
 
@@ -30,8 +28,8 @@ export const editDescription = async (
     }
   } catch (error) {
     return {
-      error: 'Database Error',
-      message: 'Failed to Create Invoice.',
+      error: 'Failed to fetch',
+      message: 'Failed to update description.',
     }
   }
 }
