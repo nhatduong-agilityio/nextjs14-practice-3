@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNav matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-col pt-10 gap-2.5"
+  >
+    <section
+      class="flex flex-col gap-[30px] px-5"
+    >
+      <div>
+        Team Selection Mock
+      </div>
+      <div
+        class="h-[1px] w-full shrink-0 bg-separator px-5"
+        data-orientation="horizontal"
+        role="none"
+      />
+    </section>
+    <div>
+      <div>
+        Nav Links Mock
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

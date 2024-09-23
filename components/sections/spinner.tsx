@@ -7,7 +7,7 @@ interface SpinnerProps {
 }
 
 export const Spinner = memo(({ size = 6, color = 'text-primary-foreground' }: SpinnerProps) => (
-  <div className='flex justify-center'>
+  <div data-testid='spinner' className='flex justify-center'>
     <div
       className={cn(
         'animate-spin inline-block border-[3px] border-current border-t-transparent rounded-full',
