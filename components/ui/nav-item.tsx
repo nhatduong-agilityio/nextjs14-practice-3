@@ -1,10 +1,10 @@
+import React from 'react'
 import Link from 'next/link'
 
 import { SheetClose } from './sheet'
 import { Separator } from './separator'
 import { Text } from './text'
 import { cn } from '@/utils/cn'
-import React from 'react'
 import { ChevronUpIcon } from '@/icons/chevron-up-icon'
 import { ChevronDownIcon } from '@/icons/chevron-down-icon'
 
@@ -36,6 +36,7 @@ export const NavItem = ({
   return (
     <SheetClose asChild>
       <Link
+        data-testid={`nav-item-${url}`}
         href={url}
         className={cn(
           'h-[52px] w-full flex justify-between items-center py-2.5',
@@ -59,7 +60,12 @@ export const NavItem = ({
           </Text>
         </div>
 
-        {hasSubItem && (isActive ? <ChevronUpIcon /> : <ChevronDownIcon />)}
+        {hasSubItem &&
+          (isActive ? (
+            <ChevronUpIcon data-testid='chevron-up-icon' />
+          ) : (
+            <ChevronDownIcon data-testid='chevron-down-icon' />
+          ))}
         {suffixContent}
       </Link>
     </SheetClose>

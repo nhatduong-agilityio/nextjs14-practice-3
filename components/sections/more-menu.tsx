@@ -38,7 +38,7 @@ const MoreMenu = memo(
                 {title}
               </Label>
             )}
-            <PopoverClose onClick={(e) => e.stopPropagation()}>
+            <PopoverClose data-testid='popover-close' onClick={(e) => e.stopPropagation()}>
               <CloseIcon width={16} height={16} />
             </PopoverClose>
           </div>

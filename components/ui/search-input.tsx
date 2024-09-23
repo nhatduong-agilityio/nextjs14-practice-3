@@ -33,7 +33,7 @@ const SearchInput = React.forwardRef<HTMLInputElement, SearchInputProps>(
           ref={ref}
           {...props}
         />
-        <SearchIcon className='absolute left-0 ml-2.5' />
+        <SearchIcon data-testid='search-icon' className='absolute left-0 ml-2.5' />
       </div>
     )
   },
