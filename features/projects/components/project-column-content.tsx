@@ -47,6 +47,7 @@ export const ProjectColumnContent = ({
                       data-testid={project.id}
                       data-index={index}
                       isPending={project.id === pendingProjectId}
+                      hasAssignment
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       role='none'
