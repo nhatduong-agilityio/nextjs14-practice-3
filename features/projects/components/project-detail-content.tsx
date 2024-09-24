@@ -137,10 +137,15 @@ export const ProjectDetailContent = memo(({ project }: ProjectDetailContentProps
         </div>
         <Progress value={progress} direction='row' />
         <div className='flex flex-col gap-5 mt-[5px]'>
-          {taskList.map(({ id, title, dueDate, assigned }) => {
+          {taskList.map(({ id, title, dueDate, assigned, status }) => {
             return (
               <div key={id} className='flex items-center gap-5'>
-                <Checkbox aria-label={`checkbox-${id}`} className='w-[19px] h-[19px]' variant='leaf' />
+                <Checkbox
+                  aria-label={`checkbox-${id}`}
+                  className='w-[19px] h-[19px]'
+                  variant='leaf'
+                  checked={status === 'Completed'}
+                />
                 <div className='flex items-center gap-2.5'>
                   <Text size='md' className='leading-[26px] text-checkbox'>
                     {title}

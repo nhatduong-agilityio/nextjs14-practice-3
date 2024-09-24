@@ -16,6 +16,7 @@ import { AttachmentIcon } from '@/icons/attachment-icon'
 import { Tag } from '@/components/ui/tag'
 import { ActivityIcon } from '@/icons/activity-icon'
 import { Progress } from '@/components/ui/progress'
+import { AssignmentIcon } from '@/icons/assignment-icon'
 
 // Types
 import { ProjectDetail } from '@/types/project'
@@ -26,13 +27,14 @@ import { withMoreMenu } from '@/hocs/with-more-menu'
 // Utils
 import { cn } from '@/utils/cn'
 import { calculateDaysLeft, getInitials } from '@/utils/formats'
-import { calculateProjectProgress } from '../utils/project-card'
+import { calculateProjectProgress, calculateTaskCompleted } from '../utils/project-card'
 
 interface ProjectCardProps extends ComponentProps<typeof Card> {
   variant?: 'column' | 'row'
   project: ProjectDetail
   innerRef?: (element: HTMLElement | null) => void
   isPending?: boolean
+  hasAssignment?: boolean
 }
 
 const MoreMenu = withMoreMenu(MoreIcon)
@@ -43,6 +45,7 @@ export const ProjectCard = ({
   className,
   innerRef,
   isPending,
+  hasAssignment = false,
   ...props
 }: ProjectCardProps) => {
   const router = useRouter()
@@ -77,6 +80,7 @@ export const ProjectCard = ({
   }, [])
 
   const progress = useMemo(() => calculateProjectProgress(taskList), [taskList])
+  const assignmentTask = useMemo(() => calculateTaskCompleted(taskList), [taskList])
   const isVariantRow = variant === 'row'
 
   const handleNavigateProjectDetail = useCallback(() => {
@@ -107,6 +111,11 @@ export const ProjectCard = ({
           <Badge variant='ghost' className='text-label-secondary'>
             <AttachmentIcon width={16} height={16} className='mr-[3px]' /> {attachment.length}
           </Badge>
+          {hasAssignment && (
+            <Badge variant='ghost' className='text-label-secondary'>
+              <AssignmentIcon width={16} height={16} className='mr-[3px]' /> {assignmentTask}
+            </Badge>
+          )}
           <Tag variant={variantTag(dueDate)} icon={<ActivityIcon width={16} height={16} />}>
             {calculateDaysLeft(dueDate)} days left
           </Tag>
