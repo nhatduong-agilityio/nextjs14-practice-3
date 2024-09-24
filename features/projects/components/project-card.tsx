@@ -50,7 +50,7 @@ export const ProjectCard = ({
 }: ProjectCardProps) => {
   const router = useRouter()
 
-  const { assigned, name, team, attachment, dueDate, taskList, id } = project
+  const { assigned, name, team, attachment, dueDate, taskList, id, status } = project
 
   const listProjectActions = [
     {
@@ -82,6 +82,7 @@ export const ProjectCard = ({
   const progress = useMemo(() => calculateProjectProgress(taskList), [taskList])
   const assignmentTask = useMemo(() => calculateTaskCompleted(taskList), [taskList])
   const isVariantRow = variant === 'row'
+  const isCompletedTask = hasAssignment && status === 'Completed'
 
   const handleNavigateProjectDetail = useCallback(() => {
     router.push(`${ROUTES.PROJECTS}/${id}`)
@@ -101,7 +102,7 @@ export const ProjectCard = ({
     >
       <CardHeader className={cn('flex flex-col justify-between items-start', isVariantRow && 'flex-1 p-0')}>
         <div className='w-full flex justify-between items-center'>
-          <CardTitle className='truncate'>{name}</CardTitle>
+          <CardTitle className={cn('truncate', isCompletedTask && 'line-through')}>{name}</CardTitle>
           {!isVariantRow && <MoreMenu title='Project Actions' menuOptions={listProjectActions} />}
         </div>
         <CardDescription>{team}</CardDescription>

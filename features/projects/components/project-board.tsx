@@ -26,7 +26,6 @@ import { useToast } from '@/hooks/use-toast'
 interface ProjectBoardProps {
   projects: ProjectDetail[]
   columns: ProjectColumnType[]
-  error?: string
 }
 
 export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
