@@ -38,6 +38,7 @@ export type ProjectDetail = {
   createdDate: string
   dueDate: string
   comments: Comment[]
+  status?: 'Completed'
 }
 
 export type ProjectColumn = {

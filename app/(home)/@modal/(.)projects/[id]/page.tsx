@@ -11,7 +11,7 @@ const ProjectDetail = async ({ params: { id } }: { params: { id: string } }) => 
 
   return (
     <Suspense fallback={null}>
-      <ProjectDetailModal projectId={project.id}>
+      <ProjectDetailModal project={project}>
         <ProjectDetailContent project={project} />
       </ProjectDetailModal>
     </Suspense>

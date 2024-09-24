@@ -284,7 +284,8 @@
           "content": "Exciting project! Looking forward to our first milestone.",
           "createdDate": "2023-05-22T10:45:00Z"
         }
-      ]
+      ],
+      "status": "Completed"
     },
     {
       "id": "cf4da989-7847-4332-af8e-b3ffc7917595",
@@ -428,7 +429,8 @@
           "content": "Exciting project! Looking forward to our first milestone.",
           "createdDate": "2023-05-22T10:45:00Z"
         }
-      ]
+      ],
+      "status": "Completed"
     }
   ],
   "columns": [

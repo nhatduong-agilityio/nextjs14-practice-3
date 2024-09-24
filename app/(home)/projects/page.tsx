@@ -36,11 +36,11 @@ export const metadata: Metadata = {
   },
 }
 
-const Projects = async () => {
-  const { data: projects, error: projectError } = await getProjects()
-  const { data: columns, error: columnError } = await getColumns()
+const Projects = async ({ searchParams }: { searchParams: { name: string } }) => {
+  const queryParams = searchParams.name ? new URLSearchParams({ name_like: searchParams.name }) : undefined
+  const [columnResponse, projectsResponse] = await Promise.all([getColumns(), getProjects(queryParams)])
 
-  if (!projects || !columns) {
+  if (!projectsResponse.data || !columnResponse.data) {
     return notFound()
   }
 
@@ -49,7 +49,7 @@ const Projects = async () => {
       <PageHeader title='Projects' className='gap-30 flex flex-nowrap'>
         <ProjectFilter />
       </PageHeader>
-      <ProjectBoard projects={projects} columns={columns} error={projectError || columnError} />
+      <ProjectBoard projects={projectsResponse.data} columns={columnResponse.data} />
     </div>
   )
 }

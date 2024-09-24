@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Badge } from '@/components/ui/badge'
 import { MoreIcon } from '@/icons/more-icon'
 import { CheckIcon } from '@/icons/check-icon'
+import { updateProject } from '../actions/update-project'
 
 // Hocs
 import { withMoreMenu } from '@/hocs/with-more-menu'
@@ -15,21 +16,28 @@ import { withMoreMenu } from '@/hocs/with-more-menu'
 // Constants
 import { ROUTES } from '@/constants/routes'
 
+// Types
+import { ProjectDetail } from '@/types/project'
+
+// Utils
+import { cn } from '@/utils/cn'
+
 interface ProjectDetailModalProps {
-  projectId: string
+  project: ProjectDetail
   children: React.ReactNode
 }
 
 const MoreMenu = withMoreMenu(MoreIcon)
 
-export const ProjectDetailModal = ({ projectId, children }: ProjectDetailModalProps) => {
+export const ProjectDetailModal = ({ project, children }: ProjectDetailModalProps) => {
   const wrapper = useRef(null)
   const router = useRouter()
 
+  const isCompleted = project.status === 'Completed'
   const listProjectActions = [
     {
       name: 'Go To Page Detail',
-      action: () => window.open(`${ROUTES.PROJECTS}/${projectId}`, '_blank'),
+      action: () => window.open(`${ROUTES.PROJECTS}/${project.id}`, '_blank'),
     },
     {
       name: 'Delete Project',
@@ -54,6 +62,11 @@ export const ProjectDetailModal = ({ projectId, children }: ProjectDetailModalPr
     [onDismiss],
   )
 
+  const handleMarkCompleted = useCallback(async () => {
+    if (isCompleted) return
+    await updateProject(project.id, { ...project, status: 'Completed' })
+  }, [isCompleted, project])
+
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown)
     return () => document.removeEventListener('keydown', onKeyDown)
@@ -63,8 +76,13 @@ export const ProjectDetailModal = ({ projectId, children }: ProjectDetailModalPr
     <Dialog defaultOpen onOpenChange={(open) => !open && onDismiss()}>
       <DialogContent ref={wrapper} className='p-0 gap-0 bg-card-secondary'>
         <DialogHeader className='flex flex-row px-5 pt-4 pb-[15px] space-y-0 items-center justify-between pr-[68px] border-b border-separator'>
-          <Badge variant='outline' className='text-label-secondary h-8 rounded-[8px] font-poppins'>
-            <CheckIcon width={20} height={20} className='mr-2' /> Mark Complete
+          <Badge
+            variant={isCompleted ? 'active' : 'outline'}
+            className={cn('h-8 rounded-[8px] font-poppins cursor-pointer', !isCompleted && 'text-label-secondary')}
+            aria-disabled={isCompleted}
+            onClick={handleMarkCompleted}
+          >
+            <CheckIcon width={20} height={20} className={cn('mr-2', isCompleted && 'text-white')} /> Mark Complete
           </Badge>
           <MoreMenu title='Project Actions' menuOptions={listProjectActions} />
         </DialogHeader>
