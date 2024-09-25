@@ -30,8 +30,6 @@ export type ProjectDetail = {
   owner: User
   team: string
   assigned: User[]
-  columnId: string
-  index: number
   attachment: Attachment[]
   taskList: Task[]
   description: string
@@ -39,13 +37,14 @@ export type ProjectDetail = {
   dueDate: string
   comments: Comment[]
   status?: 'Completed'
+  index?: number
 }
 
 export type ProjectColumn = {
   id: string
   title: string
   index: number
-  projectIds: string[]
+  projects: { projectId: string; index: number }[]
 }
 
 export type ProjectFilter = 'arrange' | 'filter' | 'sort'

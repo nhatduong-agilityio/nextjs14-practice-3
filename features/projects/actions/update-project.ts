@@ -9,7 +9,6 @@ import { ApiDataResponse } from '@/types/api'
 export const updateProject = async (id: string, project: ProjectDetail): Promise<ApiDataResponse<ProjectDetail>> => {
   try {
     const updatedProject = await apiService.update<ProjectDetail>(`${API_ENDPOINT.PROJECTS}/${id}`, project)
-    // revalidateTag(API_ENDPOINT.PROJECTS)
     revalidateTag(`${API_ENDPOINT.PROJECTS}/${id}`)
     return { data: updatedProject }
   } catch (error) {
