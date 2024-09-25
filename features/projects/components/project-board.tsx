@@ -12,7 +12,7 @@ import { StrictModeDroppable } from './droppable-provider'
 
 // Utils
 import { cn } from '@/utils/cn'
-import { generateProjectMap, reorder, reorderProjectMap } from '../utils/project-drag-drop'
+import { reorder } from '../utils/project-drag-drop'
 
 // Hooks
 import { useProjectFilter } from '../hooks/use-project-filter'
@@ -24,19 +24,16 @@ import { updateProjectMap } from '../actions/update-project-map'
 import { useToast } from '@/hooks/use-toast'
 
 interface ProjectBoardProps {
-  projects: ProjectDetail[]
+  initialBoard: Record<string, ProjectDetail[]>
   columns: ProjectColumnType[]
 }
 
-export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
+export const ProjectBoard = ({ initialBoard, columns }: ProjectBoardProps) => {
   const { toast } = useToast()
-
-  // Memoize the initial data to prevent unnecessary recalculations
-  const initialData = useMemo(() => generateProjectMap(projects, columns), [projects, columns])
 
   // Use optimistic state for immediate UI updates
   const [optimisticState, setOptimisticState] = useOptimistic(
-    { columnsOrdered: initialData, ordered: Object.keys(initialData), pendingProjectId: '' },
+    { columnsOrdered: initialBoard, ordered: Object.keys(initialBoard), pendingProjectId: '' },
     (
       state,
       newState: Partial<{
@@ -73,7 +70,7 @@ export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
 
       startTransition(async () => {
         if (result.type === 'COLUMN') {
-          // Handle column reordering
+          // Handle column reordering (this remains largely the same)
           const reorderedOrder = reorder(optimisticState.ordered, source.index, destination.index)
           setOptimisticState({ ordered: reorderedOrder })
 
@@ -88,50 +85,47 @@ export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
               await updateColumnOrder(updatedSourceColumn, updatedDestinationColumn)
             }
           } catch (error) {
-            // Revert optimistic update on error
             setOptimisticState({ ordered: optimisticState.ordered })
+            toast({
+              title: 'Failed to update column',
+              description: 'Failed to update column. Please try again.',
+              variant: 'destructive',
+            })
           }
-          return
         } else {
-          // Handle project reordering
-          const data = reorderProjectMap({
-            projectMap: optimisticState.columnsOrdered,
-            source,
-            destination,
-          })
+          const newColumnsOrdered = { ...optimisticState.columnsOrdered }
+          const [movedProject] = newColumnsOrdered[source.droppableId].splice(source.index, 1)
 
-          const movedProject = optimisticState.columnsOrdered[source.droppableId][source.index]
-          setOptimisticState({ columnsOrdered: data.projectMap, pendingProjectId: movedProject.id })
-
+          newColumnsOrdered[destination.droppableId].splice(destination.index, 0, movedProject)
+          setOptimisticState({ columnsOrdered: newColumnsOrdered, pendingProjectId: movedProject.id })
           try {
             const sourceColumn = columns.find((col) => col.title === source.droppableId)
-            const destinationColumn = columns.find((col) => col.title === destination.droppableId)
-            const patchedProject = optimisticState.columnsOrdered[destination.droppableId][destination.index]
+            const destColumn = columns.find((col) => col.title === destination.droppableId)
 
-            if (sourceColumn && destinationColumn && movedProject) {
-              const result = await updateProjectMap(
-                data.projectMap,
-                sourceColumn,
-                destinationColumn,
-                movedProject,
-                patchedProject,
-              )
+            if (sourceColumn && destColumn) {
+              const updatedSourceColumn = {
+                ...sourceColumn,
+                projects: newColumnsOrdered[source.droppableId].map((p, index) => ({ projectId: p.id, index })),
+              }
+              const updatedDestColumn = {
+                ...destColumn,
+                projects: newColumnsOrdered[destination.droppableId].map((p, index) => ({ projectId: p.id, index })),
+              }
 
-              if (result.data) {
-                setOptimisticState({ columnsOrdered: result.data, pendingProjectId: '' })
-              } else {
+              const result = await updateProjectMap(updatedSourceColumn, updatedDestColumn)
+
+              if (result.error) {
                 toast({
                   title: 'Failed to update project board',
                   description: result.error,
                   variant: 'destructive',
                 })
               }
+
+              setOptimisticState({ pendingProjectId: '' })
             }
-            setOptimisticState({ pendingProjectId: '' })
           } catch (error) {
-            // Revert optimistic update on error
             setOptimisticState({ columnsOrdered: optimisticState.columnsOrdered, pendingProjectId: '' })
-            // Display toast for error message
             toast({
               title: 'Failed to update project board',
               description: 'Failed to update project board. Please try again.',
@@ -141,7 +135,7 @@ export const ProjectBoard = ({ projects, columns }: ProjectBoardProps) => {
         }
       })
     },
-    [optimisticState.ordered, optimisticState.columnsOrdered, setOptimisticState, columns, toast],
+    [optimisticState, columns, setOptimisticState, toast],
   )
 
   // Memoize the project columns to prevent unnecessary re-renders

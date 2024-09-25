@@ -8,9 +8,9 @@ import { PORT, ROUTES } from '@/constants/routes'
 // Components
 import { PageHeader } from '@/components/sections/page-header'
 import { getColumns } from '@/features/projects/actions/get-columns'
-import { getProjects } from '@/features/projects/actions/get-projects'
 import { ProjectBoard } from '@/features/projects/components/project-board'
 import { ProjectFilter } from '@/features/projects/components/project-filter'
+import { generateProjectMap } from '@/features/projects/utils/project-drag-drop'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -36,20 +36,21 @@ export const metadata: Metadata = {
   },
 }
 
-const Projects = async ({ searchParams }: { searchParams: { name: string } }) => {
-  const queryParams = searchParams.name ? new URLSearchParams({ name_like: searchParams.name }) : undefined
-  const [columnResponse, projectsResponse] = await Promise.all([getColumns(), getProjects(queryParams)])
+const Projects = async () => {
+  const columnResponse = await getColumns()
 
-  if (!projectsResponse.data || !columnResponse.data) {
+  if (!columnResponse.data) {
     return notFound()
   }
+
+  const initialBoard = await generateProjectMap(columnResponse.data)
 
   return (
     <div className='flex h-full flex-col p-5 lg:p-10'>
       <PageHeader title='Projects' className='gap-30 flex flex-nowrap'>
         <ProjectFilter />
       </PageHeader>
-      <ProjectBoard projects={projectsResponse.data} columns={columnResponse.data} />
+      <ProjectBoard initialBoard={initialBoard} columns={columnResponse.data} />
     </div>
   )
 }

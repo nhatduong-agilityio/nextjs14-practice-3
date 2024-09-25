@@ -10,7 +10,7 @@ jest.mock('next/cache', () => ({
 
 describe('updateColumn', () => {
   const mockColumnId = '1'
-  const mockColumn = { id: mockColumnId, title: 'Updated Column', index: 2, projectIds: [] }
+  const mockColumn = { id: mockColumnId, title: 'Updated Column', index: 2, projects: [] }
 
   it('should successfully update a column', async () => {
     ;(apiService.update as jest.Mock).mockResolvedValue(mockColumn)
@@ -20,7 +20,6 @@ describe('updateColumn', () => {
     expect(apiService.update).toHaveBeenCalledWith(`${API_ENDPOINT.COLUMNS}/${mockColumnId}`, mockColumn)
     expect(revalidateTag).toHaveBeenCalledWith(API_ENDPOINT.COLUMNS)
     expect(revalidateTag).toHaveBeenCalledWith(`${API_ENDPOINT.COLUMNS}/${mockColumnId}`)
-    expect(revalidateTag).toHaveBeenCalledWith(API_ENDPOINT.PROJECTS)
     expect(result).toEqual({ data: mockColumn })
   })
 
